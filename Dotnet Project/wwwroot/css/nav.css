@@ -1,0 +1,66 @@
+﻿@import "themes.css";
+
+.mynav {
+    display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: 60px;
+    box-shadow: 0px 1px 10px 1px var(--color2);
+    background-color: var(--color1);
+    padding: 1px;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 40px;
+}
+
+    .mynav h1 {
+        margin-block: 5px;
+        font-size: 37px;
+        color: var(--color2);
+        display: flex;
+    }
+
+.logo-container {
+    display: flex;
+    width: 297px;
+    height: auto;
+    margin-left: 77px;
+    border-right: var(--color2);
+}
+
+    .logo-container:hover {
+        cursor: pointer;
+    }
+
+.nav-links {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    width: 60%;
+    list-style-type: none;
+}
+
+.link {
+    padding: 5px 43px 12px 47px;
+    background: var(--color1);
+    color: var(--color2);
+    font-size: 20px;
+    font-weight: 700;
+    border-right: thick double var(--color4);
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+    .link:hover {
+        background-color: var(--color2);
+        color: var(--color1) !important;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+    }
+
+a.active {
+    color: var(--color1) !important;
+    background-color: var(--color2) !important;
+}
