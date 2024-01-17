@@ -58,6 +58,7 @@
         color: var(--color1) !important;
         transition: transform 0.3s ease;
         cursor: pointer;
+        text-decoration: none;
     }
 
 a.active {
