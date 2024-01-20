@@ -1,0 +1,7 @@
+﻿@model List<Time_Slot>
+
+<option value="">Select Time Slot</option>
+@foreach (var timeSlot in Model)
+{
+    <option value="@timeSlot.Id">@timeSlot.get_match_time()</option>
+}
