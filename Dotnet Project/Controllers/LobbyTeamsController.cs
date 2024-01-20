@@ -6,7 +6,6 @@ using System.Linq;
 using System.Security.Claims;
 using Dotnet_Project.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http;
 
 public class LobbyTeamsController : Controller
 {
