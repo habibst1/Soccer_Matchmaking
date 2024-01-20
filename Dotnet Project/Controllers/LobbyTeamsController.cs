@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Claims;
 using Dotnet_Project.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http;
 
 public class LobbyTeamsController : Controller
 {
@@ -104,8 +105,8 @@ public class LobbyTeamsController : Controller
         }
 
         // Create lobby and join players using CreateLobby method
-        var newLobby = adminPlayer.CreateLobby(selectedTimeSlot, selectedPlayers, lobbyName, "Type");
-
+        var newLobby = adminPlayer.CreateLobby(selectedTimeSlot, selectedPlayers, lobbyName, "LobbyTeam");
+       
         if (newLobby != null)
         {
             // Add the new lobby to the database context
