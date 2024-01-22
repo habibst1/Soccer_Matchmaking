@@ -1,4 +1,5 @@
-﻿.cardlobby {
+﻿@import "themes.css";
+.cardlobby {
     border-color: #425F4B !important;
 }
 
@@ -78,19 +79,6 @@
     max-height: 300px;
 }
 
-
-:root {
-    --cardlobby-height: 400px;
-    --cardlobby-width: calc(var(--cardlobby-height) / 1.5);
-    --color1: #F6EFEE; /* Define your theme color variables */
-    --color1-lighter: #fafafa;
-    --color2: #2A3F1F;
-    --color3: #0E1C36;
-    --color3-darker: #060d18;
-    --modalColor: #060d187c;
-    --color4: #EBC60F;
-    --color5: #7785AC;
-}
 
 .cardlink {
     text-decoration: none;
