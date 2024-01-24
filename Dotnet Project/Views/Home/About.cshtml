@@ -1,7 +1,8 @@
 ﻿@{
     ViewData["Title"] = "About Page";
 }
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ti-icons@0.1.2/css/themify-icons.css">
 <div>
 	<div class="contact-description">
 	<h1>Contact Us</h1>
@@ -13,6 +14,10 @@
 	<div class="contact-container">
 		<div>
 			<form action="" class="form contact-form">
+				<p>
+					Fill this form and send us any questions,
+					concerns, or feedback :
+				</p>
 				<div>
 					<input type="text" placeholder="First Name" class="form__input" id="firstname" />
 					<label for="firstname" class="form__label">First Name</label>
@@ -34,12 +39,15 @@
 					<label for="subject" class="form__label">Subject</label>
 				</div>
 				<div>
-					<input type="text" placeholder="description" class="form__input" id="description" />
-					<label for="description" class="form__label">description</label>
+					<textarea placeholder="description" class="textarea__input" id="description" /></textarea>
+					<label for="description" class="textarea__label">Description</label>
 				</div>
-				
+				<button type="submit"><i class="bi bi-send" style="margin:2px;"></i>Send</button>
 			</form>
 		</div>
-		<div></div>
+		<div>
+			
+			
+		</div>
 	</div>
 </div>
