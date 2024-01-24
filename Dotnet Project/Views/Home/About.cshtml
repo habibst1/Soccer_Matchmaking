@@ -1,7 +1,8 @@
 ﻿@{
     ViewData["Title"] = "About Page";
 }
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ti-icons@0.1.2/css/themify-icons.css">
 <div>
 	<div class="contact-description">
 	<h1>Contact Us</h1>
@@ -13,6 +14,10 @@
 	<div class="contact-container">
 		<div>
 			<form action="" class="form contact-form">
+				<p>
+					Fill this form and send us any questions,
+					concerns, or feedback :
+				</p>
 				<div>
 					<input type="text" placeholder="First Name" class="form__input" id="firstname" />
 					<label for="firstname" class="form__label">First Name</label>
@@ -34,12 +39,22 @@
 					<label for="subject" class="form__label">Subject</label>
 				</div>
 				<div>
-					<input type="text" placeholder="description" class="form__input" id="description" />
-					<label for="description" class="form__label">description</label>
+					<textarea placeholder="description" class="textarea__input" id="description" /></textarea>
+					<label for="description" class="textarea__label">Description</label>
 				</div>
-				
+				<button type="submit"><i class="bi bi-send" style="margin:2px;"></i>Send</button>
 			</form>
 		</div>
-		<div></div>
+		<div>
+			<ul class="list-unstyled mb-4 contact-details">
+				<li><a class="light-color noline-hover" href="#!" style="display: flex; text-align:left;margin-bottom: 47px;"><i class="fas fa-map-marker-alt display-25 me-3 light-color" style="padding-left: 2px;margin-top: 3px;"></i>Tunisia , INSAT , Centre urbain nord</a></li>
+				<li class="mb-3"><a class="light-color" href="#" style="display: flex;"><i class="far fa-envelope display-25 me-3 light-color" style="margin-top: 3px;padding-left: 1px;"></i><div>contact@projectname.com</div></a></li>
+				<li class="mb-3"><a class="light-color noline-hover" href="#!" style="display: flex;"><i class="fas fa-mobile-alt display-25 me-3 light-color" style="padding-left: 6px;margin-top: 3px;"></i>+216 55 555 555</a></li>
+				<li class="mb-3"><a class="light-color" href="#!" style="display: flex;align-items: center;"><i class="bi bi-facebook display-25 me-3 light-color" style="padding-left: 3px;margin-top: 3px;"></i>Project name</a></li>
+				<li class="mb-3"><a class="light-color" href="#!" style="display: flex;align-items: center;"><i class="bi bi-linkedin display-25 me-3 light-color" style="padding-left: 3px;margin-top: 3px;"></i>Project name</a></li>
+
+			</ul>
+
+		</div>
 	</div>
 </div>
