@@ -1,0 +1,32 @@
+﻿@model List<Lobby>
+
+    <h2>Available Lobbies</h2>
+
+    @if (Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Lobby Name</th>
+                    <th>Stadium</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var lobby in Model)
+                {
+                    <tr>
+                        <td>@lobby.Name</td>
+                        <td>@lobby.TimeSlot.get_match_time()</td>
+                        <td>
+                            <a asp-action="Join" asp-route-id="@lobby.Id" class="btn btn-primary">Join</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No available lobbies to join.</p>
+    }
