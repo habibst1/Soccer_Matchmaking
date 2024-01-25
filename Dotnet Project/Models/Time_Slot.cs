@@ -20,6 +20,8 @@ namespace Dotnet_Project.Models
 
         public List<Lobby> LinkedLobbies { get; set; }
 
+        public Time_Slot() { }
+
         public Time_Slot(Stadium stadium, DateTime hour)
         {
             this.stadium = stadium;

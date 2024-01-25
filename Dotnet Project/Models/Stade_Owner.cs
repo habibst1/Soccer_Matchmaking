@@ -14,11 +14,13 @@ namespace Dotnet_Project.Models
         public string Surname { get; set; }
 
         [ForeignKey("Stade")]
-        public int StadeId { get; set; }
-        public Stadium stade { get; set; }
+        public int? StadeId { get; set; }
+        public Stadium? stade { get; set; }
 
         public string EMail { get; set; }
         public string mdp { get; set; }
+
+        public Stade_Owner() { }
 
         public Stade_Owner(string email, string mdp, string name, string surname)
         {

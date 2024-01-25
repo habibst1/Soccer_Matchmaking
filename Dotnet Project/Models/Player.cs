@@ -21,9 +21,14 @@ namespace Dotnet_Project.Models
 
         [ForeignKey("LinkedLobbyId")]
         public int? LinkedLobbyId { get; set; }
-        public Lobby LinkedLobby { get; set; }
+        public Lobby? LinkedLobby { get; set; }
+
+        public int TeamNumber { get; set; } // Add a property to specify the team number
+
 
         public bool IsAdmin { get; set; }
+
+        public Player() { }
 
         public Player(string email, string mdp, string name, string surname, string photopath)
         {
@@ -62,23 +67,21 @@ namespace Dotnet_Project.Models
             {
                 this.LinkedLobby = L;
 
-                if (L.Team1.Count() < 7)
-                    L.Team1.Add(this);
-                else if (L.Team2.Count() < 7)
+                if (L.Players.Count() < 6)
                 {
-                    L.Team2.Add(this);
-                    if (L.Team2.Count() == 6) L.IsFull = true;
+                    this.TeamNumber = 1;
+                    L.Players.Add(this);
+                    
+                }
+                else if (L.Players.Count() < 12)
+                {
+                    this.TeamNumber = 2;
+                    L.Players.Add(this);
+                    
+                    if (L.Players.Count() == 12) L.IsFull = true;
                 }
 
-                if (L.IsFull)
-                {
-                    L.t.occupancy = true;
-                    foreach (Lobby otherlobby in L.t.LinkedLobbies)
-                    {
-                        if (!otherlobby.t.occupancy)
-                            otherlobby.remove_lobby();
-                    }
-                }
+                
             }
         }
     }
