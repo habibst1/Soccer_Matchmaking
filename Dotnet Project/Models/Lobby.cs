@@ -14,50 +14,36 @@ namespace Dotnet_Project.Models
 
         [ForeignKey("TimeSlot")]
         public int TimeSlotId { get; set; }
-        public Time_Slot t { get; set; }
+        public Time_Slot TimeSlot { get; set; }
 
-        public List<Player> Team1 { get; set; }
-        public List<Player> Team2 { get; set; }
+        public List<Player> Players { get; set; } // Consolidated list for all players in the lobby
+
+        public List<Player> Team1 => Players.Where(p => p.TeamNumber == 1).ToList();
+
+        public List<Player> Team2 => Players.Where(p => p.TeamNumber == 2).ToList();
+
 
         public string Type { get; set; }
         public bool IsFull { get; set; }
         public bool IsFinished { get; set; }
 
+        public Lobby()
+        {   
+            Players = new List<Player>();
+        }
+
         public Lobby(string name, Time_Slot t, string type)
         {
             this.Name = name;
-            this.t = t;
+            this.TimeSlot = t;
             this.Type = type;
             this.IsFull = false;
             this.IsFinished = false;
-            this.Team1 = new List<Player>();
-            this.Team2 = new List<Player>();
-            this.t.LinkedLobbies.Add(this);
+            this.Players = new List<Player>();
+            this.TimeSlot.LinkedLobbies.Add(this);
         }
 
-        public void remove_players()
-        {
-            foreach (Player p in Team1)
-            {
-                p.LinkedLobby = null;
-            }
-
-            foreach (Player p in Team2)
-            {
-                p.LinkedLobby = null;
-            }
-        }
-
-        public void remove_lobby()
-        {
-            this.remove_players();
-            this.t.LinkedLobbies.Remove(this);
-        }
-
-        public void update_isFinished()
-        {
-            this.remove_players();
-            this.t.remove_time_slot();
-        }
+           //FAZAT L REMOVE N7OTTOUHOM FEL CONTROLLER W BARRA
+ 
     }
-}
+}   

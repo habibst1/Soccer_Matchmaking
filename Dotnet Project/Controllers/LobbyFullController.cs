@@ -7,16 +7,16 @@ using System.Security.Claims;
 using Dotnet_Project.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-public class LobbyTeamsController : Controller
+public class LobbyFullController: Controller
 {
     private readonly AppDbContext _context;
 
-    public LobbyTeamsController(AppDbContext context)
+    public LobbyFullController(AppDbContext context)
     {
         _context = context;
     }
 
-    // GET: /LobbyTeams/Create
+    // GET: /LobbyFull/Create
     public IActionResult Create()
     {
         // Retrieve all stadiums
@@ -90,46 +90,47 @@ public class LobbyTeamsController : Controller
             // Handle invalid selection, perhaps redirect to the create page with an error message
             return RedirectToAction("Create");
         }
-       /*KIFKIF HEDHI COMMETED 5ATER LOGIN
-        // Retrieve the currently logged-in player (admin)
-        var adminPlayerId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Assuming ID is stored in "ClaimTypes.NameIdentifier"
-        
-        if (adminPlayerId == null)
-        {
-            // Handle the case where the user is not logged in
-            return RedirectToAction("Login"); // Redirect to login or handle it accordingly
-        }
-        
-        var adminPlayer = _context.Players.FirstOrDefault(p => p.ID == int.Parse(adminPlayerId));
-       */ 
+        /*KIFKIF HEDHI COMMETED 5ATER LOGIN
+         // Retrieve the currently logged-in player (admin)
+         var adminPlayerId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Assuming ID is stored in "ClaimTypes.NameIdentifier"
+
+         if (adminPlayerId == null)
+         {
+             // Handle the case where the user is not logged in
+             return RedirectToAction("Login"); // Redirect to login or handle it accordingly
+         }
+
+         var adminPlayer = _context.Players.FirstOrDefault(p => p.ID == int.Parse(adminPlayerId));
+        */
         // Retrieve selected players
         var selectedPlayers = _context.Players
             .Where(p => selectedPlayerIds.Contains(p.ID))
             .ToList();
 
         // Check if the number of selected players is valid
-        if (selectedPlayers.Count != 6)
+        if (selectedPlayers.Count != 12)
         {
             // Handle invalid number of players, perhaps redirect to the create page with an error message
             return RedirectToAction("Create");
         }
-       
+
         // Create lobby and join players using CreateLobby method
         //ELLI COMMENTED TA7T HEDHA HIYA LSHIHA AMA 5ATER EL LOGIN AHAYKA 3ALA JNAB
         //var newLobby = adminPlayer.CreateLobby(selectedTimeSlot, selectedPlayers, lobbyName, "LobbyTeam");
-       
-        var newLobby = new Lobby(lobbyName, selectedTimeSlot,"LobbyTeam");
+
+        var newLobby = new Lobby(lobbyName, selectedTimeSlot, "LobbyFull");
         
         foreach (var player in selectedPlayers)
         {
             player.JoinLobby(newLobby);
         }
 
-
+        
         if (newLobby.IsFull)
         {
+        
             newLobby.TimeSlot.occupancy = true;
-
+            
             var linkedLobbiesCopy = new List<Lobby>(newLobby.TimeSlot.LinkedLobbies);
 
             for (int i = 0; i < linkedLobbiesCopy.Count; i++)
@@ -139,20 +140,19 @@ public class LobbyTeamsController : Controller
                 if (otherlobby != newLobby)
                 {
                     var linkedPlayers = _context.Players.Where(p => p.LinkedLobbyId == otherlobby.Id).ToList();
-
+            
                     foreach (var player in linkedPlayers)
                     {
                         player.LinkedLobbyId = null; // or assign to another lobby if needed
                     }
-
+                    
                     newLobby.TimeSlot.LinkedLobbies.Remove(otherlobby);
-
+                    
                     _context.Lobbies.Remove(otherlobby);
                 }
             }
 
         }
-
 
         if (newLobby != null)
         {
@@ -171,45 +171,4 @@ public class LobbyTeamsController : Controller
             return RedirectToAction("Create");
         }
     }
-
-    public IActionResult AvailableLobbies()
-    {   
-        /*KI YARKA7 EL LOGIN
-        // Retrieve the logged-in player
-        var loggedInPlayerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-        if (loggedInPlayerId == null)
-        {
-            // Handle the case where the user is not logged in
-            return RedirectToAction("Login"); // Redirect to login or handle it accordingly
-        }
-
-        var loggedInPlayer = _context.Players.FirstOrDefault(p => p.ID == int.Parse(loggedInPlayerId));
-
-        if (loggedInPlayer == null)
-        {
-            // Handle the case where the logged-in player is not found
-            return RedirectToAction("Login"); // Redirect to login or handle it accordingly
-        }
-
-        if(loggedInPlayer.LinkedLobby)
-        {
-          lazem maynjmch yenzel 3ala Join Lobby men aslou
-        }
-        */
-
-
-        // Retrieve available lobbies that the player can join
-        var availableLobbies = _context.Lobbies
-            .Include(l => l.Players)
-            .Include(l => l.TimeSlot)
-            .Where(l => l.Type == "LobbyTeam" && !l.IsFull && !l.IsFinished && l.Players.Count < 7)
-            .ToList();
-
-        return View(availableLobbies);
-    }
-
-
-
-
 }
