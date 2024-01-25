@@ -3,19 +3,20 @@
 <div class="container profile-container">
     <div class="row justify-content-center">
         <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
-            <div class="card border-0 shadow left-profile soft-border ">
-                <img class="profile-img" src="https://i.guim.co.uk/img/media/a4cd1c28f32b066d2781edbb97bb4231392c2d42/7_133_3512_2107/master/3512.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=a1806b44a56d1b71ef26e5fee5436328" alt="...">
+            <div class="card border-0 shadow left-profile soft-border ps-0 pe-1 ">
+                <h2 class="bg-dark-blue-color edit-img light-color"><i class="bi bi-camera "></i></h2>
+				<img class="profile-img" src="https://i.guim.co.uk/img/media/a4cd1c28f32b066d2781edbb97bb4231392c2d42/7_133_3512_2107/master/3512.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=a1806b44a56d1b71ef26e5fee5436328" alt="...">
                 <div class="card-body p-1-9 p-xl-5">
                     <div class="mb-4">
                         <h3 class="h4 mb-0">Player name</h3>
                         <span class="pt-2 skyblue-color">CF</span>
                     </div>
                     <ul class="list-unstyled mb-4 profile-details">
-                        <li class="mb-3"><a class="light-color" href="#!"><i class="far fa-envelope display-25 me-3 light-color"></i>player@gmail.com</a></li>
-                        <li class="mb-3"><a class="light-color" href="#!"><i class="fas fa-mobile-alt display-25 me-3 light-color" style="padding-left: 3px;"></i>+216 55 555 555</a></li>
-                        <li><a class="light-color" href="#!"><i class="fas fa-map-marker-alt display-25 me-3 light-color" style="padding-left: 2px;"></i>adress (optional)</a></li>
+                        <li class="mb-3"><a class="light-color" href="#!" style="display: flex;"><i class="far fa-envelope display-25 me-3 light-color" style="margin-top: 3px;"></i><div>player@gmail.com</div></a></li>
+                        <li class="mb-3"><a class="light-color" href="#!" style="display: flex;"><i class="fas fa-mobile-alt display-25 me-3 light-color" style="padding-left: 3px;margin-top: 3px;"></i>+216 55 555 555</a></li>
+                        <li><a class="light-color" href="#!" style="display: flex;"><i class="fas fa-map-marker-alt display-25 me-3 light-color" style="padding-left: 2px;margin-top: 3px;"></i>adress (optional)</a></li>
                     </ul>
-                    
+                    <h3 class="edit-inf"><i class="bi bi-pencil-fill"></i></h3>
                 </div>
 
 			</div>
@@ -30,17 +31,218 @@
 				</div>
             </div>
         </div>
-        <div class="col-lg-8">
+        <div class="col-lg-8 pe-0 ps-1">
             <div class="ps-lg-1-6 ps-xl-5 bg-lighter-color soft-border pe-5 pt-4 right-profile">
                 <div class="mb-5 wow fadeIn" style="height:200px;">
                     <div class="text-start mb-1-6 wow fadeIn">
-                        <h2 class="h1 mb-0 blue-color">My Lobby :</h2>
+                        <h2 class="h1 mb-0 blue-color">
+                            My Lobby :
+                        </h2>
+                        <table class="lobby-table">
+                            <thead>
+                                <tr>
+                                    <th>Name or id</th>
+                                    <th>Team home</th>
+                                    <th>Team away</th>
+                                    <th>Stadium</th>
+                                    <th>Time</th>
+                                    <th style="width: 104px">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+									<td>Name exemple</td>
+									
+                                    <td>
+                                        <div style="display: grid;grid-template-rows: repeat(3, 1fr);grid-template-columns: repeat(2, 1fr);text-align: left !important;">
+											<h7>ala</h7>
+											<h7>taher</h7>
+											<h7>habib</h7>
+											<h7>palyer1</h7>
+											<h7>player2</h7>
+                                            <h7>--------</h7>
+										</div>
+                                        
+                                    </td>
+                                    <td>
+                                        <div style="display: grid;grid-template-rows: repeat(3, 1fr);grid-template-columns: repeat(2, 1fr);text-align: left !important;">
+                                            <h7>player3</h7>
+                                            <h7>player4</h7>
+                                            <h7>player5</h7>
+                                            <h7>--------</h7>
+                                            <h7>--------</h7>
+                                            <h7>--------</h7>
+                                            
+                                        </div>
+                                    </td>
+                                    <td>Five stars</td>
+                                    <td>01-Jan 15:45</td>
+                                    <td style="color:red;">not enough players</td>
+                                </tr>
+                                
+                                
+                            </tbody>
+                        </table>
+
                     </div>
                    </div>
                 <div class="mb-5 wow fadeIn">
                     <div class="text-start mb-1-6 wow fadeIn">
                         <h2 class="mb-0 blue-color">My Games History :</h2>
                     </div>
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Name or id</th>
+                                <th>Team home</th>
+                                <th>Team away</th>
+                                <th>Stadium</th>
+                                <th>Time</th>
+                                <th style="width: 130px;">score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Name exemple</td>
+
+                                <td>
+                                    <div style="display: grid;grid-template-rows: repeat(3, 1fr);grid-template-columns: repeat(2, 1fr);text-align: left !important;">
+                                        <h7>ala</h7>
+                                        <h7>taher</h7>
+                                        <h7>habib</h7>
+                                        <h7>palyer1</h7>
+                                        <h7>player2</h7>
+                                        <h7>player3</h7>
+                                    </div>
+
+                                </td>
+                                <td>
+                                    <div style="display: grid;grid-template-rows: repeat(3, 1fr);grid-template-columns: repeat(2, 1fr);text-align: left !important;">
+                                        <h7>player4</h7>
+                                        <h7>player5</h7>
+                                        <h7>player6</h7>
+                                        <h7>player7</h7>
+                                        <h7>player8</h7>
+                                        <h7>player9</h7>
+                                    </div>
+                                </td>
+                                <td>Five stars</td>
+                                <td>01-Jan 15:45</td>
+                                <td style="color:green;width:107px;">10-6</td>
+                            </tr>
+                            <tr>
+                                <td>Name exemple</td>
+
+                                <td>
+                                    <div style="display: grid;grid-template-rows: repeat(3, 1fr);grid-template-columns: repeat(2, 1fr);text-align: left !important;">
+                                        <h7>ala</h7>
+                                        <h7>taher</h7>
+                                        <h7>habib</h7>
+                                        <h7>palyer1</h7>
+                                        <h7>player2</h7>
+                                        <h7>player3</h7>
+                                    </div>
+
+                                </td>
+                                <td>
+                                    <div style="display: grid;grid-template-rows: repeat(3, 1fr);grid-template-columns: repeat(2, 1fr);text-align: left !important;">
+                                        <h7>player4</h7>
+                                        <h7>player5</h7>
+                                        <h7>player6</h7>
+                                        <h7>player7</h7>
+                                        <h7>player8</h7>
+                                        <h7>player9</h7>
+                                    </div>
+                                </td>
+                                <td>Five stars</td>
+                                <td>01-Jan 15:45</td>
+                                <td style="color:orange;width:107px;">12-12</td>
+                            </tr>
+                            <tr>
+                                <td>Name exemple</td>
+
+                                <td>
+                                    <div style="display: grid;grid-template-rows: repeat(3, 1fr);grid-template-columns: repeat(2, 1fr);text-align: left !important;">
+                                        <h7>ala</h7>
+                                        <h7>taher</h7>
+                                        <h7>habib</h7>
+                                        <h7>palyer1</h7>
+                                        <h7>player2</h7>
+                                        <h7>player3</h7>
+                                    </div>
+
+                                </td>
+                                <td>
+                                    <div style="display: grid;grid-template-rows: repeat(3, 1fr);grid-template-columns: repeat(2, 1fr);text-align: left !important;">
+                                        <h7>player4</h7>
+                                        <h7>player5</h7>
+                                        <h7>player6</h7>
+                                        <h7>player7</h7>
+                                        <h7>player8</h7>
+                                        <h7>player9</h7>
+                                    </div>
+                                </td>
+                                <td>Five stars</td>
+                                <td>01-Jan 15:45</td>
+                                <td style="color:red;width:107px;">8-9</td>
+                            </tr>
+                            <tr>
+                                <td>Name exemple</td>
+
+                                <td>
+                                    <div style="display: grid;grid-template-rows: repeat(3, 1fr);grid-template-columns: repeat(2, 1fr);text-align: left !important;">
+                                        <h7>ala</h7>
+                                        <h7>taher</h7>
+                                        <h7>habib</h7>
+                                        <h7>palyer1</h7>
+                                        <h7>player2</h7>
+                                        <h7>player3</h7>
+                                    </div>
+
+                                </td>
+                                <td>
+                                    <div style="display: grid;grid-template-rows: repeat(3, 1fr);grid-template-columns: repeat(2, 1fr);text-align: left !important;">
+                                        <h7>player4</h7>
+                                        <h7>player5</h7>
+                                        <h7>player6</h7>
+                                        <h7>player7</h7>
+                                        <h7>player8</h7>
+                                        <h7>player9</h7>
+                                    </div>
+                                </td>
+                                <td>Five stars</td>
+                                <td>01-Jan 15:45</td>
+                                <td style="color:green;width:107px;">13-8</td>
+                            <tr>
+                                <td>Name exemple</td>
+
+                                <td>
+                                    <div style="display: grid;grid-template-rows: repeat(3, 1fr);grid-template-columns: repeat(2, 1fr);text-align: left !important;">
+                                        <h7>ala</h7>
+                                        <h7>taher</h7>
+                                        <h7>habib</h7>
+                                        <h7>palyer1</h7>
+                                        <h7>player2</h7>
+                                        <h7>player3</h7>
+                                    </div>
+
+                                </td>
+                                <td>
+                                    <div style="display: grid;grid-template-rows: repeat(3, 1fr);grid-template-columns: repeat(2, 1fr);text-align: left !important;">
+                                        <h7>player4</h7>
+                                        <h7>player5</h7>
+                                        <h7>player6</h7>
+                                        <h7>player7</h7>
+                                        <h7>player8</h7>
+                                        <h7>player9</h7>
+                                    </div>
+                                </td>
+                                <td>Five stars</td>
+                                <td>01-Jan 15:45</td>
+                                <td style="color:green;width:107px;">7-5</td>
+                            </tr>
+                        </tbody>
+                    </table>
                     
                 </div>
                 
@@ -48,3 +250,4 @@
         </div>
     </div>
 </div>
+<div class="line"></div>

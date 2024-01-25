@@ -1,7 +1,8 @@
 ﻿:root {
+    /* Define your theme color variables */
     --cardlobby-height: 400px;
     --cardlobby-width: calc(var(--cardlobby-height) / 1.5);
-    --color1: #F6EFEE; /* Define your theme color variables */
+    --color1: #F6EFEE;
     --color1-lighter: #fafafa;
     --color2: #2A3F1F;
     --color3: #0E1C36;
@@ -9,6 +10,18 @@
     --modalColor: #060d187c;
     --color4: #EBC60F;
     --color5: #7785AC;
+    --color6: #ff0046 ;
+    --header_background_color: #333;
+    --header_text_color: #FDFDFD;
+    --alternate_row_background_color: #DDD;
+    --table_width: 750px;
+    --table_body_height: 100px;
+    --history-table_body_height: 330px;
+    --column_one_width: 100px;
+    --column_two_width: 120px;
+    --column_three_width: 120px;
+    --column_four_width: 100px;
+    --column_five_width: 70px;
 }
 .bg-lighter-color {
     background-color: var(--color1-lighter) !important;
