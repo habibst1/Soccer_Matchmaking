@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Claims;
 using Dotnet_Project.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Specialized;
 
 public class LobbyTeamsController : Controller
 {
@@ -125,7 +126,7 @@ public class LobbyTeamsController : Controller
             player.JoinLobby(newLobby);
         }
 
-
+        //NA7IW EL LOBBIAT ELLI DEJA MARBOUTIN B TIMESLOT KAN LOBBY MTA3NA T3ABBA
         if (newLobby.IsFull)
         {
             newLobby.TimeSlot.occupancy = true;
@@ -172,8 +173,74 @@ public class LobbyTeamsController : Controller
         }
     }
 
-    public IActionResult AvailableLobbies()
-    {   
+
+    public IActionResult Join()
+    {
+        //HEDHI COMMENTED 5ATER MARAKA7NACH LOGIN
+        /* Retrieve the currently logged-in player (admin)      UPPPP: Hedhi na3mloha ba3d manrak7ou Login wkol donc chna3mel 
+         wa7da depannage ta7tha
+       
+         var adminPlayerId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Assuming ID is stored in "ClaimTypes.NameIdentifier"
+
+        if (adminPlayerId == null)
+        {
+            // Handle the case where the user is not logged in
+            return RedirectToAction("Login"); // Redirect to login or handle it accordingly
+        }
+      
+        // Retrieve available players (excluding the admin player)
+        var availablePlayers = _context.Players
+            .Where(p => p.LinkedLobby == null && p.ID != int.Parse(adminPlayerId))
+            .ToList();
+
+        // Pass available players to the view
+        ViewBag.AvailablePlayers = new MultiSelectList(availablePlayers, "ID", "Name");
+      */
+        //HEDHI JUST TA3WIDH LELLI FO9HA
+        var availablePlayers = _context.Players
+            .Where(p => p.LinkedLobby == null)
+            .ToList();
+
+        // Pass available players to the view
+        ViewBag.AvailablePlayers = new MultiSelectList(availablePlayers, "ID", "Name");
+
+        return View();
+    }
+
+
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Join(List<int> selectedPlayerIds)
+    {
+        /*KIFKIF HEDHI COMMETED 5ATER LOGIN
+        // Retrieve the currently logged-in player (admin)
+        var adminPlayerId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Assuming ID is stored in "ClaimTypes.NameIdentifier"
+
+        if (adminPlayerId == null)
+        {
+           // Handle the case where the user is not logged in
+           return RedirectToAction("Login"); // Redirect to login or handle it accordingly
+        }
+
+        var adminPlayer = _context.Players.FirstOrDefault(p => p.ID == int.Parse(adminPlayerId));
+        */
+
+        // Retrieve selected players
+        
+        // Check if the number of selected players is valid
+        if (selectedPlayerIds.Count != 6)
+        {
+            // Handle invalid number of players, perhaps redirect to the create page with an error message
+            return RedirectToAction("Join");
+        }
+
+
+        return RedirectToAction("AvailableLobbies", new {selectedPlayerIds = selectedPlayerIds});
+    }
+
+    public IActionResult AvailableLobbies(List<int> selectedPlayerIds)
+    {
         /*KI YARKA7 EL LOGIN
         // Retrieve the logged-in player
         var loggedInPlayerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -197,7 +264,7 @@ public class LobbyTeamsController : Controller
           lazem maynjmch yenzel 3ala Join Lobby men aslou
         }
         */
-
+        
 
         // Retrieve available lobbies that the player can join
         var availableLobbies = _context.Lobbies
@@ -206,7 +273,63 @@ public class LobbyTeamsController : Controller
             .Where(l => l.Type == "LobbyTeam" && !l.IsFull && !l.IsFinished && l.Players.Count < 7)
             .ToList();
 
-        return View(availableLobbies);
+       JoinLobbyViewModel test= new JoinLobbyViewModel(availableLobbies , selectedPlayerIds);
+
+        return View(test);
+    }
+
+    [HttpPost]
+    public IActionResult AvailableLobbies(int lobbyId , List<int> selectedPlayersIDs)
+    {
+
+        var selectedPlayers = _context.Players
+             .Where(p => selectedPlayersIDs.Contains(p.ID))
+             .ToList();
+
+        var selectedLobby = _context.Lobbies.Include(l => l.Players).Include(t => t.TimeSlot).FirstOrDefault(l => l.Id == lobbyId);
+
+
+
+        foreach (var player in selectedPlayers)
+        {
+            player.JoinLobby(selectedLobby);
+        }
+
+        if (selectedLobby.IsFull)
+        {
+            selectedLobby.TimeSlot.occupancy = true;
+
+            var linkedLobbiesCopy = new List<Lobby>(selectedLobby.TimeSlot.LinkedLobbies);
+
+            for (int i = 0; i < linkedLobbiesCopy.Count; i++)
+            {
+                Lobby otherlobby = linkedLobbiesCopy[i];
+
+                if (otherlobby != selectedLobby)
+                {
+                    var linkedPlayers = _context.Players.Where(p => p.LinkedLobbyId == otherlobby.Id).ToList();
+
+                    foreach (var player in linkedPlayers)
+                    {
+                        player.LinkedLobbyId = null; // or assign to another lobby if needed
+                    }
+
+                    selectedLobby.TimeSlot.LinkedLobbies.Remove(otherlobby);
+
+                    _context.Lobbies.Remove(otherlobby);
+                }
+                
+            }
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
+        else
+        {
+            return RedirectToAction("AvailableLobbies");
+        }
+
+
+        
     }
 
 
