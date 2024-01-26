@@ -1,32 +1,42 @@
-﻿@model List<Lobby>
+﻿@model Dotnet_Project.Models.JoinLobbyViewModel
 
-    <h2>Available Lobbies</h2>
+<h2>Available Lobbies</h2>
 
-    @if (Model.Any())
-    {
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Lobby Name</th>
-                    <th>Stadium</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var lobby in Model)
-                {
+@if (Model.lobbies.Any())
+{
+    <form method="post" action="@Url.Action("AvailableLobbies", "LobbyTeams")">
+        @foreach (var lobby in Model.lobbies)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Lobby Name</th>
+                        <th>Stadium</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
                     <tr>
                         <td>@lobby.Name</td>
                         <td>@lobby.TimeSlot.get_match_time()</td>
                         <td>
-                            <a asp-action="Join" asp-route-id="@lobby.Id" class="btn btn-primary">Join</a>
+                            <input type="hidden" name="lobbyId" value="@lobby.Id" />
+
+                            <!-- Create hidden input fields for each playerId -->
+                            @for (int i = 0; i < Model.playerids.Count; i++)
+                            {
+                                <input type="hidden" name="selectedPlayersIDs[@i]" value="@Model.playerids[i]" />
+                            }
+
+                            <button type="submit" class="btn btn-primary">Join</button>
                         </td>
                     </tr>
-                }
-            </tbody>
-        </table>
-    }
-    else
-    {
-        <p>No available lobbies to join.</p>
-    }
+                </tbody>
+            </table>
+        }
+    </form>
+}
+else
+{
+    <p>No available lobbies to join.</p>
+}
