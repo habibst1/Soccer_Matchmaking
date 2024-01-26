@@ -24,3 +24,62 @@ body {
     height: auto;
     overflow-x: hidden;
 }
+
+/*---------------   SearchBar   ----------------*/
+
+#searchbar {
+    margin: 10px;
+    padding: 10px 19px;
+    border-radius: 28px;
+    width: 80%;
+    box-sizing: border-box;
+    transition: all 100ms ;
+}
+#searchbar-container {
+    transition: all 100ms;
+    width: 40%;
+}
+        #searchbar-container:hover{
+            transform:scale(0.98);
+        }
+        #searchbaricon {
+            position: relative;
+            left: -50px;
+            color: var(--color3-darker);
+            font-weight: 500;
+            font-size: 20px;
+            transition: all 100ms;
+        }
+    #searchbaricon:hover {
+        transform: scale(0.98);
+    }
+
+
+    #list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+.players {
+    font-size: 1.2em;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+    .players:last-child {
+        border-bottom: none;
+    }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
