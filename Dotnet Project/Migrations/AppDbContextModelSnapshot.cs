@@ -565,49 +565,49 @@ namespace DotnetProject.Migrations
                         {
                             Id = 1,
                             StadiumId = 1,
-                            endtime = new DateTime(2024, 1, 26, 17, 0, 27, 679, DateTimeKind.Local).AddTicks(2288),
+                            endtime = new DateTime(2024, 1, 27, 18, 9, 27, 353, DateTimeKind.Local).AddTicks(3049),
                             occupancy = true,
-                            starttime = new DateTime(2024, 1, 26, 15, 30, 27, 679, DateTimeKind.Local).AddTicks(2280)
+                            starttime = new DateTime(2024, 1, 27, 16, 39, 27, 353, DateTimeKind.Local).AddTicks(2992)
                         },
                         new
                         {
                             Id = 2,
                             StadiumId = 2,
-                            endtime = new DateTime(2024, 1, 26, 17, 0, 27, 679, DateTimeKind.Local).AddTicks(2296),
+                            endtime = new DateTime(2024, 1, 27, 18, 9, 27, 353, DateTimeKind.Local).AddTicks(3059),
                             occupancy = false,
-                            starttime = new DateTime(2024, 1, 26, 15, 30, 27, 679, DateTimeKind.Local).AddTicks(2295)
+                            starttime = new DateTime(2024, 1, 27, 16, 39, 27, 353, DateTimeKind.Local).AddTicks(3057)
                         },
                         new
                         {
                             Id = 3,
                             StadiumId = 3,
-                            endtime = new DateTime(2024, 1, 26, 17, 0, 27, 679, DateTimeKind.Local).AddTicks(2297),
+                            endtime = new DateTime(2024, 1, 27, 18, 9, 27, 353, DateTimeKind.Local).AddTicks(3063),
                             occupancy = false,
-                            starttime = new DateTime(2024, 1, 26, 15, 30, 27, 679, DateTimeKind.Local).AddTicks(2297)
+                            starttime = new DateTime(2024, 1, 27, 16, 39, 27, 353, DateTimeKind.Local).AddTicks(3062)
                         },
                         new
                         {
                             Id = 4,
                             StadiumId = 1,
-                            endtime = new DateTime(2024, 1, 26, 19, 0, 27, 679, DateTimeKind.Local).AddTicks(2299),
+                            endtime = new DateTime(2024, 1, 27, 20, 9, 27, 353, DateTimeKind.Local).AddTicks(3068),
                             occupancy = false,
-                            starttime = new DateTime(2024, 1, 26, 17, 30, 27, 679, DateTimeKind.Local).AddTicks(2299)
+                            starttime = new DateTime(2024, 1, 27, 18, 39, 27, 353, DateTimeKind.Local).AddTicks(3066)
                         },
                         new
                         {
                             Id = 5,
                             StadiumId = 2,
-                            endtime = new DateTime(2024, 1, 26, 19, 0, 27, 679, DateTimeKind.Local).AddTicks(2301),
+                            endtime = new DateTime(2024, 1, 27, 20, 9, 27, 353, DateTimeKind.Local).AddTicks(3072),
                             occupancy = false,
-                            starttime = new DateTime(2024, 1, 26, 17, 30, 27, 679, DateTimeKind.Local).AddTicks(2301)
+                            starttime = new DateTime(2024, 1, 27, 18, 39, 27, 353, DateTimeKind.Local).AddTicks(3071)
                         },
                         new
                         {
                             Id = 6,
                             StadiumId = 3,
-                            endtime = new DateTime(2024, 1, 26, 19, 0, 27, 679, DateTimeKind.Local).AddTicks(2303),
+                            endtime = new DateTime(2024, 1, 27, 20, 9, 27, 353, DateTimeKind.Local).AddTicks(3077),
                             occupancy = false,
-                            starttime = new DateTime(2024, 1, 26, 17, 30, 27, 679, DateTimeKind.Local).AddTicks(2303)
+                            starttime = new DateTime(2024, 1, 27, 18, 39, 27, 353, DateTimeKind.Local).AddTicks(3075)
                         });
                 });
 

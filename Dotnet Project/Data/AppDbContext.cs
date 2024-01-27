@@ -65,8 +65,8 @@ namespace Dotnet_Project.Models
 
             // Seed Players
             modelBuilder.Entity<Player>().HasData(
-                new Player { ID = 1, EMail = "player1@example.com", mdp = "password1", Name = "Ala", Surname = "Doe", PhotoPath = "path1", number_wins = 0, number_losses = 0, number_draws = 0, IsAdmin = false , LinkedLobbyId= null},
-                new Player { ID = 2, EMail = "player2@example.com", mdp = "password2", Name = "Taher", Surname = "Doe", PhotoPath = "path2", number_wins = 0, number_losses = 0, number_draws = 0, IsAdmin = false , LinkedLobbyId = null },
+                new Player { ID = 1, EMail = "player1@example.com", mdp = "password1", Name = "Ala", Surname = "Doe", PhotoPath = "path1", number_wins = 0, number_losses = 0, number_draws = 0, IsAdmin = false, LinkedLobbyId = null },
+                new Player { ID = 2, EMail = "player2@example.com", mdp = "password2", Name = "Taher", Surname = "Doe", PhotoPath = "path2", number_wins = 0, number_losses = 0, number_draws = 0, IsAdmin = false, LinkedLobbyId = null },
                 new Player { ID = 3, EMail = "player3@example.com", mdp = "password3", Name = "Habib", Surname = "Doe", PhotoPath = "path2", number_wins = 0, number_losses = 0, number_draws = 0, IsAdmin = false, LinkedLobbyId = null },
                 new Player { ID = 4, EMail = "player4@example.com", mdp = "password4", Name = "Fedy", Surname = "Doe", PhotoPath = "path2", number_wins = 0, number_losses = 0, number_draws = 0, IsAdmin = false, LinkedLobbyId = null },
                 new Player { ID = 5, EMail = "player5@example.com", mdp = "password5", Name = "Najar", Surname = "Doe", PhotoPath = "path2", number_wins = 0, number_losses = 0, number_draws = 0, IsAdmin = false, LinkedLobbyId = null },
@@ -92,17 +92,17 @@ namespace Dotnet_Project.Models
 
             // Seed Stadiums
             modelBuilder.Entity<Stadium>().HasData(
-                new Stadium { Id = 1, Name = "Stadium1", Description = "Description1", Localisation = "Location1", PhotoPath = "path1"},
-                new Stadium { Id = 2, Name = "Stadium2", Description = "Description2", Localisation = "Location2", PhotoPath = "path2"},
+                new Stadium { Id = 1, Name = "Stadium1", Description = "Description1", Localisation = "Location1", PhotoPath = "path1" },
+                new Stadium { Id = 2, Name = "Stadium2", Description = "Description2", Localisation = "Location2", PhotoPath = "path2" },
                 new Stadium { Id = 3, Name = "Stadium3", Description = "Description3", Localisation = "Location3", PhotoPath = "path2" }
                 // Add more stadiums as needed
             );
 
             // Seed Time Slots
             modelBuilder.Entity<Time_Slot>().HasData(
-                new Time_Slot { Id = 1, occupancy = true, StadiumId = 1, start_time = DateTime.Now, end_time = DateTime.Now.AddHours(1).AddMinutes(30), LinkedLobbies=new List<Lobby>()},  
-                new Time_Slot { Id = 2, occupancy = false, StadiumId = 2, start_time = DateTime.Now, end_time = DateTime.Now.AddHours(1).AddMinutes(30), LinkedLobbies=new List<Lobby>() },
-                new Time_Slot { Id = 3, occupancy = false, StadiumId = 3, start_time = DateTime.Now, end_time = DateTime.Now.AddHours(1).AddMinutes(30), LinkedLobbies=new List<Lobby>()},
+                new Time_Slot { Id = 1, occupancy = true, StadiumId = 1, start_time = DateTime.Now, end_time = DateTime.Now.AddHours(1).AddMinutes(30), LinkedLobbies = new List<Lobby>() },
+                new Time_Slot { Id = 2, occupancy = false, StadiumId = 2, start_time = DateTime.Now, end_time = DateTime.Now.AddHours(1).AddMinutes(30), LinkedLobbies = new List<Lobby>() },
+                new Time_Slot { Id = 3, occupancy = false, StadiumId = 3, start_time = DateTime.Now, end_time = DateTime.Now.AddHours(1).AddMinutes(30), LinkedLobbies = new List<Lobby>() },
                 new Time_Slot { Id = 4, occupancy = false, StadiumId = 1, start_time = DateTime.Now.AddHours(2), end_time = DateTime.Now.AddHours(3).AddMinutes(30), LinkedLobbies = new List<Lobby>() },
                 new Time_Slot { Id = 5, occupancy = false, StadiumId = 2, start_time = DateTime.Now.AddHours(2), end_time = DateTime.Now.AddHours(3).AddMinutes(30), LinkedLobbies = new List<Lobby>() },
                 new Time_Slot { Id = 6, occupancy = false, StadiumId = 3, start_time = DateTime.Now.AddHours(2), end_time = DateTime.Now.AddHours(3).AddMinutes(30), LinkedLobbies = new List<Lobby>() }
@@ -110,11 +110,11 @@ namespace Dotnet_Project.Models
             // Add more time slots as needed
             );
 
-    
+
             // Seed Stade Owners
             modelBuilder.Entity<Stade_Owner>().HasData(
-                new Stade_Owner { ID = 1, Name = "Owner1", Surname = "Owner1Surname", EMail = "owner1@example.com", mdp = "password1"},
-                new Stade_Owner { ID = 2, Name = "Owner2", Surname = "Owner2Surname", EMail = "owner2@example.com", mdp = "password2"}
+                new Stade_Owner { ID = 1, Name = "Owner1", Surname = "Owner1Surname", EMail = "owner1@example.com", mdp = "password1" },
+                new Stade_Owner { ID = 2, Name = "Owner2", Surname = "Owner2Surname", EMail = "owner2@example.com", mdp = "password2" }
             // Add more stade owners as needed
             );
 
