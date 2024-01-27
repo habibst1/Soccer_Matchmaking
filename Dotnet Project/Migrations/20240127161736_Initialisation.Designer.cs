@@ -12,13 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DotnetProject.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-<<<<<<<< HEAD:Dotnet Project/Migrations/20240127154649_Initialisation.Designer.cs
-    [Migration("20240127154649_Initialisation")]
+    [Migration("20240127161736_Initialisation")]
     partial class Initialisation
-========
-    [Migration("20240127153927_seed-database")]
-    partial class seeddatabase
->>>>>>>> 3feaa26ff4011ecfb866d4310122a7807933e508:Dotnet Project/Migrations/20240127153927_seed-database.Designer.cs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -755,85 +750,49 @@ namespace DotnetProject.Migrations
                         {
                             Id = 1,
                             StadiumId = 1,
-<<<<<<<< HEAD:Dotnet Project/Migrations/20240127154649_Initialisation.Designer.cs
-                            endtime = new DateTime(2024, 1, 27, 18, 16, 49, 61, DateTimeKind.Local).AddTicks(9874),
+                            endtime = new DateTime(2024, 1, 27, 18, 47, 36, 191, DateTimeKind.Local).AddTicks(1563),
                             occupancy = true,
-                            starttime = new DateTime(2024, 1, 27, 16, 46, 49, 61, DateTimeKind.Local).AddTicks(9864)
-========
-                            endtime = new DateTime(2024, 1, 27, 18, 9, 27, 353, DateTimeKind.Local).AddTicks(3049),
-                            occupancy = true,
-                            starttime = new DateTime(2024, 1, 27, 16, 39, 27, 353, DateTimeKind.Local).AddTicks(2992)
->>>>>>>> 3feaa26ff4011ecfb866d4310122a7807933e508:Dotnet Project/Migrations/20240127153927_seed-database.Designer.cs
+                            starttime = new DateTime(2024, 1, 27, 17, 17, 36, 191, DateTimeKind.Local).AddTicks(1554)
                         },
                         new
                         {
                             Id = 2,
                             StadiumId = 2,
-<<<<<<<< HEAD:Dotnet Project/Migrations/20240127154649_Initialisation.Designer.cs
-                            endtime = new DateTime(2024, 1, 27, 18, 16, 49, 61, DateTimeKind.Local).AddTicks(9883),
+                            endtime = new DateTime(2024, 1, 27, 18, 47, 36, 191, DateTimeKind.Local).AddTicks(1573),
                             occupancy = false,
-                            starttime = new DateTime(2024, 1, 27, 16, 46, 49, 61, DateTimeKind.Local).AddTicks(9883)
-========
-                            endtime = new DateTime(2024, 1, 27, 18, 9, 27, 353, DateTimeKind.Local).AddTicks(3059),
-                            occupancy = false,
-                            starttime = new DateTime(2024, 1, 27, 16, 39, 27, 353, DateTimeKind.Local).AddTicks(3057)
->>>>>>>> 3feaa26ff4011ecfb866d4310122a7807933e508:Dotnet Project/Migrations/20240127153927_seed-database.Designer.cs
+                            starttime = new DateTime(2024, 1, 27, 17, 17, 36, 191, DateTimeKind.Local).AddTicks(1572)
                         },
                         new
                         {
                             Id = 3,
                             StadiumId = 3,
-<<<<<<<< HEAD:Dotnet Project/Migrations/20240127154649_Initialisation.Designer.cs
-                            endtime = new DateTime(2024, 1, 27, 18, 16, 49, 61, DateTimeKind.Local).AddTicks(9885),
+                            endtime = new DateTime(2024, 1, 27, 18, 47, 36, 191, DateTimeKind.Local).AddTicks(1574),
                             occupancy = false,
-                            starttime = new DateTime(2024, 1, 27, 16, 46, 49, 61, DateTimeKind.Local).AddTicks(9885)
-========
-                            endtime = new DateTime(2024, 1, 27, 18, 9, 27, 353, DateTimeKind.Local).AddTicks(3063),
-                            occupancy = false,
-                            starttime = new DateTime(2024, 1, 27, 16, 39, 27, 353, DateTimeKind.Local).AddTicks(3062)
->>>>>>>> 3feaa26ff4011ecfb866d4310122a7807933e508:Dotnet Project/Migrations/20240127153927_seed-database.Designer.cs
+                            starttime = new DateTime(2024, 1, 27, 17, 17, 36, 191, DateTimeKind.Local).AddTicks(1574)
                         },
                         new
                         {
                             Id = 4,
                             StadiumId = 1,
-<<<<<<<< HEAD:Dotnet Project/Migrations/20240127154649_Initialisation.Designer.cs
-                            endtime = new DateTime(2024, 1, 27, 20, 16, 49, 61, DateTimeKind.Local).AddTicks(9888),
+                            endtime = new DateTime(2024, 1, 27, 20, 47, 36, 191, DateTimeKind.Local).AddTicks(1576),
                             occupancy = false,
-                            starttime = new DateTime(2024, 1, 27, 18, 46, 49, 61, DateTimeKind.Local).AddTicks(9886)
-========
-                            endtime = new DateTime(2024, 1, 27, 20, 9, 27, 353, DateTimeKind.Local).AddTicks(3068),
-                            occupancy = false,
-                            starttime = new DateTime(2024, 1, 27, 18, 39, 27, 353, DateTimeKind.Local).AddTicks(3066)
->>>>>>>> 3feaa26ff4011ecfb866d4310122a7807933e508:Dotnet Project/Migrations/20240127153927_seed-database.Designer.cs
+                            starttime = new DateTime(2024, 1, 27, 19, 17, 36, 191, DateTimeKind.Local).AddTicks(1576)
                         },
                         new
                         {
                             Id = 5,
                             StadiumId = 2,
-<<<<<<<< HEAD:Dotnet Project/Migrations/20240127154649_Initialisation.Designer.cs
-                            endtime = new DateTime(2024, 1, 27, 20, 16, 49, 61, DateTimeKind.Local).AddTicks(9889),
+                            endtime = new DateTime(2024, 1, 27, 20, 47, 36, 191, DateTimeKind.Local).AddTicks(1578),
                             occupancy = false,
-                            starttime = new DateTime(2024, 1, 27, 18, 46, 49, 61, DateTimeKind.Local).AddTicks(9889)
-========
-                            endtime = new DateTime(2024, 1, 27, 20, 9, 27, 353, DateTimeKind.Local).AddTicks(3072),
-                            occupancy = false,
-                            starttime = new DateTime(2024, 1, 27, 18, 39, 27, 353, DateTimeKind.Local).AddTicks(3071)
->>>>>>>> 3feaa26ff4011ecfb866d4310122a7807933e508:Dotnet Project/Migrations/20240127153927_seed-database.Designer.cs
+                            starttime = new DateTime(2024, 1, 27, 19, 17, 36, 191, DateTimeKind.Local).AddTicks(1578)
                         },
                         new
                         {
                             Id = 6,
                             StadiumId = 3,
-<<<<<<<< HEAD:Dotnet Project/Migrations/20240127154649_Initialisation.Designer.cs
-                            endtime = new DateTime(2024, 1, 27, 20, 16, 49, 61, DateTimeKind.Local).AddTicks(9891),
+                            endtime = new DateTime(2024, 1, 27, 20, 47, 36, 191, DateTimeKind.Local).AddTicks(1580),
                             occupancy = false,
-                            starttime = new DateTime(2024, 1, 27, 18, 46, 49, 61, DateTimeKind.Local).AddTicks(9891)
-========
-                            endtime = new DateTime(2024, 1, 27, 20, 9, 27, 353, DateTimeKind.Local).AddTicks(3077),
-                            occupancy = false,
-                            starttime = new DateTime(2024, 1, 27, 18, 39, 27, 353, DateTimeKind.Local).AddTicks(3075)
->>>>>>>> 3feaa26ff4011ecfb866d4310122a7807933e508:Dotnet Project/Migrations/20240127153927_seed-database.Designer.cs
+                            starttime = new DateTime(2024, 1, 27, 19, 17, 36, 191, DateTimeKind.Local).AddTicks(1579)
                         });
                 });
 
