@@ -107,7 +107,11 @@ namespace Dotnet_Project.Models
             modelBuilder.Entity<Stadium>().HasData(
                 new Stadium { Id = 1, Name = "May Land", Description = "CHOUF 3CHIRI A9WA STADE F TUNIS KAMLA W YOUFA LA7DITH", Localisation = "Monastir", PhotoPath = "Images/StadeMay.png" },
                 new Stadium { Id = 2, Name = "Five Stars", Description = "A9WA STADE FEL 3ASSMA", Localisation = "Route Géant", PhotoPath = "Images/StadeFive.png"},
-                new Stadium { Id = 3, Name = "Stade Charguia", Description = "A5YEB STADE F TUNIS KAMLA", Localisation = "Charguia", PhotoPath = "Images/StadeCharguia.png" }
+                new Stadium { Id = 3, Name = "Stade Charguia", Description = "A5YEB STADE F TUNIS KAMLA", Localisation = "Charguia", PhotoPath = "Images/StadeCharguia.png" },
+                new Stadium { Id = 4, Name = "MStadium", Description = "AWEL STADE F MAHDIA", Localisation = "Mahdia", PhotoPath = "Images/MStadium.png" },
+                new Stadium { Id = 5, Name = "Parc Des Princes", Description = "A7SSEN STADE F MAHDIA", Localisation = "Rejiche", PhotoPath = "Images/PDP.png" },
+                new Stadium { Id = 6, Name = "Al Kahna", Description = "STADE F WOST 7OMMA T5AWEF ", Localisation = "Monastir", PhotoPath = "Images/Kahna.png" },
+                new Stadium { Id = 7, Name = "Stade Sahara Beach", Description = "EKTICHAF JDID", Localisation = "Monastir", PhotoPath = "Images/Sahara.png" }
                 // Add more stadiums as needed
             );
 
