@@ -11,7 +11,6 @@ namespace Dotnet_Project.Models
         public int Id { get; set; }
         public bool occupancy { get; set; }
 
-        [ForeignKey("Stadium")]
         public int StadiumId { get; set; }
         public Stadium stadium { get; set; }
 

@@ -196,7 +196,7 @@ namespace DotnetProject.Migrations
                             PhotoPath = "path2",
                             Surname = "Doe",
                             TeamNumber = 0,
-                            mdp = "password5",
+                            mdp = "password6",
                             numberdraws = 0,
                             numberlosses = 0,
                             numberwins = 0
@@ -210,7 +210,7 @@ namespace DotnetProject.Migrations
                             PhotoPath = "path2",
                             Surname = "Doe",
                             TeamNumber = 0,
-                            mdp = "password5",
+                            mdp = "password7",
                             numberdraws = 0,
                             numberlosses = 0,
                             numberwins = 0
@@ -224,7 +224,7 @@ namespace DotnetProject.Migrations
                             PhotoPath = "path2",
                             Surname = "Doe",
                             TeamNumber = 0,
-                            mdp = "password5",
+                            mdp = "password8",
                             numberdraws = 0,
                             numberlosses = 0,
                             numberwins = 0
@@ -238,7 +238,7 @@ namespace DotnetProject.Migrations
                             PhotoPath = "path2",
                             Surname = "Doe",
                             TeamNumber = 0,
-                            mdp = "password5",
+                            mdp = "password9",
                             numberdraws = 0,
                             numberlosses = 0,
                             numberwins = 0
@@ -252,7 +252,7 @@ namespace DotnetProject.Migrations
                             PhotoPath = "path1",
                             Surname = "Doe",
                             TeamNumber = 0,
-                            mdp = "password1",
+                            mdp = "password10",
                             numberdraws = 0,
                             numberlosses = 0,
                             numberwins = 0
@@ -266,7 +266,7 @@ namespace DotnetProject.Migrations
                             PhotoPath = "path1",
                             Surname = "Doe",
                             TeamNumber = 0,
-                            mdp = "password1",
+                            mdp = "password11",
                             numberdraws = 0,
                             numberlosses = 0,
                             numberwins = 0
@@ -280,7 +280,7 @@ namespace DotnetProject.Migrations
                             PhotoPath = "path1",
                             Surname = "Doe",
                             TeamNumber = 0,
-                            mdp = "password1",
+                            mdp = "password12",
                             numberdraws = 0,
                             numberlosses = 0,
                             numberwins = 0
@@ -294,7 +294,7 @@ namespace DotnetProject.Migrations
                             PhotoPath = "path1",
                             Surname = "Doe",
                             TeamNumber = 0,
-                            mdp = "password1",
+                            mdp = "password13",
                             numberdraws = 0,
                             numberlosses = 0,
                             numberwins = 0
@@ -308,7 +308,7 @@ namespace DotnetProject.Migrations
                             PhotoPath = "path1",
                             Surname = "Doe",
                             TeamNumber = 0,
-                            mdp = "password1",
+                            mdp = "password14",
                             numberdraws = 0,
                             numberlosses = 0,
                             numberwins = 0
@@ -322,7 +322,7 @@ namespace DotnetProject.Migrations
                             PhotoPath = "path1",
                             Surname = "Doe",
                             TeamNumber = 0,
-                            mdp = "password1",
+                            mdp = "password15",
                             numberdraws = 0,
                             numberlosses = 0,
                             numberwins = 0
@@ -336,7 +336,7 @@ namespace DotnetProject.Migrations
                             PhotoPath = "path1",
                             Surname = "Doe",
                             TeamNumber = 0,
-                            mdp = "password1",
+                            mdp = "password16",
                             numberdraws = 0,
                             numberlosses = 0,
                             numberwins = 0
@@ -344,13 +344,13 @@ namespace DotnetProject.Migrations
                         new
                         {
                             ID = 17,
-                            EMail = "play16@example.com",
+                            EMail = "play17@example.com",
                             IsAdmin = false,
                             Name = "Elyess",
                             PhotoPath = "path1",
                             Surname = "Doe",
                             TeamNumber = 0,
-                            mdp = "password1",
+                            mdp = "password17",
                             numberdraws = 0,
                             numberlosses = 0,
                             numberwins = 0
@@ -358,13 +358,13 @@ namespace DotnetProject.Migrations
                         new
                         {
                             ID = 18,
-                            EMail = "play16@example.com",
+                            EMail = "play18@example.com",
                             IsAdmin = false,
                             Name = "Omar",
                             PhotoPath = "path1",
                             Surname = "Doe",
                             TeamNumber = 0,
-                            mdp = "password1",
+                            mdp = "password18",
                             numberdraws = 0,
                             numberlosses = 0,
                             numberwins = 0
@@ -372,13 +372,13 @@ namespace DotnetProject.Migrations
                         new
                         {
                             ID = 19,
-                            EMail = "play16@example.com",
+                            EMail = "play19@example.com",
                             IsAdmin = false,
                             Name = "Ismail",
                             PhotoPath = "path1",
                             Surname = "Doe",
                             TeamNumber = 0,
-                            mdp = "password1",
+                            mdp = "password19",
                             numberdraws = 0,
                             numberlosses = 0,
                             numberwins = 0
@@ -386,13 +386,13 @@ namespace DotnetProject.Migrations
                         new
                         {
                             ID = 20,
-                            EMail = "play16@example.com",
+                            EMail = "play20@example.com",
                             IsAdmin = false,
                             Name = "Amine",
                             PhotoPath = "path1",
                             Surname = "Doe",
                             TeamNumber = 0,
-                            mdp = "password1",
+                            mdp = "password20",
                             numberdraws = 0,
                             numberlosses = 0,
                             numberwins = 0
@@ -400,13 +400,13 @@ namespace DotnetProject.Migrations
                         new
                         {
                             ID = 21,
-                            EMail = "play16@example.com",
+                            EMail = "play21@example.com",
                             IsAdmin = false,
                             Name = "Talel",
                             PhotoPath = "path1",
                             Surname = "Doe",
                             TeamNumber = 0,
-                            mdp = "password1",
+                            mdp = "passwor21",
                             numberdraws = 0,
                             numberlosses = 0,
                             numberwins = 0
@@ -414,13 +414,195 @@ namespace DotnetProject.Migrations
                         new
                         {
                             ID = 22,
-                            EMail = "play16@example.com",
+                            EMail = "play22@example.com",
                             IsAdmin = false,
-                            Name = "Chehata",
+                            Name = "Yahya",
                             PhotoPath = "path1",
                             Surname = "Doe",
                             TeamNumber = 0,
-                            mdp = "password1",
+                            mdp = "password22",
+                            numberdraws = 0,
+                            numberlosses = 0,
+                            numberwins = 0
+                        },
+                        new
+                        {
+                            ID = 23,
+                            EMail = "play23@example.com",
+                            IsAdmin = false,
+                            Name = "Skander",
+                            PhotoPath = "path1",
+                            Surname = "Doe",
+                            TeamNumber = 0,
+                            mdp = "password23",
+                            numberdraws = 0,
+                            numberlosses = 0,
+                            numberwins = 0
+                        },
+                        new
+                        {
+                            ID = 24,
+                            EMail = "play24@example.com",
+                            IsAdmin = false,
+                            Name = "Omar",
+                            PhotoPath = "path1",
+                            Surname = "Doe",
+                            TeamNumber = 0,
+                            mdp = "password24",
+                            numberdraws = 0,
+                            numberlosses = 0,
+                            numberwins = 0
+                        },
+                        new
+                        {
+                            ID = 25,
+                            EMail = "play25@example.com",
+                            IsAdmin = false,
+                            Name = "Zahran",
+                            PhotoPath = "path1",
+                            Surname = "Doe",
+                            TeamNumber = 0,
+                            mdp = "password25",
+                            numberdraws = 0,
+                            numberlosses = 0,
+                            numberwins = 0
+                        },
+                        new
+                        {
+                            ID = 26,
+                            EMail = "play26@example.com",
+                            IsAdmin = false,
+                            Name = "Mohamed",
+                            PhotoPath = "path1",
+                            Surname = "Doe",
+                            TeamNumber = 0,
+                            mdp = "password26",
+                            numberdraws = 0,
+                            numberlosses = 0,
+                            numberwins = 0
+                        },
+                        new
+                        {
+                            ID = 27,
+                            EMail = "play27@example.com",
+                            IsAdmin = false,
+                            Name = "Fethi",
+                            PhotoPath = "path1",
+                            Surname = "Doe",
+                            TeamNumber = 0,
+                            mdp = "password27",
+                            numberdraws = 0,
+                            numberlosses = 0,
+                            numberwins = 0
+                        },
+                        new
+                        {
+                            ID = 28,
+                            EMail = "play28@example.com",
+                            IsAdmin = false,
+                            Name = "Adem",
+                            PhotoPath = "path1",
+                            Surname = "Doe",
+                            TeamNumber = 0,
+                            mdp = "password28",
+                            numberdraws = 0,
+                            numberlosses = 0,
+                            numberwins = 0
+                        },
+                        new
+                        {
+                            ID = 29,
+                            EMail = "play29@example.com",
+                            IsAdmin = false,
+                            Name = "Ahmed",
+                            PhotoPath = "path1",
+                            Surname = "Doe",
+                            TeamNumber = 0,
+                            mdp = "password29",
+                            numberdraws = 0,
+                            numberlosses = 0,
+                            numberwins = 0
+                        },
+                        new
+                        {
+                            ID = 30,
+                            EMail = "play30@example.com",
+                            IsAdmin = false,
+                            Name = "Ayhem",
+                            PhotoPath = "path1",
+                            Surname = "Doe",
+                            TeamNumber = 0,
+                            mdp = "password30",
+                            numberdraws = 0,
+                            numberlosses = 0,
+                            numberwins = 0
+                        },
+                        new
+                        {
+                            ID = 31,
+                            EMail = "play31@example.com",
+                            IsAdmin = false,
+                            Name = "Abderrahmen",
+                            PhotoPath = "path1",
+                            Surname = "Doe",
+                            TeamNumber = 0,
+                            mdp = "password31",
+                            numberdraws = 0,
+                            numberlosses = 0,
+                            numberwins = 0
+                        },
+                        new
+                        {
+                            ID = 32,
+                            EMail = "play32@example.com",
+                            IsAdmin = false,
+                            Name = "Hamdi",
+                            PhotoPath = "path1",
+                            Surname = "Doe",
+                            TeamNumber = 0,
+                            mdp = "password32",
+                            numberdraws = 0,
+                            numberlosses = 0,
+                            numberwins = 0
+                        },
+                        new
+                        {
+                            ID = 33,
+                            EMail = "play33@example.com",
+                            IsAdmin = false,
+                            Name = "Majd",
+                            PhotoPath = "path1",
+                            Surname = "Doe",
+                            TeamNumber = 0,
+                            mdp = "password33",
+                            numberdraws = 0,
+                            numberlosses = 0,
+                            numberwins = 0
+                        },
+                        new
+                        {
+                            ID = 34,
+                            EMail = "play34@example.com",
+                            IsAdmin = false,
+                            Name = "Bachar",
+                            PhotoPath = "path1",
+                            Surname = "Doe",
+                            TeamNumber = 0,
+                            mdp = "password34",
+                            numberdraws = 0,
+                            numberlosses = 0,
+                            numberwins = 0
+                        },
+                        new
+                        {
+                            ID = 35,
+                            EMail = "play35@example.com",
+                            IsAdmin = false,
+                            Name = "Oussama",
+                            PhotoPath = "path1",
+                            Surname = "Doe",
+                            TeamNumber = 0,
+                            mdp = "password35",
                             numberdraws = 0,
                             numberlosses = 0,
                             numberwins = 0
@@ -511,26 +693,26 @@ namespace DotnetProject.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "Description1",
-                            Localisation = "Location1",
-                            Name = "Stadium1",
-                            PhotoPath = "path1"
+                            Description = "CHOUF 3CHIRI A9WA STADE F TUNIS KAMLA W YOUFA LA7DITH",
+                            Localisation = "Monastir",
+                            Name = "May Land",
+                            PhotoPath = "Images/StadeMay.png"
                         },
                         new
                         {
                             Id = 2,
-                            Description = "Description2",
-                            Localisation = "Location2",
-                            Name = "Stadium2",
-                            PhotoPath = "path2"
+                            Description = "A9WA STADE FEL 3ASSMA",
+                            Localisation = "Route Géant",
+                            Name = "Five Stars",
+                            PhotoPath = "Images/StadeFive.png"
                         },
                         new
                         {
                             Id = 3,
-                            Description = "Description3",
-                            Localisation = "Location3",
-                            Name = "Stadium3",
-                            PhotoPath = "path2"
+                            Description = "A5YEB STADE F TUNIS KAMLA",
+                            Localisation = "Charguia",
+                            Name = "Stade Charguia",
+                            PhotoPath = "Images/StadeCharguia.png"
                         });
                 });
 
@@ -565,49 +747,85 @@ namespace DotnetProject.Migrations
                         {
                             Id = 1,
                             StadiumId = 1,
+<<<<<<< HEAD
+                            endtime = new DateTime(2024, 1, 27, 18, 16, 49, 61, DateTimeKind.Local).AddTicks(9874),
+                            occupancy = true,
+                            starttime = new DateTime(2024, 1, 27, 16, 46, 49, 61, DateTimeKind.Local).AddTicks(9864)
+=======
                             endtime = new DateTime(2024, 1, 27, 18, 9, 27, 353, DateTimeKind.Local).AddTicks(3049),
                             occupancy = true,
                             starttime = new DateTime(2024, 1, 27, 16, 39, 27, 353, DateTimeKind.Local).AddTicks(2992)
+>>>>>>> 3feaa26ff4011ecfb866d4310122a7807933e508
                         },
                         new
                         {
                             Id = 2,
                             StadiumId = 2,
+<<<<<<< HEAD
+                            endtime = new DateTime(2024, 1, 27, 18, 16, 49, 61, DateTimeKind.Local).AddTicks(9883),
+                            occupancy = false,
+                            starttime = new DateTime(2024, 1, 27, 16, 46, 49, 61, DateTimeKind.Local).AddTicks(9883)
+=======
                             endtime = new DateTime(2024, 1, 27, 18, 9, 27, 353, DateTimeKind.Local).AddTicks(3059),
                             occupancy = false,
                             starttime = new DateTime(2024, 1, 27, 16, 39, 27, 353, DateTimeKind.Local).AddTicks(3057)
+>>>>>>> 3feaa26ff4011ecfb866d4310122a7807933e508
                         },
                         new
                         {
                             Id = 3,
                             StadiumId = 3,
+<<<<<<< HEAD
+                            endtime = new DateTime(2024, 1, 27, 18, 16, 49, 61, DateTimeKind.Local).AddTicks(9885),
+                            occupancy = false,
+                            starttime = new DateTime(2024, 1, 27, 16, 46, 49, 61, DateTimeKind.Local).AddTicks(9885)
+=======
                             endtime = new DateTime(2024, 1, 27, 18, 9, 27, 353, DateTimeKind.Local).AddTicks(3063),
                             occupancy = false,
                             starttime = new DateTime(2024, 1, 27, 16, 39, 27, 353, DateTimeKind.Local).AddTicks(3062)
+>>>>>>> 3feaa26ff4011ecfb866d4310122a7807933e508
                         },
                         new
                         {
                             Id = 4,
                             StadiumId = 1,
+<<<<<<< HEAD
+                            endtime = new DateTime(2024, 1, 27, 20, 16, 49, 61, DateTimeKind.Local).AddTicks(9888),
+                            occupancy = false,
+                            starttime = new DateTime(2024, 1, 27, 18, 46, 49, 61, DateTimeKind.Local).AddTicks(9886)
+=======
                             endtime = new DateTime(2024, 1, 27, 20, 9, 27, 353, DateTimeKind.Local).AddTicks(3068),
                             occupancy = false,
                             starttime = new DateTime(2024, 1, 27, 18, 39, 27, 353, DateTimeKind.Local).AddTicks(3066)
+>>>>>>> 3feaa26ff4011ecfb866d4310122a7807933e508
                         },
                         new
                         {
                             Id = 5,
                             StadiumId = 2,
+<<<<<<< HEAD
+                            endtime = new DateTime(2024, 1, 27, 20, 16, 49, 61, DateTimeKind.Local).AddTicks(9889),
+                            occupancy = false,
+                            starttime = new DateTime(2024, 1, 27, 18, 46, 49, 61, DateTimeKind.Local).AddTicks(9889)
+=======
                             endtime = new DateTime(2024, 1, 27, 20, 9, 27, 353, DateTimeKind.Local).AddTicks(3072),
                             occupancy = false,
                             starttime = new DateTime(2024, 1, 27, 18, 39, 27, 353, DateTimeKind.Local).AddTicks(3071)
+>>>>>>> 3feaa26ff4011ecfb866d4310122a7807933e508
                         },
                         new
                         {
                             Id = 6,
                             StadiumId = 3,
+<<<<<<< HEAD
+                            endtime = new DateTime(2024, 1, 27, 20, 16, 49, 61, DateTimeKind.Local).AddTicks(9891),
+                            occupancy = false,
+                            starttime = new DateTime(2024, 1, 27, 18, 46, 49, 61, DateTimeKind.Local).AddTicks(9891)
+=======
                             endtime = new DateTime(2024, 1, 27, 20, 9, 27, 353, DateTimeKind.Local).AddTicks(3077),
                             occupancy = false,
                             starttime = new DateTime(2024, 1, 27, 18, 39, 27, 353, DateTimeKind.Local).AddTicks(3075)
+>>>>>>> 3feaa26ff4011ecfb866d4310122a7807933e508
                         });
                 });
 
