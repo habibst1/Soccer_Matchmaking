@@ -747,49 +747,85 @@ namespace DotnetProject.Migrations
                         {
                             Id = 1,
                             StadiumId = 1,
+<<<<<<< HEAD
                             endtime = new DateTime(2024, 1, 27, 18, 16, 49, 61, DateTimeKind.Local).AddTicks(9874),
                             occupancy = true,
                             starttime = new DateTime(2024, 1, 27, 16, 46, 49, 61, DateTimeKind.Local).AddTicks(9864)
+=======
+                            endtime = new DateTime(2024, 1, 27, 18, 9, 27, 353, DateTimeKind.Local).AddTicks(3049),
+                            occupancy = true,
+                            starttime = new DateTime(2024, 1, 27, 16, 39, 27, 353, DateTimeKind.Local).AddTicks(2992)
+>>>>>>> 3feaa26ff4011ecfb866d4310122a7807933e508
                         },
                         new
                         {
                             Id = 2,
                             StadiumId = 2,
+<<<<<<< HEAD
                             endtime = new DateTime(2024, 1, 27, 18, 16, 49, 61, DateTimeKind.Local).AddTicks(9883),
                             occupancy = false,
                             starttime = new DateTime(2024, 1, 27, 16, 46, 49, 61, DateTimeKind.Local).AddTicks(9883)
+=======
+                            endtime = new DateTime(2024, 1, 27, 18, 9, 27, 353, DateTimeKind.Local).AddTicks(3059),
+                            occupancy = false,
+                            starttime = new DateTime(2024, 1, 27, 16, 39, 27, 353, DateTimeKind.Local).AddTicks(3057)
+>>>>>>> 3feaa26ff4011ecfb866d4310122a7807933e508
                         },
                         new
                         {
                             Id = 3,
                             StadiumId = 3,
+<<<<<<< HEAD
                             endtime = new DateTime(2024, 1, 27, 18, 16, 49, 61, DateTimeKind.Local).AddTicks(9885),
                             occupancy = false,
                             starttime = new DateTime(2024, 1, 27, 16, 46, 49, 61, DateTimeKind.Local).AddTicks(9885)
+=======
+                            endtime = new DateTime(2024, 1, 27, 18, 9, 27, 353, DateTimeKind.Local).AddTicks(3063),
+                            occupancy = false,
+                            starttime = new DateTime(2024, 1, 27, 16, 39, 27, 353, DateTimeKind.Local).AddTicks(3062)
+>>>>>>> 3feaa26ff4011ecfb866d4310122a7807933e508
                         },
                         new
                         {
                             Id = 4,
                             StadiumId = 1,
+<<<<<<< HEAD
                             endtime = new DateTime(2024, 1, 27, 20, 16, 49, 61, DateTimeKind.Local).AddTicks(9888),
                             occupancy = false,
                             starttime = new DateTime(2024, 1, 27, 18, 46, 49, 61, DateTimeKind.Local).AddTicks(9886)
+=======
+                            endtime = new DateTime(2024, 1, 27, 20, 9, 27, 353, DateTimeKind.Local).AddTicks(3068),
+                            occupancy = false,
+                            starttime = new DateTime(2024, 1, 27, 18, 39, 27, 353, DateTimeKind.Local).AddTicks(3066)
+>>>>>>> 3feaa26ff4011ecfb866d4310122a7807933e508
                         },
                         new
                         {
                             Id = 5,
                             StadiumId = 2,
+<<<<<<< HEAD
                             endtime = new DateTime(2024, 1, 27, 20, 16, 49, 61, DateTimeKind.Local).AddTicks(9889),
                             occupancy = false,
                             starttime = new DateTime(2024, 1, 27, 18, 46, 49, 61, DateTimeKind.Local).AddTicks(9889)
+=======
+                            endtime = new DateTime(2024, 1, 27, 20, 9, 27, 353, DateTimeKind.Local).AddTicks(3072),
+                            occupancy = false,
+                            starttime = new DateTime(2024, 1, 27, 18, 39, 27, 353, DateTimeKind.Local).AddTicks(3071)
+>>>>>>> 3feaa26ff4011ecfb866d4310122a7807933e508
                         },
                         new
                         {
                             Id = 6,
                             StadiumId = 3,
+<<<<<<< HEAD
                             endtime = new DateTime(2024, 1, 27, 20, 16, 49, 61, DateTimeKind.Local).AddTicks(9891),
                             occupancy = false,
                             starttime = new DateTime(2024, 1, 27, 18, 46, 49, 61, DateTimeKind.Local).AddTicks(9891)
+=======
+                            endtime = new DateTime(2024, 1, 27, 20, 9, 27, 353, DateTimeKind.Local).AddTicks(3077),
+                            occupancy = false,
+                            starttime = new DateTime(2024, 1, 27, 18, 39, 27, 353, DateTimeKind.Local).AddTicks(3075)
+>>>>>>> 3feaa26ff4011ecfb866d4310122a7807933e508
                         });
                 });
 

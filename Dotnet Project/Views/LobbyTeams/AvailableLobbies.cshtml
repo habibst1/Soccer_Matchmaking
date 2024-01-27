@@ -1,24 +1,27 @@
 ﻿@model Dotnet_Project.Models.JoinLobbyViewModel
 
-<h2>Available Lobbies</h2>
+<h2 class="light-color">Available Lobbies</h2>
 
 @if (Model.lobbies.Any())
 {
-    <form method="post" action="@Url.Action("AvailableLobbies", "LobbyTeams")">
-        @foreach (var lobby in Model.lobbies)
-        {
-            <table class="table">
+    <form method="post" action="@Url.Action("AvailableLobbies", "LobbyTeams")" >
+        
+            <table class="table light-color">
                 <thead>
                     <tr>
                         <th>Lobby Name</th>
+                        <th>Match Time</th>
                         <th>Stadium</th>
                         <th>Action</th>
                     </tr>
-                </thead>
+			</thead>
+            @foreach (var lobby in Model.lobbies)
+			{
                 <tbody>
                     <tr>
                         <td>@lobby.Name</td>
                         <td>@lobby.TimeSlot.get_match_time()</td>
+                        <td>@lobby.TimeSlot.StadiumId</td>
                         <td>
                             <input type="hidden" name="lobbyId" value="@lobby.Id" />
 
@@ -28,12 +31,13 @@
                                 <input type="hidden" name="selectedPlayersIDs[@i]" value="@Model.playerids[i]" />
                             }
 
-                            <button type="submit" class="btn btn-primary">Join</button>
+                            <button type="submit" class="join-btn">Join</button>
                         </td>
                     </tr>
-                </tbody>
+				</tbody>
+                }
             </table>
-        }
+        
     </form>
 }
 else

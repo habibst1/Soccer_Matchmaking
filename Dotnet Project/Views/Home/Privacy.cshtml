@@ -2,5 +2,28 @@
     ViewData["Title"] = "Privacy Policy";
 }
 <h1>@ViewData["Title"]</h1>
-
+<div class="container light-color">
+    <div id="searchbar-container">
+		<input id="searchbar"
+			   onkeyup="search_player()"
+			   type="text" name="search"
+			   placeholder="Search players..">
+        <i id="searchbaricon" class="bi bi-search"></i>
+	</div>
+    
+    <ul id='list'>
+        <li class="players">Cat</li>
+        <li class="players">Dog</li>
+        <li class="players">Elephant</li>
+        <li class="players">Fish</li>
+        <li class="players">Gorilla</li>
+        <li class="players">Monkey</li>
+        <li class="players">Turtle</li>
+        <li class="players">Whale</li>
+        <li class="players">Alligator</li>
+        <li class="players">Donkey</li>
+        <li class="players">Horse</li>
+    </ul>
+    <script src="~/js/SearchBar.js"></script>
+</div>
 <p>Use this page to detail your site's privacy policy.</p>
