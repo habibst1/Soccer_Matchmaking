@@ -1,18 +1,19 @@
-﻿function search_player()
-{
-    let input = document.getElementById('searchbar').value
-  input = input.toLowerCase();
-    let x = document.getElementsByClassName('players');
+﻿   function search_player() {
+        let input = document.getElementById('searchbar').value;
+        input = input.toLowerCase();
 
-    for (i = 0; i < x.length; i++)
-    {
-        if (!x[i].innerHTML.toLowerCase().includes(input))
-        {
-            x[i].style.display = "none";
-        }
-        else
-        {
-            x[i].style.display = "list-item";
+        var selectElement = document.querySelector('.players');
+        var options = selectElement.options;
+
+        for (var i = 0; i < options.length; i++) {
+            var optionText = options[i].textContent.toLowerCase();
+            if (!optionText.includes(input)) {
+                options[i].style.display = "none";
+            } else {
+                options[i].style.display = "list-item";
+            }
         }
     }
-}
+
+    // Add event listener to the input element
+    document.getElementById('searchbar').addEventListener('keyup', search_player);
