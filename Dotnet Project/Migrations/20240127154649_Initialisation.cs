@@ -147,23 +147,36 @@ namespace DotnetProject.Migrations
                     { 3, "player3@example.com", false, null, null, null, "Habib", "path2", "Doe", 0, "password3", 0, 0, 0 },
                     { 4, "player4@example.com", false, null, null, null, "Fedy", "path2", "Doe", 0, "password4", 0, 0, 0 },
                     { 5, "player5@example.com", false, null, null, null, "Najar", "path2", "Doe", 0, "password5", 0, 0, 0 },
-                    { 6, "player6@example.com", false, null, null, null, "Reb3i", "path2", "Doe", 0, "password5", 0, 0, 0 },
-                    { 7, "player7@example.com", false, null, null, null, "Ghazi", "path2", "Doe", 0, "password5", 0, 0, 0 },
-                    { 8, "player8@example.com", false, null, null, null, "Kamel", "path2", "Doe", 0, "password5", 0, 0, 0 },
-                    { 9, "player9@example.com", false, null, null, null, "Karim", "path2", "Doe", 0, "password5", 0, 0, 0 },
-                    { 10, "play10@example.com", false, null, null, null, "Samir", "path1", "Doe", 0, "password1", 0, 0, 0 },
-                    { 11, "play11@example.com", false, null, null, null, "Kais", "path1", "Doe", 0, "password1", 0, 0, 0 },
-                    { 12, "play12@example.com", false, null, null, null, "Aziz", "path1", "Doe", 0, "password1", 0, 0, 0 },
-                    { 13, "play13@example.com", false, null, null, null, "Youssef", "path1", "Doe", 0, "password1", 0, 0, 0 },
-                    { 14, "play14@example.com", false, null, null, null, "Hamza", "path1", "Doe", 0, "password1", 0, 0, 0 },
-                    { 15, "play15@example.com", false, null, null, null, "Ali", "path1", "Doe", 0, "password1", 0, 0, 0 },
-                    { 16, "play16@example.com", false, null, null, null, "Mustafa", "path1", "Doe", 0, "password1", 0, 0, 0 },
-                    { 17, "play16@example.com", false, null, null, null, "Elyess", "path1", "Doe", 0, "password1", 0, 0, 0 },
-                    { 18, "play16@example.com", false, null, null, null, "Omar", "path1", "Doe", 0, "password1", 0, 0, 0 },
-                    { 19, "play16@example.com", false, null, null, null, "Ismail", "path1", "Doe", 0, "password1", 0, 0, 0 },
-                    { 20, "play16@example.com", false, null, null, null, "Amine", "path1", "Doe", 0, "password1", 0, 0, 0 },
-                    { 21, "play16@example.com", false, null, null, null, "Talel", "path1", "Doe", 0, "password1", 0, 0, 0 },
-                    { 22, "play16@example.com", false, null, null, null, "Chehata", "path1", "Doe", 0, "password1", 0, 0, 0 }
+                    { 6, "player6@example.com", false, null, null, null, "Reb3i", "path2", "Doe", 0, "password6", 0, 0, 0 },
+                    { 7, "player7@example.com", false, null, null, null, "Ghazi", "path2", "Doe", 0, "password7", 0, 0, 0 },
+                    { 8, "player8@example.com", false, null, null, null, "Kamel", "path2", "Doe", 0, "password8", 0, 0, 0 },
+                    { 9, "player9@example.com", false, null, null, null, "Karim", "path2", "Doe", 0, "password9", 0, 0, 0 },
+                    { 10, "play10@example.com", false, null, null, null, "Samir", "path1", "Doe", 0, "password10", 0, 0, 0 },
+                    { 11, "play11@example.com", false, null, null, null, "Kais", "path1", "Doe", 0, "password11", 0, 0, 0 },
+                    { 12, "play12@example.com", false, null, null, null, "Aziz", "path1", "Doe", 0, "password12", 0, 0, 0 },
+                    { 13, "play13@example.com", false, null, null, null, "Youssef", "path1", "Doe", 0, "password13", 0, 0, 0 },
+                    { 14, "play14@example.com", false, null, null, null, "Hamza", "path1", "Doe", 0, "password14", 0, 0, 0 },
+                    { 15, "play15@example.com", false, null, null, null, "Ali", "path1", "Doe", 0, "password15", 0, 0, 0 },
+                    { 16, "play16@example.com", false, null, null, null, "Mustafa", "path1", "Doe", 0, "password16", 0, 0, 0 },
+                    { 17, "play17@example.com", false, null, null, null, "Elyess", "path1", "Doe", 0, "password17", 0, 0, 0 },
+                    { 18, "play18@example.com", false, null, null, null, "Omar", "path1", "Doe", 0, "password18", 0, 0, 0 },
+                    { 19, "play19@example.com", false, null, null, null, "Ismail", "path1", "Doe", 0, "password19", 0, 0, 0 },
+                    { 20, "play20@example.com", false, null, null, null, "Amine", "path1", "Doe", 0, "password20", 0, 0, 0 },
+                    { 21, "play21@example.com", false, null, null, null, "Talel", "path1", "Doe", 0, "passwor21", 0, 0, 0 },
+                    { 22, "play22@example.com", false, null, null, null, "Yahya", "path1", "Doe", 0, "password22", 0, 0, 0 },
+                    { 23, "play23@example.com", false, null, null, null, "Skander", "path1", "Doe", 0, "password23", 0, 0, 0 },
+                    { 24, "play24@example.com", false, null, null, null, "Omar", "path1", "Doe", 0, "password24", 0, 0, 0 },
+                    { 25, "play25@example.com", false, null, null, null, "Zahran", "path1", "Doe", 0, "password25", 0, 0, 0 },
+                    { 26, "play26@example.com", false, null, null, null, "Mohamed", "path1", "Doe", 0, "password26", 0, 0, 0 },
+                    { 27, "play27@example.com", false, null, null, null, "Fethi", "path1", "Doe", 0, "password27", 0, 0, 0 },
+                    { 28, "play28@example.com", false, null, null, null, "Adem", "path1", "Doe", 0, "password28", 0, 0, 0 },
+                    { 29, "play29@example.com", false, null, null, null, "Ahmed", "path1", "Doe", 0, "password29", 0, 0, 0 },
+                    { 30, "play30@example.com", false, null, null, null, "Ayhem", "path1", "Doe", 0, "password30", 0, 0, 0 },
+                    { 31, "play31@example.com", false, null, null, null, "Abderrahmen", "path1", "Doe", 0, "password31", 0, 0, 0 },
+                    { 32, "play32@example.com", false, null, null, null, "Hamdi", "path1", "Doe", 0, "password32", 0, 0, 0 },
+                    { 33, "play33@example.com", false, null, null, null, "Majd", "path1", "Doe", 0, "password33", 0, 0, 0 },
+                    { 34, "play34@example.com", false, null, null, null, "Bachar", "path1", "Doe", 0, "password34", 0, 0, 0 },
+                    { 35, "play35@example.com", false, null, null, null, "Oussama", "path1", "Doe", 0, "password35", 0, 0, 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -180,9 +193,9 @@ namespace DotnetProject.Migrations
                 columns: new[] { "Id", "Description", "Localisation", "Name", "PhotoPath" },
                 values: new object[,]
                 {
-                    { 1, "Description1", "Location1", "Stadium1", "path1" },
-                    { 2, "Description2", "Location2", "Stadium2", "path2" },
-                    { 3, "Description3", "Location3", "Stadium3", "path2" }
+                    { 1, "CHOUF 3CHIRI A9WA STADE F TUNIS KAMLA W YOUFA LA7DITH", "Monastir", "May Land", "Images/StadeMay.png" },
+                    { 2, "A9WA STADE FEL 3ASSMA", "Route Géant", "Five Stars", "Images/StadeFive.png" },
+                    { 3, "A5YEB STADE F TUNIS KAMLA", "Charguia", "Stade Charguia", "Images/StadeCharguia.png" }
                 });
 
             migrationBuilder.InsertData(
@@ -190,12 +203,12 @@ namespace DotnetProject.Migrations
                 columns: new[] { "Id", "StadiumId", "end_time", "occupancy", "start_time" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2024, 1, 26, 17, 0, 27, 679, DateTimeKind.Local).AddTicks(2288), true, new DateTime(2024, 1, 26, 15, 30, 27, 679, DateTimeKind.Local).AddTicks(2280) },
-                    { 2, 2, new DateTime(2024, 1, 26, 17, 0, 27, 679, DateTimeKind.Local).AddTicks(2296), false, new DateTime(2024, 1, 26, 15, 30, 27, 679, DateTimeKind.Local).AddTicks(2295) },
-                    { 3, 3, new DateTime(2024, 1, 26, 17, 0, 27, 679, DateTimeKind.Local).AddTicks(2297), false, new DateTime(2024, 1, 26, 15, 30, 27, 679, DateTimeKind.Local).AddTicks(2297) },
-                    { 4, 1, new DateTime(2024, 1, 26, 19, 0, 27, 679, DateTimeKind.Local).AddTicks(2299), false, new DateTime(2024, 1, 26, 17, 30, 27, 679, DateTimeKind.Local).AddTicks(2299) },
-                    { 5, 2, new DateTime(2024, 1, 26, 19, 0, 27, 679, DateTimeKind.Local).AddTicks(2301), false, new DateTime(2024, 1, 26, 17, 30, 27, 679, DateTimeKind.Local).AddTicks(2301) },
-                    { 6, 3, new DateTime(2024, 1, 26, 19, 0, 27, 679, DateTimeKind.Local).AddTicks(2303), false, new DateTime(2024, 1, 26, 17, 30, 27, 679, DateTimeKind.Local).AddTicks(2303) }
+                    { 1, 1, new DateTime(2024, 1, 27, 18, 16, 49, 61, DateTimeKind.Local).AddTicks(9874), true, new DateTime(2024, 1, 27, 16, 46, 49, 61, DateTimeKind.Local).AddTicks(9864) },
+                    { 2, 2, new DateTime(2024, 1, 27, 18, 16, 49, 61, DateTimeKind.Local).AddTicks(9883), false, new DateTime(2024, 1, 27, 16, 46, 49, 61, DateTimeKind.Local).AddTicks(9883) },
+                    { 3, 3, new DateTime(2024, 1, 27, 18, 16, 49, 61, DateTimeKind.Local).AddTicks(9885), false, new DateTime(2024, 1, 27, 16, 46, 49, 61, DateTimeKind.Local).AddTicks(9885) },
+                    { 4, 1, new DateTime(2024, 1, 27, 20, 16, 49, 61, DateTimeKind.Local).AddTicks(9888), false, new DateTime(2024, 1, 27, 18, 46, 49, 61, DateTimeKind.Local).AddTicks(9886) },
+                    { 5, 2, new DateTime(2024, 1, 27, 20, 16, 49, 61, DateTimeKind.Local).AddTicks(9889), false, new DateTime(2024, 1, 27, 18, 46, 49, 61, DateTimeKind.Local).AddTicks(9889) },
+                    { 6, 3, new DateTime(2024, 1, 27, 20, 16, 49, 61, DateTimeKind.Local).AddTicks(9891), false, new DateTime(2024, 1, 27, 18, 46, 49, 61, DateTimeKind.Local).AddTicks(9891) }
                 });
 
             migrationBuilder.CreateIndex(

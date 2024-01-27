@@ -19,7 +19,6 @@ namespace Dotnet_Project.Models
         public int number_losses { get; set; }
         public int number_draws { get; set; }
 
-        [ForeignKey("LinkedLobbyId")]
         public int? LinkedLobbyId { get; set; }
         public Lobby? LinkedLobby { get; set; }
 

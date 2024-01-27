@@ -13,7 +13,6 @@ namespace Dotnet_Project.Models
         public string Name { get; set; }
         public string Surname { get; set; }
 
-        [ForeignKey("Stade")]
         public int? StadeId { get; set; }
         public Stadium? stade { get; set; }
 

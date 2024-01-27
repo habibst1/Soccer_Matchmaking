@@ -12,7 +12,6 @@ namespace Dotnet_Project.Models
 
         public string Name { get; set; }
 
-        [ForeignKey("TimeSlot")]
         public int TimeSlotId { get; set; }
         public Time_Slot TimeSlot { get; set; }
 
