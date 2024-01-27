@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace DotnetProject.Migrations
 {
     /// <inheritdoc />
-    public partial class createdatabase : Migration
+    public partial class Initialisation : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -135,7 +137,6 @@ namespace DotnetProject.Migrations
                         principalColumn: "Id");
                 });
 
-<<<<<<<< HEAD:Dotnet Project/Migrations/20240127154649_Initialisation.cs
             migrationBuilder.InsertData(
                 table: "Players",
                 columns: new[] { "ID", "EMail", "IsAdmin", "LinkedLobbyId", "LobbyId", "LobbyId1", "Name", "PhotoPath", "Surname", "TeamNumber", "mdp", "number_draws", "number_losses", "number_wins" },
@@ -202,16 +203,14 @@ namespace DotnetProject.Migrations
                 columns: new[] { "Id", "StadiumId", "end_time", "occupancy", "start_time" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2024, 1, 27, 18, 16, 49, 61, DateTimeKind.Local).AddTicks(9874), true, new DateTime(2024, 1, 27, 16, 46, 49, 61, DateTimeKind.Local).AddTicks(9864) },
-                    { 2, 2, new DateTime(2024, 1, 27, 18, 16, 49, 61, DateTimeKind.Local).AddTicks(9883), false, new DateTime(2024, 1, 27, 16, 46, 49, 61, DateTimeKind.Local).AddTicks(9883) },
-                    { 3, 3, new DateTime(2024, 1, 27, 18, 16, 49, 61, DateTimeKind.Local).AddTicks(9885), false, new DateTime(2024, 1, 27, 16, 46, 49, 61, DateTimeKind.Local).AddTicks(9885) },
-                    { 4, 1, new DateTime(2024, 1, 27, 20, 16, 49, 61, DateTimeKind.Local).AddTicks(9888), false, new DateTime(2024, 1, 27, 18, 46, 49, 61, DateTimeKind.Local).AddTicks(9886) },
-                    { 5, 2, new DateTime(2024, 1, 27, 20, 16, 49, 61, DateTimeKind.Local).AddTicks(9889), false, new DateTime(2024, 1, 27, 18, 46, 49, 61, DateTimeKind.Local).AddTicks(9889) },
-                    { 6, 3, new DateTime(2024, 1, 27, 20, 16, 49, 61, DateTimeKind.Local).AddTicks(9891), false, new DateTime(2024, 1, 27, 18, 46, 49, 61, DateTimeKind.Local).AddTicks(9891) }
+                    { 1, 1, new DateTime(2024, 1, 27, 18, 47, 36, 191, DateTimeKind.Local).AddTicks(1563), true, new DateTime(2024, 1, 27, 17, 17, 36, 191, DateTimeKind.Local).AddTicks(1554) },
+                    { 2, 2, new DateTime(2024, 1, 27, 18, 47, 36, 191, DateTimeKind.Local).AddTicks(1573), false, new DateTime(2024, 1, 27, 17, 17, 36, 191, DateTimeKind.Local).AddTicks(1572) },
+                    { 3, 3, new DateTime(2024, 1, 27, 18, 47, 36, 191, DateTimeKind.Local).AddTicks(1574), false, new DateTime(2024, 1, 27, 17, 17, 36, 191, DateTimeKind.Local).AddTicks(1574) },
+                    { 4, 1, new DateTime(2024, 1, 27, 20, 47, 36, 191, DateTimeKind.Local).AddTicks(1576), false, new DateTime(2024, 1, 27, 19, 17, 36, 191, DateTimeKind.Local).AddTicks(1576) },
+                    { 5, 2, new DateTime(2024, 1, 27, 20, 47, 36, 191, DateTimeKind.Local).AddTicks(1578), false, new DateTime(2024, 1, 27, 19, 17, 36, 191, DateTimeKind.Local).AddTicks(1578) },
+                    { 6, 3, new DateTime(2024, 1, 27, 20, 47, 36, 191, DateTimeKind.Local).AddTicks(1580), false, new DateTime(2024, 1, 27, 19, 17, 36, 191, DateTimeKind.Local).AddTicks(1579) }
                 });
 
-========
->>>>>>>> 3feaa26ff4011ecfb866d4310122a7807933e508:Dotnet Project/Migrations/20240127153737_create-database.cs
             migrationBuilder.CreateIndex(
                 name: "IX_Lobbies_TimeSlotId",
                 table: "Lobbies",
