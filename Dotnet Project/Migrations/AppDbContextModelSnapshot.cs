@@ -565,49 +565,49 @@ namespace DotnetProject.Migrations
                         {
                             Id = 1,
                             StadiumId = 1,
-                            endtime = new DateTime(2024, 1, 25, 21, 34, 8, 683, DateTimeKind.Local).AddTicks(2452),
+                            endtime = new DateTime(2024, 1, 27, 18, 9, 27, 353, DateTimeKind.Local).AddTicks(3049),
                             occupancy = true,
-                            starttime = new DateTime(2024, 1, 25, 20, 4, 8, 683, DateTimeKind.Local).AddTicks(2392)
+                            starttime = new DateTime(2024, 1, 27, 16, 39, 27, 353, DateTimeKind.Local).AddTicks(2992)
                         },
                         new
                         {
                             Id = 2,
                             StadiumId = 2,
-                            endtime = new DateTime(2024, 1, 25, 21, 34, 8, 683, DateTimeKind.Local).AddTicks(2461),
+                            endtime = new DateTime(2024, 1, 27, 18, 9, 27, 353, DateTimeKind.Local).AddTicks(3059),
                             occupancy = false,
-                            starttime = new DateTime(2024, 1, 25, 20, 4, 8, 683, DateTimeKind.Local).AddTicks(2459)
+                            starttime = new DateTime(2024, 1, 27, 16, 39, 27, 353, DateTimeKind.Local).AddTicks(3057)
                         },
                         new
                         {
                             Id = 3,
                             StadiumId = 3,
-                            endtime = new DateTime(2024, 1, 25, 21, 34, 8, 683, DateTimeKind.Local).AddTicks(2465),
+                            endtime = new DateTime(2024, 1, 27, 18, 9, 27, 353, DateTimeKind.Local).AddTicks(3063),
                             occupancy = false,
-                            starttime = new DateTime(2024, 1, 25, 20, 4, 8, 683, DateTimeKind.Local).AddTicks(2464)
+                            starttime = new DateTime(2024, 1, 27, 16, 39, 27, 353, DateTimeKind.Local).AddTicks(3062)
                         },
                         new
                         {
                             Id = 4,
                             StadiumId = 1,
-                            endtime = new DateTime(2024, 1, 25, 23, 34, 8, 683, DateTimeKind.Local).AddTicks(2469),
+                            endtime = new DateTime(2024, 1, 27, 20, 9, 27, 353, DateTimeKind.Local).AddTicks(3068),
                             occupancy = false,
-                            starttime = new DateTime(2024, 1, 25, 22, 4, 8, 683, DateTimeKind.Local).AddTicks(2468)
+                            starttime = new DateTime(2024, 1, 27, 18, 39, 27, 353, DateTimeKind.Local).AddTicks(3066)
                         },
                         new
                         {
                             Id = 5,
                             StadiumId = 2,
-                            endtime = new DateTime(2024, 1, 25, 23, 34, 8, 683, DateTimeKind.Local).AddTicks(2473),
+                            endtime = new DateTime(2024, 1, 27, 20, 9, 27, 353, DateTimeKind.Local).AddTicks(3072),
                             occupancy = false,
-                            starttime = new DateTime(2024, 1, 25, 22, 4, 8, 683, DateTimeKind.Local).AddTicks(2472)
+                            starttime = new DateTime(2024, 1, 27, 18, 39, 27, 353, DateTimeKind.Local).AddTicks(3071)
                         },
                         new
                         {
                             Id = 6,
                             StadiumId = 3,
-                            endtime = new DateTime(2024, 1, 25, 23, 34, 8, 683, DateTimeKind.Local).AddTicks(2477),
+                            endtime = new DateTime(2024, 1, 27, 20, 9, 27, 353, DateTimeKind.Local).AddTicks(3077),
                             occupancy = false,
-                            starttime = new DateTime(2024, 1, 25, 22, 4, 8, 683, DateTimeKind.Local).AddTicks(2476)
+                            starttime = new DateTime(2024, 1, 27, 18, 39, 27, 353, DateTimeKind.Local).AddTicks(3075)
                         });
                 });
 
