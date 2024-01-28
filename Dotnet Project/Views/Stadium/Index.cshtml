@@ -1,0 +1,26 @@
+﻿@model List<Dotnet_Project.Models.Stadium>
+
+@{
+    ViewBag.Title = "Stadiums Index";
+}
+
+<h2 class="text-center mt-4 mb-4">Stadiums List</h2>
+
+<div class="container">
+    <div class="row">
+        @foreach (var stadium in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card" style="height: 370px; width: 18rem;">
+                    <img src="@stadium.PhotoPath" class="card-img-top" alt="@stadium.Name" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">@stadium.Name</h5>
+                        <p class="card-text">@stadium.Description</p>
+                        <p class="card-text"><strong>Location:</strong> @stadium.Localisation</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+    
