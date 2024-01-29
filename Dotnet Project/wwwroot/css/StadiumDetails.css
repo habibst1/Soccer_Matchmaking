@@ -1,0 +1,150 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Poppins:wght@400;700&display=swap');
+
+:root {
+    --main-bg-color: #F0F3F5;
+    --card-bg-color: #FFFFFF;
+    --accent-color: #4E8CDE;
+    --text-dark: #273444;
+    --text-light: #656565;
+    --hover-shadow: 0 10px 25px rgba(78, 140, 222, 0.15);
+    --border-radius: 10px;
+    --font-main: 'Nunito', sans-serif;
+    --font-heading: 'Poppins', sans-serif;
+    --font-size-regular: 1rem;
+    --font-size-heading: 2rem;
+    --font-size-subheading: 1.25rem;
+    --time-slot-color: #FF785A;
+    --image-card-ratio: 56.25%; /* 16:9 aspect ratio */
+}
+
+body {
+    background-color: var(--main-bg-color);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 50px;
+}
+
+.stadium-section .image-card, .stadium-section .details-card, .stadium-section .time-slots-card, .stadium-section .location-card {
+    background: var(--card-bg-color);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.stadium-section .image-card {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+    .stadium-section .image-card::before {
+        content: '';
+        display: block;
+        padding-top: 100%;
+    }
+
+    .stadium-section .image-card img.stadium-image {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+        border-radius: var(--border-radius);
+    }
+
+    .stadium-section .image-card:hover, .stadium-section .details-card:hover, .stadium-section .time-slots-card:hover, .stadium-section .location-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--hover-shadow);
+    }
+
+.stadium-section .stadium-name {
+    font-size: var(--font-size-heading);
+    color: var(--accent-color);
+    font-family: var(--font-heading);
+    letter-spacing: -1px;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.stadium-section .stadium-description {
+    color: var(--text-light);
+    font-size: var(--font-size-subheading);
+    line-height: 1.6;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.stadium-section .time-slots-title {
+    color: var(--time-slot-color);
+    font-family: var(--font-heading);
+    margin-bottom: 15px;
+}
+
+.stadium-section .time-slots-card ul.time-slots-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+    .stadium-section .time-slots-card ul.time-slots-list li.time-slot {
+        background: var(--card-bg-color);
+        color: var(--text-dark);
+        padding: 15px;
+        margin-bottom: 10px;
+        border-left: 3px solid var(--accent-color);
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+        .stadium-section .time-slots-card ul.time-slots-list li.time-slot:hover {
+            background: rgba(78, 140, 222, 0.1);
+            cursor: pointer;
+        }
+
+.stadium-section .location-card {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .stadium-section .image-card::before {
+        padding-top: 50%; /* A smaller value for a larger (taller) image on smaller devices if desired */
+    }
+}
+
+@media (max-width: 480px) {
+    .stadium-section .image-card::before {
+        padding-top: 75%; /* A smaller value for a larger (taller) image on mobile if desired */
+    }
+}
+
+.stadium-section .container {
+    padding: 10px 0 50px 100px; /* Adjust the padding values as needed */
+    margin-right: -60px;
+}
+
+.stadium-section .image-card {
+    width: 550px;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    margin-left: -280px; /* Set a negative left margin to extend to the left */
+}
+
+    .stadium-section .image-card img.stadium-image {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+        border-radius: var(--border-radius);
+    }

@@ -11,7 +11,7 @@
         @foreach (var stadium in Model)
         {
             <div class="col-md-4 mb-4">
-                <div class="card" style="height: 370px; width: 18rem;">
+                <div class="card" onclick="window.location.href='@Url.Action("Details", "Stadium", new { id = stadium.Id })'" style="height: 370px; width: 18rem; cursor : pointer;">
                     <img src="@stadium.PhotoPath" class="card-img-top" alt="@stadium.Name" style="height: 200px; object-fit: cover;">
                     <div class="card-body">
                         <h5 class="card-title">@stadium.Name</h5>
