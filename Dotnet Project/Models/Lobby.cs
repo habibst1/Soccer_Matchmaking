@@ -39,7 +39,6 @@ namespace Dotnet_Project.Models
             this.IsFull = false;
             this.IsFinished = false;
             this.Players = new List<Player>();
-            this.TimeSlot.LinkedLobbies.Add(this);
         }
 
            //FAZAT L REMOVE N7OTTOUHOM FEL CONTROLLER W BARRA

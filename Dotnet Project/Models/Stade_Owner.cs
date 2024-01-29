@@ -30,11 +30,11 @@ namespace Dotnet_Project.Models
             this.stade = null;
         }
 
-        public void createStadium(string name, string description, string localisation, string phtopath)
+        public void createStadium(string name, string description, string localisation, string exactlocalisation ,string phtopath, string photopath2)
         {
             if (this.stade == null)
             {
-                Stadium S = new Stadium(name, description, localisation, phtopath);
+                Stadium S = new Stadium(name, description, localisation, exactlocalisation, phtopath, photopath2);
                 this.stade = S;
                 this.StadeId = S.Id;
             }

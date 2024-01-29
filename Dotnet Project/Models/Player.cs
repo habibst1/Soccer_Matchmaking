@@ -76,7 +76,6 @@ namespace Dotnet_Project.Models
                 {
                     this.TeamNumber = 2;
                     L.Players.Add(this);
-                    
                     if (L.Players.Count() == 12) L.IsFull = true;
                 }
 

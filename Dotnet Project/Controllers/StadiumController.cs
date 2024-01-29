@@ -1,5 +1,6 @@
 ﻿using Dotnet_Project.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Dotnet_Project.Controllers
 {
@@ -19,6 +20,14 @@ namespace Dotnet_Project.Controllers
 
 
             return View(allstadiums);
+        }
+
+        public IActionResult Details(int id)
+        {
+            var stadium = _context.Stadiums.Include(s => s.Times).FirstOrDefault(st => st.Id == id);
+
+
+            return View(stadium);
         }
     }
 }

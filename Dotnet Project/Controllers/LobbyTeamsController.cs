@@ -266,10 +266,14 @@ public class LobbyTeamsController : Controller
         */
         
 
+        ///////////lazemni nzid condition tthabet mel joueret linedlobby t3hom 0 sinn iji wa7ed i7t fel url ay id mta3 joueur w mchéna feha 
+
+
         // Retrieve available lobbies that the player can join
         var availableLobbies = _context.Lobbies
             .Include(l => l.Players)
             .Include(l => l.TimeSlot)
+            .Include(l => l.TimeSlot.stadium)
             .Where(l => l.Type == "LobbyTeam" && !l.IsFull && !l.IsFinished && l.Players.Count < 7)
             .ToList();
 
@@ -286,12 +290,12 @@ public class LobbyTeamsController : Controller
              .Where(p => selectedPlayersIDs.Contains(p.ID))
              .ToList();
 
-        var selectedLobby = _context.Lobbies.Include(l => l.Players).Include(t => t.TimeSlot).FirstOrDefault(l => l.Id == lobbyId);
+        var selectedLobby = _context.Lobbies.Include(l => l.Players).Include(t => t.TimeSlot).Include(l => l.TimeSlot.LinkedLobbies).FirstOrDefault(l => l.Id == lobbyId);
 
 
 
         foreach (var player in selectedPlayers)
-        {
+        {   
             player.JoinLobby(selectedLobby);
         }
 
