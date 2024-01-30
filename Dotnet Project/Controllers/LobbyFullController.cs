@@ -51,7 +51,7 @@ public class LobbyFullController: Controller
             .ToList();
 
         // Pass available players to the view
-        ViewBag.AvailablePlayers = new MultiSelectList(availablePlayers, "ID", "Name");
+        ViewBag.AvailablePlayers = new MultiSelectList(availablePlayers, "Id", "Name");
 
         return View();
     }
@@ -72,7 +72,7 @@ public class LobbyFullController: Controller
     // POST: /LobbyTeams/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create(string lobbyName, int stadiumId, int timeSlotId, List<int> selectedPlayerIds)
+    public IActionResult Create(string lobbyName, int stadiumId, int timeSlotId, List<string> selectedPlayerIds)
     {
         // Add validation for lobbyName, stadiumId, timeSlotId, and selectedPlayerIds as needed
 
@@ -104,7 +104,7 @@ public class LobbyFullController: Controller
         */
         // Retrieve selected players
         var selectedPlayers = _context.Players
-            .Where(p => selectedPlayerIds.Contains(p.ID))
+            .Where(p => selectedPlayerIds.Contains(p.Id))
             .ToList();
 
         // Check if the number of selected players is valid

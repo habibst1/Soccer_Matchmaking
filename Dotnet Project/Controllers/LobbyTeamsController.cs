@@ -52,7 +52,7 @@ public class LobbyTeamsController : Controller
             .ToList();
 
         // Pass available players to the view
-        ViewBag.AvailablePlayers = new MultiSelectList(availablePlayers, "ID", "Name");
+        ViewBag.AvailablePlayers = new MultiSelectList(availablePlayers, "Id", "Name");
 
         return View();
     }
@@ -73,7 +73,7 @@ public class LobbyTeamsController : Controller
     // POST: /LobbyTeams/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create(string lobbyName, int stadiumId, int timeSlotId, List<int> selectedPlayerIds)
+    public IActionResult Create(string lobbyName, int stadiumId, int timeSlotId, List<string> selectedPlayerIds)
     {
         // Add validation for lobbyName, stadiumId, timeSlotId, and selectedPlayerIds as needed
 
@@ -105,11 +105,11 @@ public class LobbyTeamsController : Controller
        */ 
         // Retrieve selected players
         var selectedPlayers = _context.Players
-            .Where(p => selectedPlayerIds.Contains(p.ID))
+            .Where(p => selectedPlayerIds.Contains(p.Id))
             .ToList();
 
         // Check if the number of selected players is valid
-        if (selectedPlayers.Count != 6)
+        if (selectedPlayers.Count() != 6)
         {
             // Handle invalid number of players, perhaps redirect to the create page with an error message
             return RedirectToAction("Create");
@@ -202,7 +202,7 @@ public class LobbyTeamsController : Controller
             .ToList();
 
         // Pass available players to the view
-        ViewBag.AvailablePlayers = new MultiSelectList(availablePlayers, "ID", "Name");
+        ViewBag.AvailablePlayers = new MultiSelectList(availablePlayers, "Id", "Name");
 
         return View();
     }
@@ -211,7 +211,7 @@ public class LobbyTeamsController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Join(List<int> selectedPlayerIds)
+    public IActionResult Join(List<string> selectedPlayerIds)
     {
         /*KIFKIF HEDHI COMMETED 5ATER LOGIN
         // Retrieve the currently logged-in player (admin)
@@ -239,7 +239,7 @@ public class LobbyTeamsController : Controller
         return RedirectToAction("AvailableLobbies", new {selectedPlayerIds = selectedPlayerIds});
     }
 
-    public IActionResult AvailableLobbies(List<int> selectedPlayerIds)
+    public IActionResult AvailableLobbies(List<string> selectedPlayerIds)
     {
         /*KI YARKA7 EL LOGIN
         // Retrieve the logged-in player
@@ -283,11 +283,11 @@ public class LobbyTeamsController : Controller
     }
 
     [HttpPost]
-    public IActionResult AvailableLobbies(int lobbyId , List<int> selectedPlayersIDs)
+    public IActionResult AvailableLobbies(int lobbyId , List<string> selectedPlayersIDs)
     {
 
         var selectedPlayers = _context.Players
-             .Where(p => selectedPlayersIDs.Contains(p.ID))
+             .Where(p => selectedPlayersIDs.Contains(p.Id))
              .ToList();
 
         var selectedLobby = _context.Lobbies.Include(l => l.Players).Include(t => t.TimeSlot).Include(l => l.TimeSlot.LinkedLobbies).FirstOrDefault(l => l.Id == lobbyId);

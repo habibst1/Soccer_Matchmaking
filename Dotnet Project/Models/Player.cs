@@ -1,17 +1,13 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Dotnet_Project.Models
 {
-    public class Player
+    public class Player : IdentityUser
     {
-        [Key]
-        public int ID { get; set; }
-
-        public string EMail { get; set; }
-        public string mdp { get; set; }
         public string PhotoPath { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -29,10 +25,8 @@ namespace Dotnet_Project.Models
 
         public Player() { }
 
-        public Player(string email, string mdp, string name, string surname, string photopath)
-        {
-            this.EMail = email;
-            this.mdp = mdp;
+        public Player(string name, string surname, string photopath)
+        { 
             this.Name = name;
             this.Surname = surname;
             this.PhotoPath = photopath;
