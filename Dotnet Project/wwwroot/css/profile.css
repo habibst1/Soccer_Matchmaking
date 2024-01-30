@@ -410,3 +410,32 @@ p {
     margin-inline: 203px;
     box-shadow: 0px 2px 5px 1px var(--color2);
 }
+/*------------------Owner my staduim---------------*/
+.reserve-btn {
+    width: 80%;
+    height: 34px;
+    border-radius: 6px;
+    box-shadow: 2px 2px 2px 1px var(--color3-darker);
+    position: relative;
+    background-color: var(--color3);
+    color: var(--color1);
+    font-size: medium;
+    font-weight: 700;
+    font-size: 15px;
+    margin-block: 1px 5px;
+}
+
+    .reserve-btn:hover {
+        color: var(--color1-lighter);
+        background-color: var(--color3-darker);
+        transition: all 0.5s;
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+    .reserve-btn:disabled {
+        color: var(--color1);
+        background-color: gray;
+        transition: all 0.5s;
+        cursor: pointer;
+        box-shadow: 2px 2px 2px 1px gray;
+    }
