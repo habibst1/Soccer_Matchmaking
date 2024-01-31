@@ -19,19 +19,45 @@
                 </div>
 
             </div>
-            <div class="shadow bg-dark-blue-color soft-border ">
-                
+            <div class="shadow bg-dark-blue-color light-color soft-border my-3 px-4 pt-2 pb-3">
+                <h2>Add Time Slot :</h2>
+                <form class="" style="gap: 5px;">
+                    <div class="form-group addslot-form" >
+                        <div style="grid-column: span 2;">
+					    	<label for="date">Pick a date :</label>
+                            <input class="form-control " id="date" type="date" />
+				    	</div>
+                       <div>
+                           <label for="starttime">From :</label>
+                            <input class="form-control " id="starttime" type="time" />
+				    	</div>
+                        <div>
+                          <label for="endtime">To :</label>
+                            <input class="form-control " id="endtime" type="time" />
+                         </div>
+					</div>
+                    <button class="reserve-btn" style="width: 100% !important;">Add</button>
+                </form>
             </div>
         </div>
         <div class="col-lg-8 pe-0 ps-1">
-            <div class="ps-lg-1-6 ps-xl-5 bg-lighter-color soft-border pe-5 pt-4 right-profile">
-                <div class="mb-5 wow fadeIn" style="height:200px;">
+            <div class="ps-lg-1-6 ps-xl-5 bg-lighter-color soft-border pe-5 pt-4 right-profile" style="height: 876px!important;">
+                <div class="mb-5 wow fadeIn" style="height:260px;">
                     <div class="text-start mb-1-6 wow fadeIn">
                         <h2 class="h1 mb-0 blue-color">
                             My Stadium :
-                        </h2>
-                        
-
+                        </h2>    
+                        <div class="d-flex h-100 align-items-center" style="margin-block:10px;gap: 16px;">
+                            <img class="stadium-img" src="https://scontent.ftun9-1.fna.fbcdn.net/v/t39.30808-6/305959589_490249803107995_8487234365801295046_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=ANF4ReKJf_EAX_tD6WO&_nc_oc=AQma7ZKaQvJgUOhJaWJxZslqQWKYLNl5AXz5R2vRgwFCIeFUNnc2mIthb7O-E4JFpKw&_nc_ht=scontent.ftun9-1.fna&oh=00_AfBRgWCsrGjYxu1qGUoPO-gfoOTeX7TbTJNvmy1Oktx8GQ&oe=65BE1E5C" alt="...">
+                            <div class="stadium-description dark-blue-color">
+                                <h1>Stadium Name</h1>
+                                <h3>Stadium Localisation</h3>
+                                <h5>Stadium description here Stadium description here Stadium description here
+                                    Stadium description here
+                                </h5>
+                                <h8>75 Dt For 90min</h8>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="mb-5 wow fadeIn">
@@ -46,16 +72,15 @@
                                 <th>End Time</th>
                                 <th style="width:130px;">Occupancy</th>
                                 <th style ="width:165px;">Actions</th>
-                                
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody style="height: 410px!important;">
                             <tr>
                                 <td>20-Jan</td>
                                 <td>15:45</td>
                                 <td>17:15</td>
                                 <td style="width:130px;color:gray;">Occupied</td>
-                                <td style="width:165px;"><button class="reserve-btn">Reserve</button></td>
+                                <td style="width:165px;"><button disabled class="reserve-btn">Reserve</button></td>
                             </tr>
                             <tr>
                                 <td>20-Jan</td>
@@ -69,23 +94,57 @@
                                 <td>18:45</td>
                                 <td>20:15</td>
                                 <td style="width:130px;color:gray;">Occupied</td>
-                                <td style="width:165px;"><button class="reserve-btn">Reserve</button></td>
+                                <td style="width:165px;"><button disabled class="reserve-btn">Reserve</button></td>
                             </tr>
                             <tr>
                                 <td>20-Jan</td>
                                 <td>20:15</td>
                                 <td>21:45</td>
                                 <td style="width:130px; color:gray;">Occupied</td>
-                                <td style="width:165px;"><button class="reserve-btn">Reserve</button></td>
+                                <td style="width:165px;"><button disabled class="reserve-btn">Reserve</button></td>
                             </tr>
 							<tr>
 								<td>20-Jan</td>
                                 <td>21:45</td>
 								<td>23:15</td>
                                 <td style="width:130px;color: firebrick;">Not occupied</td>
-                                <td style="width:165px;"><button disabled class="reserve-btn">Reserve</button></td>
+                                <td style="width:165px;"><button class="reserve-btn">Reserve</button></td>
 							</tr>
-                            <tr></tr>
+                            <tr>
+                                <td>21-Jan</td>
+                                <td>15:45</td>
+                                <td>17:15</td>
+                                <td style="width:130px;color:gray;">Occupied</td>
+                                <td style="width:165px;"><button disabled class="reserve-btn">Reserve</button></td>
+                            </tr>
+                            <tr>
+                                <td>21-Jan</td>
+                                <td>17:15</td>
+                                <td>18:45</td>
+                                <td style="width:130px;color: firebrick;">Not occupied</td>
+                                <td style="width:165px;"><button class="reserve-btn">Reserve</button></td>
+                            </tr>
+                            <tr>
+                                <td>21-Jan</td>
+                                <td>18:45</td>
+                                <td>20:15</td>
+                                <td style="width:130px;color:gray;">Occupied</td>
+                                <td style="width:165px;"><button disabled class="reserve-btn">Reserve</button></td>
+                            </tr>
+                            <tr>
+                                <td>21-Jan</td>
+                                <td>20:15</td>
+                                <td>21:45</td>
+                                <td style="width:130px; color:gray;">Occupied</td>
+                                <td style="width:165px;"><button disabled class="reserve-btn">Reserve</button></td>
+                            </tr>
+                            <tr>
+                                <td>21-Jan</td>
+                                <td>21:45</td>
+                                <td>23:15</td>
+                                <td style="width:130px;color: firebrick;">Not occupied</td>
+                                <td style="width:165px;"><button class="reserve-btn">Reserve</button></td>
+                            </tr>
                         </tbody>
                     </table>
 
