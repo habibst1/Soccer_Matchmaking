@@ -3,15 +3,21 @@
 @{
     ViewBag.Title = "Stadiums Index";
 }
-
-<h2 class="text-center mt-4 mb-4">Stadiums List</h2>
-
+<div style="display: flex;margin: 93px 6px 0px 47px;justify-content: space-between;align-items: center;">
+    <h2 class="text-center mt-4 mb-4 light-color">Stadiums List :</h2>
+    <div id="searchbar-container" style="width: 34%!important;">
+            <input id="searchbar"
+                   type="text" name="search"
+                   placeholder="Search stadiums..">
+          <i id="searchbaricon" class="bi bi-search"></i>
+         </div>
+    </div>
 <div class="container">
-    <div class="row">
+    <ul class="row">
         @foreach (var stadium in Model)
         {
-            <div class="col-md-4 mb-4">
-                <div class="card" onclick="window.location.href='@Url.Action("Details", "Stadium", new { id = stadium.Id })'" style="height: 370px; width: 18rem; cursor : pointer;">
+            <li class="col-md-4 mb-4 stadium">
+                <div class="card stadium-card" onclick="window.location.href='@Url.Action("Details", "Stadium", new { id = stadium.Id })'" style="height: 370px; width: 18rem; cursor : pointer;">
                     <img src="@stadium.PhotoPath" class="card-img-top" alt="@stadium.Name" style="height: 200px; object-fit: cover;">
                     <div class="card-body">
                         <h5 class="card-title">@stadium.Name</h5>
@@ -19,8 +25,8 @@
                         <p class="card-text"><strong>Location:</strong> @stadium.Localisation</p>
                     </div>
                 </div>
-            </div>
+            </li>
         }
-    </div>
+    </ul>
 </div>
     
