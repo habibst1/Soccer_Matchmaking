@@ -8,5 +8,9 @@ namespace Dotnet_Project.Controllers
         {
             return View();
         }
+        public IActionResult MyStadium()
+        {
+            return View();
+        }
     }
 }
