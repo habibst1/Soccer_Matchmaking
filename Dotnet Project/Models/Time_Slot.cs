@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 
 namespace Dotnet_Project.Models
 {
@@ -19,11 +20,14 @@ namespace Dotnet_Project.Models
 
         public List<Lobby> LinkedLobbies { get; set; }
 
-        public Time_Slot() { }
+        public Time_Slot()
+        {
+            this.LinkedLobbies = new List<Lobby>();
+        }
 
         public Time_Slot(Stadium stadium, DateTime hour)
         {
-            this.stadium = stadium;
+            this.stadium = stadium; 
             this.start_time = hour;
             this.end_time = hour.AddHours(1).AddMinutes(30);
             this.LinkedLobbies = new List<Lobby>();
@@ -37,7 +41,7 @@ namespace Dotnet_Project.Models
 
         public string get_match_time()
         {
-            string formattedTimeRange = $"{start_time:HH:mm} --> {end_time:HH:mm}";
+            string formattedTimeRange = $"{start_time.ToString("dddd", CultureInfo.InvariantCulture)} {start_time: dd/MM/yyyy HH:mm} --> {end_time:HH:mm}";
             return formattedTimeRange;
         }
     }

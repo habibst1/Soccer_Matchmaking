@@ -1,0 +1,46 @@
+﻿@model Dotnet_Project.Models.Stadium
+
+@{
+    ViewBag.Title = "Stadium Details";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Assuming you have a layout file
+}
+
+
+
+<!-- Link to your stylesheet -->
+<link rel="stylesheet" href="~/css/StadiumDetails.css" />
+<div class="stadium-section">
+<div class="container">
+    <div class="row mb-5">
+        <div class="col-md-4">
+            <div class="image-card">
+                <img src="~/Images/@System.IO.Path.GetFileName(Model.PhotoPath2)" alt="@Model.Name" class="stadium-image">
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="details-card mb-4">
+                <h2 class="stadium-name">@Model.Name</h2>
+                <p class="stadium-description">@Model.Description</p>
+            </div>
+
+            <div class="time-slots-card mb-4">
+                <h4 class="time-slots-title">Time Slots</h4>
+                <ul class="time-slots-list">
+                    @foreach (var timeSlot in Model.Times)
+                    {
+                        <li class="time-slot">
+                            <strong>@timeSlot.get_match_time()</strong>
+                        </li>
+                    }
+                </ul>
+            </div>
+                <div class="location-card">
+                    <a style="float:left; display: inline-block;"><strong>Location:</strong> @Model.Localisation</a>
+                    <a style="float:right; display: inline-block;" href="@Model.exactLocalisation" target="_blank" class="btn btn-primary">See Exact Location</a>
+                    <div style="clear: both;"></div>
+                </div>
+
+        </div>
+    </div>
+</div>
+</div>
