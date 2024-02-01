@@ -275,6 +275,7 @@ p {
 
     .lobby-table thead {
         position: relative;
+        font-family: 'Montserrat',sans-serif;
     }
 
         .lobby-table thead::before {
