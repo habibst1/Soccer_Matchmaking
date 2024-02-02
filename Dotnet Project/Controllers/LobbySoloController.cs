@@ -12,20 +12,20 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 
 [Authorize(Roles = SD.Role_Player)]
-public class LobbyTeamsController : Controller
+public class LobbySoloController : Controller
 {
 
     private readonly UserManager<IdentityUser> _userManager;
     private readonly AppDbContext _context;
 
-    public LobbyTeamsController(AppDbContext context , UserManager<IdentityUser> userManager)
+    public LobbySoloController(AppDbContext context, UserManager<IdentityUser> userManager)
     {
         _context = context;
         _userManager = userManager;
     }
 
-    // GET: /LobbyTeams/Create
-    public  IActionResult Create()
+    // GET: /LobbySolo/Create
+    public IActionResult Create()
     {
         // Retrieve all stadiums
         var allStadiums = _context.Stadiums.ToList();
@@ -33,9 +33,9 @@ public class LobbyTeamsController : Controller
         // Pass all stadiums to the view
         ViewBag.Stadiums = new SelectList(allStadiums, "Id", "Name");
 
-       
+
         //Retrieve the currently logged-in player (admin)
-       
+
         var adminPlayerId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Assuming ID is stored in "ClaimTypes.NameIdentifier"
 
         var adminPlayer = _context.Users.Include(a => a.LinkedLobby).FirstOrDefault(p => p.Id == adminPlayerId);
@@ -48,25 +48,13 @@ public class LobbyTeamsController : Controller
 
         if (adminPlayer.LinkedLobby != null) return RedirectToAction("Index", "Home"); // w maaha error (you are already in a lobby)
 
-        // Retrieve available players (excluding the admin player)
-        var availablePlayers = _context.Users
-                                .Where(p => p.LinkedLobby == null && p.Id != adminPlayerId)
-                                .ToList();
-
-        // Filter the results in memory (client-side) using LINQ to Objects
-        var filteredPlayers = availablePlayers.Where(p => _userManager.IsInRoleAsync(p, "Player").Result).ToList();
-
-
-
-        // Pass available players to the view
-        ViewBag.AvailablePlayers = new MultiSelectList(filteredPlayers, "Id", "Name");
 
         return View();
 
     }
-        
-   
-        // GET: /LobbyTeams/GetTimeSlots?stadiumId={stadiumId}
+
+
+    // GET: /LobbySolo/GetTimeSlots?stadiumId={stadiumId}
     [HttpGet]
     public IActionResult GetTimeSlots(int stadiumId)
     {
@@ -79,10 +67,10 @@ public class LobbyTeamsController : Controller
         return PartialView("_TimeSlotOptionsPartial", timeSlots);
     }
 
-    // POST: /LobbyTeams/Create
+    // POST: /LobbySolo/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create(string lobbyName, int stadiumId, int timeSlotId, List<string> selectedPlayerIds)
+    public IActionResult Create(string lobbyName, int stadiumId, int timeSlotId)
     {
         // Add validation for lobbyName, stadiumId, timeSlotId, and selectedPlayerIds as needed
 
@@ -100,32 +88,21 @@ public class LobbyTeamsController : Controller
             // Handle invalid selection, perhaps redirect to the create page with an error message
             return RedirectToAction("Create");
         }
-   
-        // Retrieve the currently logged-in player (admin)
-        
-        var adminPlayerId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Assuming ID is stored in "ClaimTypes.NameIdentifier"
-        
-        
-        var adminPlayer = _context.Users.Include(a => a.LinkedLobby).FirstOrDefault(p => p.Id == adminPlayerId);
-       
-        // Retrieve selected players
-        var selectedPlayers = _context.Users
-            .Where(p => selectedPlayerIds.Contains(p.Id))
-            .ToList();
 
-        // Check if the number of selected players is valid
-        if (selectedPlayers.Count() != 5)
-        {
-            // Handle invalid number of players, perhaps redirect to the create page with an error message
-            return RedirectToAction("Create");
-        }
-       
+        // Retrieve the currently logged-in player (admin)
+
+        var adminPlayerId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Assuming ID is stored in "ClaimTypes.NameIdentifier"
+
+
+        var adminPlayer = _context.Users.Include(a => a.LinkedLobby).FirstOrDefault(p => p.Id == adminPlayerId);
+
+
         // Create lobby and join players using CreateLobby method
-       
-        
-        var newLobby = adminPlayer.CreateLobby(selectedTimeSlot, selectedPlayers, lobbyName, "LobbyTeam");
-       
-  
+
+
+        var newLobby = adminPlayer.CreateLobby(selectedTimeSlot, null , lobbyName, "LobbySolo");
+
+
         if (newLobby != null)
         {
             // Add the new lobby to the database context
@@ -145,55 +122,7 @@ public class LobbyTeamsController : Controller
     }
 
 
-    public IActionResult Join()
-    {
-        
-        // Retrieve the currently logged-in player (admin)
-       
-         var loggedInPlayerId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Assuming ID is stored in "ClaimTypes.NameIdentifier"
-
-         var loggedInPlayer = _context.Users.Include(a => a.LinkedLobby).FirstOrDefault(p => p.Id == loggedInPlayerId);
-
-        if  (loggedInPlayerId == null)
-        {
-            // Handle the case where the user is not logged in
-            return RedirectToAction("Login"); // Redirect to login or handle it accordingly
-        }
-
-        if (loggedInPlayer.LinkedLobby != null) return RedirectToAction("Index","Home") ; //w maaha error (you are already in a lobby)
-
-        // Retrieve available players (excluding the admin player)
-        var availablePlayers = _context.Users
-            .Where(p => p.LinkedLobby == null && p.Id != loggedInPlayerId)
-            .ToList();
-
-        // Pass available players to the view
-        ViewBag.AvailablePlayers = new MultiSelectList(availablePlayers, "Id", "Name");
-
-        return View();
-
-    }
-
-
-
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public IActionResult Join(List<string> selectedPlayerIds)
-    {
-        // Retrieve selected players
-        
-        // Check if the number of selected players is valid
-        if (selectedPlayerIds.Count != 5)
-        {
-            // Handle invalid number of players, perhaps redirect to the create page with an error message
-            return RedirectToAction("Join");
-        }
-
-
-        return RedirectToAction("AvailableLobbies", new {selectedPlayerIds = selectedPlayerIds});
-    }
-
-    public IActionResult AvailableLobbies(List<string> selectedPlayerIds)
+    public IActionResult AvailableLobbies()
     {
         // Retrieve the logged-in player */
         var loggedInPlayerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -207,39 +136,27 @@ public class LobbyTeamsController : Controller
 
         var loggedInPlayer = _context.Users.Include(a => a.LinkedLobby).FirstOrDefault(p => p.Id == loggedInPlayerId);
 
-        if (loggedInPlayer == null)
-        {
-            // Handle the case where the logged-in player is not found
-            return RedirectToAction("Login"); // Redirect to login or handle it accordingly
-        }
-
-        if (loggedInPlayer.LinkedLobby != null) return RedirectToAction("Index", "Home"); //w maaha error (you are already in a lobby)
 
 
-
-        ///////////lazemni nzid condition tthabet mel joueret linedlobby t3hom 0 sinn iji wa7ed i7t fel url ay id mta3 joueur w mchéna feha 
-
+        if (loggedInPlayer.LinkedLobby != null)   return  RedirectToAction("Index", "Home"); //w maaha error (you are already in a lobby)
+        
 
         // Retrieve available lobbies that the player can join
         var availableLobbies = _context.Lobbies
             .Include(l => l.Players)
             .Include(l => l.TimeSlot)
             .Include(l => l.TimeSlot.stadium)
-            .Where(l => l.Type == "LobbyTeam" && !l.IsFull && !l.IsFinished && l.Players.Count < 7)
+            .Where(l => l.Type == "LobbySolo" && !l.IsFull && !l.IsFinished && l.Players.Count < 12)
             .ToList();
 
-       JoinLobbyViewModel test= new JoinLobbyViewModel(availableLobbies , selectedPlayerIds);
+        JoinLobbyViewModel test = new JoinLobbyViewModel(availableLobbies, null);
 
         return View(test);
     }
 
     [HttpPost]
-    public IActionResult AvailableLobbies(int lobbyId , List<string> selectedPlayersIDs)
+    public IActionResult AvailableLobbies(int lobbyId)
     {
-
-        var selectedPlayers = _context.Users
-             .Where(p => selectedPlayersIDs.Contains(p.Id))
-             .ToList();
 
         var selectedLobby = _context.Lobbies.Include(l => l.Players).Include(t => t.TimeSlot).Include(l => l.TimeSlot.LinkedLobbies).FirstOrDefault(l => l.Id == lobbyId);
 
@@ -250,10 +167,6 @@ public class LobbyTeamsController : Controller
 
         loggedInPlayer.JoinLobby(selectedLobby);
 
-        foreach (var player in selectedPlayers)
-        {   
-            player.JoinLobby(selectedLobby);
-        }
 
         if (selectedLobby.IsFull)
         {
@@ -273,26 +186,19 @@ public class LobbyTeamsController : Controller
                     {
                         player.LinkedLobbyId = null;
                         if (player.IsAdmin) player.IsAdmin = false;
-                        
+
                     }
 
                     selectedLobby.TimeSlot.LinkedLobbies.Remove(otherlobby);
 
                     _context.Lobbies.Remove(otherlobby);
                 }
-                
+
             }
+        }
             _context.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
-        else
-        {
-            return RedirectToAction("AvailableLobbies");
-        }
-
-
-        
-    }
 
 
 

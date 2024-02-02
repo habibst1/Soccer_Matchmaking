@@ -1,0 +1,42 @@
+﻿@model JoinLobbyViewModel
+
+
+<h2 class="light-color">Available Lobbies</h2>
+
+@if (Model.lobbies.Any())
+{
+    <form method="post" action="@Url.Action("AvailableLobbies", "LobbySolo")">
+
+        <table class="table light-color">
+            <thead>
+                <tr>
+                    <th>Lobby Name</th>
+                    <th>Match Time</th>
+                    <th>Stadium</th>
+                    <th>Players</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            @foreach (var lobby in Model.lobbies)
+            {
+                <tbody>
+                    <tr>
+                        <td>@lobby.Name</td>
+                        <td>@lobby.TimeSlot.get_match_time()</td>
+                        <td>@lobby.TimeSlot.stadium.Name</td>
+                        <td>@lobby.Players.Count() /12</td>
+                        <td>
+                            <input type="hidden" name="lobbyId" value="@lobby.Id" />
+                            <button type="submit" class="join-btn">Join</button>
+                        </td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+
+    </form>
+}
+else
+{
+    <p>No available lobbies to join.</p>
+}
