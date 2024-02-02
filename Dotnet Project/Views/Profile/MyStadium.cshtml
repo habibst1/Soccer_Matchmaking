@@ -1,0 +1,162 @@
+﻿<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ti-icons@0.1.2/css/themify-icons.css">
+<div class="container profile-container">
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
+            <div class="card border-0 shadow left-profile soft-border ps-0 pe-1 ">
+                <h2 class="bg-dark-blue-color edit-img light-color"><i class="bi bi-camera "></i></h2>
+                <img class="profile-img" src="https://static.onzemondial.com/8/2022/06/photos/327411/carre-manchester-city--haaland--mahrez--cucurella----le-onze-que-r%C3%AAve-d-aligner-guardiola-.jpg" alt="...">
+                <div class="card-body p-1-9 p-xl-5">
+                    <div class="mb-4">
+                        <h3 class="h4 mb-0">Owner name</h3>
+                    </div>
+                    <ul class="list-unstyled mb-4 profile-details">
+                        <li class="mb-3"><a class="light-color" href="#!" style="display: flex;"><i class="far fa-envelope display-25 me-3 light-color" style="margin-top: 3px;"></i><div>owner@gmail.com</div></a></li>
+                        <li class="mb-3"><a class="light-color" href="#!" style="display: flex;"><i class="fas fa-mobile-alt display-25 me-3 light-color" style="padding-left: 3px;margin-top: 3px;"></i>+216 55 555 555</a></li>
+                        <li><a class="light-color" href="#!" style="display: flex;"><i class="fas fa-map-marker-alt display-25 me-3 light-color" style="padding-left: 2px;margin-top: 3px;"></i>adress (optional)</a></li>
+                    </ul>
+                    <h3 class="edit-inf"><i class="bi bi-pencil-fill"></i></h3>
+                </div>
+
+            </div>
+            <div class="shadow bg-dark-blue-color light-color soft-border my-3 px-4 pt-2 pb-3">
+                <h2>Add Time Slot :</h2>
+                <form class="" style="gap: 5px;">
+                    <div class="form-group addslot-form" >
+                        <div style="grid-column: span 2;">
+					    	<label for="date">Pick a date :</label>
+                            <input class="form-control " id="date" type="date" />
+				    	</div>
+                       <div>
+                           <label for="starttime">From :</label>
+                            <input class="form-control " id="starttime" type="time" />
+				    	</div>
+                        <div>
+                          <label for="endtime">To :</label>
+                            <input class="form-control " id="endtime" type="time" />
+                         </div>
+					</div>
+                    <button class="reserve-btn" style="width: 100% !important;">Add</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-8 pe-0 ps-1">
+            <div class="ps-lg-1-6 ps-xl-5 bg-lighter-color soft-border pe-5 pt-4 right-profile" style="height: 876px!important;">
+                <div class="mb-5 wow fadeIn" style="height:260px;">
+                    <div class="text-start mb-1-6 wow fadeIn">
+                        <h2 class="h1 mb-0 blue-color">
+                            My Stadium :
+                        </h2>    
+                        <div class="d-flex h-100 align-items-center" style="margin-block:10px;gap: 16px;">
+                            <img class="stadium-img" src="https://scontent.ftun9-1.fna.fbcdn.net/v/t39.30808-6/305959589_490249803107995_8487234365801295046_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=ANF4ReKJf_EAX_tD6WO&_nc_oc=AQma7ZKaQvJgUOhJaWJxZslqQWKYLNl5AXz5R2vRgwFCIeFUNnc2mIthb7O-E4JFpKw&_nc_ht=scontent.ftun9-1.fna&oh=00_AfBRgWCsrGjYxu1qGUoPO-gfoOTeX7TbTJNvmy1Oktx8GQ&oe=65BE1E5C" alt="...">
+                            <div class="stadium-description dark-blue-color">
+                                <h1>Stadium Name</h1>
+                                <h3>Stadium Localisation</h3>
+                                <h5>Stadium description here Stadium description here Stadium description here
+                                    Stadium description here
+                                </h5>
+                                <h8>75 Dt For 90min</h8>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-5 wow fadeIn">
+                    <div class="text-start mt-1-6 wow fadeIn" style="display: flex;justify-content: space-between;">
+                        <h2 class="mb-0 blue-color">My Time Slots :</h2>
+                        <div style="width: 40%;display: flex;justify-content: flex-end;gap: 15px;">
+                            <button id="showAvailable-btn" class="reserve-btn" style="width: 55%!important;">Show Available</button>
+                            <button id="showAll-btn" class="reserve-btn" style="width: 35%!important;">Show All</button>
+						</div>
+                        
+                    </div>
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                                <th style="width:130px;">Occupancy</th>
+                                <th style ="width:165px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody style="height: 410px!important;">
+                            <tr>
+                                <td>20-Jan</td>
+                                <td>15:45</td>
+                                <td>17:15</td>
+                                <td style="width:130px;color:gray;">Occupied</td>
+                                <td style="width:165px;"><button disabled class="reserve-btn">Reserve</button></td>
+                            </tr>
+                            <tr>
+                                <td>20-Jan</td>
+                                <td>17:15</td>
+                                <td>18:45</td>
+                                <td style="width:130px;color: firebrick;">Not occupied</td>
+                                <td style="width:165px;"><button class="reserve-btn">Reserve</button></td>
+                            </tr>
+                            <tr>
+                                <td>20-Jan</td>
+                                <td>18:45</td>
+                                <td>20:15</td>
+                                <td style="width:130px;color:gray;">Occupied</td>
+                                <td style="width:165px;"><button disabled class="reserve-btn">Reserve</button></td>
+                            </tr>
+                            <tr>
+                                <td>20-Jan</td>
+                                <td>20:15</td>
+                                <td>21:45</td>
+                                <td style="width:130px; color:gray;">Occupied</td>
+                                <td style="width:165px;"><button disabled class="reserve-btn">Reserve</button></td>
+                            </tr>
+							<tr>
+								<td>20-Jan</td>
+                                <td>21:45</td>
+								<td>23:15</td>
+                                <td style="width:130px;color: firebrick;">Not occupied</td>
+                                <td style="width:165px;"><button class="reserve-btn">Reserve</button></td>
+							</tr>
+                            <tr>
+                                <td>21-Jan</td>
+                                <td>15:45</td>
+                                <td>17:15</td>
+                                <td style="width:130px;color:gray;">Occupied</td>
+                                <td style="width:165px;"><button disabled class="reserve-btn">Reserve</button></td>
+                            </tr>
+                            <tr>
+                                <td>21-Jan</td>
+                                <td>17:15</td>
+                                <td>18:45</td>
+                                <td style="width:130px;color: firebrick;">Not occupied</td>
+                                <td style="width:165px;"><button class="reserve-btn">Reserve</button></td>
+                            </tr>
+                            <tr>
+                                <td>21-Jan</td>
+                                <td>18:45</td>
+                                <td>20:15</td>
+                                <td style="width:130px;color:gray;">Occupied</td>
+                                <td style="width:165px;"><button disabled class="reserve-btn">Reserve</button></td>
+                            </tr>
+                            <tr>
+                                <td>21-Jan</td>
+                                <td>20:15</td>
+                                <td>21:45</td>
+                                <td style="width:130px; color:gray;">Occupied</td>
+                                <td style="width:165px;"><button disabled class="reserve-btn">Reserve</button></td>
+                            </tr>
+                            <tr>
+                                <td>21-Jan</td>
+                                <td>21:45</td>
+                                <td>23:15</td>
+                                <td style="width:130px;color: firebrick;">Not occupied</td>
+                                <td style="width:165px;"><button class="reserve-btn">Reserve</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="line"></div>
