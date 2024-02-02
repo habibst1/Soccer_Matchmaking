@@ -125,14 +125,14 @@ body {
 
 
     /*testhbib pour stade*/
-.card {
+.stadium-card {
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease-in-out;
 }
 
-    .card:hover {
+    .stadium-card:hover {
         transform: scale(1.05);
     }
 
@@ -145,3 +145,34 @@ body {
     padding: 1rem;
 }
 
+.stadium{
+
+}
+/*-----------------------*/
+::-webkit-scrollbar {
+     height:1rem;
+     width:.5rem;
+}
+
+    ::-webkit-scrollbar:horizontal {
+        height: .5rem;
+        width: 1rem
+    }
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 9999px
+}
+
+::-webkit-scrollbar-thumb {
+    --tw-border-opacity: 1;
+    background-color: rgba(217,217,227,.8);
+    border-color: rgba(255,255,255,var(--tw-border-opacity));
+    border-radius: 9999px;
+    border-width: 1px
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        --tw-bg-opacity: 1;
+        background-color: rgba(217,217,227,var(--tw-bg-opacity))
+    }
