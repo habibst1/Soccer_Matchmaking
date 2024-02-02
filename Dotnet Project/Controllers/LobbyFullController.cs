@@ -6,15 +6,24 @@ using System.Linq;
 using System.Security.Claims;
 using Dotnet_Project.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Dotnet_Project.Utility;
+using System.Collections.Specialized;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
+[Authorize(Roles = SD.Role_Player)]
 public class LobbyFullController: Controller
 {
     private readonly AppDbContext _context;
+    private readonly UserManager<IdentityUser> _userManager;
 
-    public LobbyFullController(AppDbContext context)
+    public LobbyFullController(AppDbContext context , UserManager<IdentityUser> userManager)
     {
         _context = context;
+        _userManager = userManager;
     }
+
+
 
     // GET: /LobbyFull/Create
     public IActionResult Create()
@@ -25,38 +34,41 @@ public class LobbyFullController: Controller
         // Pass all stadiums to the view
         ViewBag.Stadiums = new SelectList(allStadiums, "Id", "Name");
 
-        //HEDHI COMMENTED 5ATER MARAKA7NACH LOGIN
+
         /* Retrieve the currently logged-in player (admin)      UPPPP: Hedhi na3mloha ba3d manrak7ou Login wkol donc chna3mel 
          wa7da depannage ta7tha
-       
-         var adminPlayerId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Assuming ID is stored in "ClaimTypes.NameIdentifier"
+       */
+        var adminPlayerId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Assuming ID is stored in "ClaimTypes.NameIdentifier"
+
+        var adminPlayer = _context.Users.Include(a => a.LinkedLobby).FirstOrDefault(p => p.Id == adminPlayerId);
 
         if (adminPlayerId == null)
         {
             // Handle the case where the user is not logged in
-            return RedirectToAction("Login"); // Redirect to login or handle it accordingly
+            return Redirect("/Identity/Account/Login"); // Redirect to login or handle it accordingly
         }
-      
+
+        if (adminPlayer.LinkedLobby != null) return RedirectToAction("Index", "Home"); // w maaha error (you are already in a lobby)
+
         // Retrieve available players (excluding the admin player)
-        var availablePlayers = _context.Players
-            .Where(p => p.LinkedLobby == null && p.ID != int.Parse(adminPlayerId))
-            .ToList();
+        var availablePlayers = _context.Users
+                                .Where(p => p.LinkedLobby == null && p.Id != adminPlayerId)
+                                .ToList();
+
+        // Filter the results in memory (client-side) using LINQ to Objects
+        var filteredPlayers = availablePlayers.Where(p => _userManager.IsInRoleAsync(p, "Player").Result).ToList();
+
+
 
         // Pass available players to the view
-        ViewBag.AvailablePlayers = new MultiSelectList(availablePlayers, "ID", "Name");
-      */
-        //HEDHI JUST TA3WIDH LELLI FO9HA 
-        var availablePlayers = _context.Players
-            .Where(p => p.LinkedLobby == null)
-            .ToList();
-
-        // Pass available players to the view
-        ViewBag.AvailablePlayers = new MultiSelectList(availablePlayers, "ID", "Name");
+        ViewBag.AvailablePlayers = new MultiSelectList(filteredPlayers, "Id", "Name");
 
         return View();
+
     }
 
-    // GET: /LobbyTeams/GetTimeSlots?stadiumId={stadiumId}
+
+    // GET: /LobbyFull/GetTimeSlots?stadiumId={stadiumId}
     [HttpGet]
     public IActionResult GetTimeSlots(int stadiumId)
     {
@@ -69,10 +81,10 @@ public class LobbyFullController: Controller
         return PartialView("_TimeSlotOptionsPartial", timeSlots);
     }
 
-    // POST: /LobbyTeams/Create
+    // POST: /LobbyFull/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create(string lobbyName, int stadiumId, int timeSlotId, List<int> selectedPlayerIds)
+    public IActionResult Create(string lobbyName, int stadiumId, int timeSlotId, List<string> selectedPlayerIds)
     {
         // Add validation for lobbyName, stadiumId, timeSlotId, and selectedPlayerIds as needed
 
@@ -90,42 +102,31 @@ public class LobbyFullController: Controller
             // Handle invalid selection, perhaps redirect to the create page with an error message
             return RedirectToAction("Create");
         }
-        /*KIFKIF HEDHI COMMETED 5ATER LOGIN
-         // Retrieve the currently logged-in player (admin)
-         var adminPlayerId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Assuming ID is stored in "ClaimTypes.NameIdentifier"
 
-         if (adminPlayerId == null)
-         {
-             // Handle the case where the user is not logged in
-             return RedirectToAction("Login"); // Redirect to login or handle it accordingly
-         }
+        // Retrieve the currently logged-in player (admin)
 
-         var adminPlayer = _context.Players.FirstOrDefault(p => p.ID == int.Parse(adminPlayerId));
-        */
+        var adminPlayerId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Assuming ID is stored in "ClaimTypes.NameIdentifier"
+
+
+        var adminPlayer = _context.Users.Include(a => a.LinkedLobby).FirstOrDefault(p => p.Id == adminPlayerId);
+
         // Retrieve selected players
-        var selectedPlayers = _context.Players
-            .Where(p => selectedPlayerIds.Contains(p.ID))
+        var selectedPlayers = _context.Users
+            .Where(p => selectedPlayerIds.Contains(p.Id))
             .ToList();
 
         // Check if the number of selected players is valid
-        if (selectedPlayers.Count != 12)
+        if (selectedPlayers.Count() != 11)
         {
             // Handle invalid number of players, perhaps redirect to the create page with an error message
             return RedirectToAction("Create");
         }
 
         // Create lobby and join players using CreateLobby method
-        //ELLI COMMENTED TA7T HEDHA HIYA LSHIHA AMA 5ATER EL LOGIN AHAYKA 3ALA JNAB
-        //var newLobby = adminPlayer.CreateLobby(selectedTimeSlot, selectedPlayers, lobbyName, "LobbyTeam");
+     
+        var newLobby = adminPlayer.CreateLobby(selectedTimeSlot, selectedPlayers, lobbyName, "LobbyFull");
 
-        var newLobby = new Lobby(lobbyName, selectedTimeSlot, "LobbyFull");
-        
-        foreach (var player in selectedPlayers)
-        {
-            player.JoinLobby(newLobby);
-        }
 
-        
         if (newLobby.IsFull)
         {
         
@@ -139,7 +140,7 @@ public class LobbyFullController: Controller
 
                 if (otherlobby != newLobby)
                 {
-                    var linkedPlayers = _context.Players.Where(p => p.LinkedLobbyId == otherlobby.Id).ToList();
+                    var linkedPlayers = _context.Users.Where(p => p.LinkedLobbyId == otherlobby.Id).ToList();
             
                     foreach (var player in linkedPlayers)
                     {

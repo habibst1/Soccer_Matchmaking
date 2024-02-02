@@ -1,18 +1,17 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Dotnet_Project.Models
 {
-    public class Player
+    public class ApplicationUser : IdentityUser
     {
-        [Key]
-        public int ID { get; set; }
+        /* Things for Player */
+        public string? PhotoPath { get; set; }
+        public string? Adress {  get; set; }
 
-        public string EMail { get; set; }
-        public string mdp { get; set; }
-        public string PhotoPath { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public int number_wins { get; set; }
@@ -27,23 +26,8 @@ namespace Dotnet_Project.Models
 
         public bool IsAdmin { get; set; }
 
-        public Player() { }
 
-        public Player(string email, string mdp, string name, string surname, string photopath)
-        {
-            this.EMail = email;
-            this.mdp = mdp;
-            this.Name = name;
-            this.Surname = surname;
-            this.PhotoPath = photopath;
-            this.number_wins = 0;
-            this.number_losses = 0;
-            this.number_draws = 0;
-            this.IsAdmin = false;
-            this.LinkedLobby = null;
-        }
-
-        public Lobby CreateLobby(Time_Slot t, List<Player> players, string Name, string type)
+        public Lobby CreateLobby(Time_Slot t, List<ApplicationUser> players, string Name, string type)
         {
             if (this.LinkedLobby == null && !t.occupancy)
             {
@@ -51,10 +35,16 @@ namespace Dotnet_Project.Models
 
                 this.IsAdmin = true;
 
-                foreach (Player player in players)
-                {
+                this.JoinLobby(L);
+
+                if(players != null) { 
+                    foreach (ApplicationUser player in players)
+                    {
                     player.JoinLobby(L);
+                    }
                 }
+
+
                 return (L);
             }
             else return (null);
@@ -81,6 +71,36 @@ namespace Dotnet_Project.Models
 
                 
             }
+        }
+
+
+
+
+        /* Things For Stade Owner*/
+        public int? StadeId { get; set; }
+        public Stadium? stade { get; set; }
+
+        public void createStadium(string name, string description, string localisation, string exactlocalisation, string phtopath, string photopath2)
+        {
+            if (this.stade == null)
+            {
+                Stadium S = new Stadium(name, description, localisation, exactlocalisation, phtopath, photopath2);
+                this.stade = S;
+                this.StadeId = S.Id;
+            }
+
+        }
+
+        public void add_time_slot(Time_Slot t)
+        {
+            stade.Times.Add(t);
+
+        }
+
+        public void remove_time_slot(Time_Slot t)
+        {
+            stade.Times.Remove(t);
+
         }
     }
 }

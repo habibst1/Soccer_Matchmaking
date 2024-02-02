@@ -15,11 +15,14 @@ namespace Dotnet_Project.Models
         public int TimeSlotId { get; set; }
         public Time_Slot TimeSlot { get; set; }
 
-        public List<Player> Players { get; set; } // Consolidated list for all players in the lobby
+        public List<ApplicationUser> Players { get; set; } // Consolidated list for all players in the lobby
 
-        public List<Player> Team1 => Players.Where(p => p.TeamNumber == 1).ToList();
+        public List<ApplicationUser> Team1 => Players.Where(p => p.TeamNumber == 1).ToList();
 
-        public List<Player> Team2 => Players.Where(p => p.TeamNumber == 2).ToList();
+        public List<ApplicationUser> Team2 => Players.Where(p => p.TeamNumber == 2).ToList();
+
+        public int? team1_score { get; set; }
+        public int? team2_score { get; set; }
 
 
         public string Type { get; set; }
@@ -28,7 +31,7 @@ namespace Dotnet_Project.Models
 
         public Lobby()
         {   
-            Players = new List<Player>();
+            Players = new List<ApplicationUser>();
         }
 
         public Lobby(string name, Time_Slot t, string type)
@@ -38,7 +41,7 @@ namespace Dotnet_Project.Models
             this.Type = type;
             this.IsFull = false;
             this.IsFinished = false;
-            this.Players = new List<Player>();
+            this.Players = new List<ApplicationUser>();
         }
 
            //FAZAT L REMOVE N7OTTOUHOM FEL CONTROLLER W BARRA

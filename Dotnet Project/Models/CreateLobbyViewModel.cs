@@ -14,5 +14,5 @@ public class CreateLobbyViewModel
     public int TimeSlotId { get; set; }
 
     [Required(ErrorMessage = "Please select players.")]
-    public List<int> SelectedPlayerIds { get; set; }
+    public List<string> SelectedPlayerIds { get; set; }
 }

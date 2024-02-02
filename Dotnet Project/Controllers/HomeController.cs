@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Dotnet_Project.Models;
 using Microsoft.AspNetCore.Mvc;
+using Dotnet_Project.Utility;
 
 namespace Dotnet_Project.Controllers
 {
@@ -15,7 +16,12 @@ namespace Dotnet_Project.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (User.IsInRole(SD.Role_Player))
+                return View();
+            else if (User.IsInRole(SD.Role_Stade_Owner))
+                return RedirectToAction("Index", "Profile");
+            else
+                return Redirect("/Identity/Account/Login");
         }
 
         public IActionResult Privacy()
