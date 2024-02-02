@@ -52,5 +52,9 @@ namespace Dotnet_Project.Controllers
 
             return View(profile);
         }
+        public IActionResult MyStadium()
+        {
+            return View();
+        }
     }
 }
