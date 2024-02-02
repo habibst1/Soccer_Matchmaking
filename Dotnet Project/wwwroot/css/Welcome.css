@@ -1,0 +1,25 @@
+﻿@import "themes.css";
+.myfont {
+    font-family: 'Roboto', sans-serif;
+} 
+.welcome-btn {
+    width: 95%;
+    border-radius: 7px;
+    font-size: 20px;
+    height: 49px;
+    background-color: var(--color1);
+    border: 1px solid black;
+}
+    .welcome-btn:hover {
+        background-color: var(--color1-lighter);
+    }
+.typping-span {
+    border-right: .05em solid;
+    animation: caret 1s steps(1) infinite;
+}
+
+@keyframes caret {
+    50% {
+        border-color: transparent;
+    }
+}

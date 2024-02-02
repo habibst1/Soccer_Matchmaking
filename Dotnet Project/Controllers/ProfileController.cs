@@ -56,5 +56,9 @@ namespace Dotnet_Project.Controllers
         {
             return View();
         }
-    }
+		public IActionResult Welcome()
+		{
+			return View();
+		}
+	}
 }

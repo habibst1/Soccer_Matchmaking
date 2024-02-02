@@ -2,7 +2,7 @@
     /* Define your theme color variables */
     --cardlobby-height: 400px;
     --cardlobby-width: calc(var(--cardlobby-height) / 1.5);
-    --color1: #F6EFEE;
+    --color1: #f3e7e5;
     --color1-lighter: #fafafa;
     --color2: #2A3F1F;
     --color3: #0E1C36;
@@ -10,7 +10,7 @@
     --modalColor: #060d187c;
     --color4: #EBC60F;
     --color5: #7785AC;
-    --color6: #ff0046 ;
+    --color6: #ff0046;
     --header_background_color: #333;
     --header_text_color: #FDFDFD;
     --alternate_row_background_color: #DDD;
