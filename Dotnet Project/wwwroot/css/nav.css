@@ -56,7 +56,7 @@
     .link:hover {
         background-color: var(--color2);
         color: var(--color1) !important;
-        transition: transform 0.3s ease;
+        transition: all 0.5s;
         cursor: pointer;
         text-decoration: none;
     }
@@ -65,3 +65,27 @@ a.active {
     color: var(--color1) !important;
     background-color: var(--color2) !important;
 }
+.logout-btn {
+    margin-left: 25px;
+    margin-right: 25px;
+    padding: 5px 10px 12px 10px !important;
+    color: var(--color2) !important;
+    font-size: 20px!important;
+    font-weight: 700!important;
+}
+.logout-nav {
+    border-right: thick double var(--color4);
+    border-radius: 4px;
+}
+    .logout-nav:hover {
+        background-color: var(--color2);
+        color: var(--color1) !important;
+        transition: all 0.5s;
+        cursor: pointer;
+    }
+        .logout-nav:hover .logout-btn {
+            background-color: var(--color2);
+            color: var(--color1) !important;
+            transition: all 0.5s;
+            cursor: pointer;
+        }
