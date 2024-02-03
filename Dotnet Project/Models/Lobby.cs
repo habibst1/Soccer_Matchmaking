@@ -29,10 +29,7 @@ namespace Dotnet_Project.Models
         public bool IsFull { get; set; }
         public bool IsFinished { get; set; }
 
-        public Lobby()
-        {   
-            Players = new List<ApplicationUser>();
-        }
+     
 
         public Lobby(string name, Time_Slot t, string type)
         {
@@ -44,7 +41,7 @@ namespace Dotnet_Project.Models
             this.Players = new List<ApplicationUser>();
         }
 
-           //FAZAT L REMOVE N7OTTOUHOM FEL CONTROLLER W BARRA
+        
  
     }
 }   

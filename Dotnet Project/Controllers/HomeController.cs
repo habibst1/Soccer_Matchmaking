@@ -19,10 +19,18 @@ namespace Dotnet_Project.Controllers
             if (User.IsInRole(SD.Role_Player))
                 return View();
             else if (User.IsInRole(SD.Role_Stade_Owner))
-                return RedirectToAction("Index", "Profile");
+                return RedirectToAction("MyStadium", "Profile");
             else
-                return Redirect("/Identity/Account/Login");
+                return RedirectToAction("Welcome");
         }
+
+
+        public IActionResult Welcome() 
+        {
+            return View(); 
+        }
+
+
 
         public IActionResult Privacy()
         {

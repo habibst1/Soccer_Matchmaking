@@ -45,7 +45,7 @@ public class LobbyFullController: Controller
         if (adminPlayerId == null)
         {
             // Handle the case where the user is not logged in
-            return Redirect("/Identity/Account/Login"); // Redirect to login or handle it accordingly
+            return RedirectToAction("Welcome", "Home"); ; // Redirect to login or handle it accordingly
         }
 
         if (adminPlayer.LinkedLobby != null) return RedirectToAction("Index", "Home"); // w maaha error (you are already in a lobby)

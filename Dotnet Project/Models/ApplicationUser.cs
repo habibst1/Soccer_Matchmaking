@@ -80,14 +80,20 @@ namespace Dotnet_Project.Models
         public int? StadeId { get; set; }
         public Stadium? stade { get; set; }
 
-        public void createStadium(string name, string description, string localisation, string exactlocalisation, string phtopath, string photopath2)
+        public Stadium createStadium(string name, string description, string localisation, string exactlocalisation, string phtopath, string photopath2 , int prix , int nbminutes)
         {
             if (this.stade == null)
             {
-                Stadium S = new Stadium(name, description, localisation, exactlocalisation, phtopath, photopath2);
+                Stadium S = new Stadium(name, description, localisation, exactlocalisation, phtopath, photopath2 , prix , nbminutes);
                 this.stade = S;
                 this.StadeId = S.Id;
+                return (S);
             }
+            else
+            {
+                return null;
+            }
+            
 
         }
 
