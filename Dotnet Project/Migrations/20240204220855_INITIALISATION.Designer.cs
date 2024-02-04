@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dotnet_Project.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240202232906_mydatabase")]
-    partial class mydatabase
+    [Migration("20240204220855_INITIALISATION")]
+    partial class INITIALISATION
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,6 +50,12 @@ namespace Dotnet_Project.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("adminId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("playerids")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("team1_score")
                         .HasColumnType("int");
 
@@ -59,6 +65,8 @@ namespace Dotnet_Project.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("TimeSlotId");
+
+                    b.HasIndex("adminId");
 
                     b.ToTable("Lobbies");
                 });
@@ -95,81 +103,15 @@ namespace Dotnet_Project.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("nbminutes")
+                        .HasColumnType("int");
+
+                    b.Property<int>("prix")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Stadiums");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "CHOUF 3CHIRI A9WA STADE F TUNIS KAMLA W YOUFA LA7DITH",
-                            Localisation = "Monastir",
-                            Name = "May Land",
-                            PhotoPath = "Images/StadeMay.png",
-                            PhotoPath2 = "Images/StadeMay2.png",
-                            exactLocalisation = "https://maps.app.goo.gl/qfwmuN7oYvZAHxgo6"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "A9WA STADE FEL 3ASSMA",
-                            Localisation = "Route De Sidi Younes El Borj",
-                            Name = "Five Stars",
-                            PhotoPath = "Images/StadeFive.png",
-                            PhotoPath2 = "/Images/StadeFive2.png",
-                            exactLocalisation = "https://maps.app.goo.gl/JuCkdWuti8xPFwsE9"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "A5YEB STADE F TUNIS KAMLA",
-                            Localisation = "Charguia",
-                            Name = "Stade Charguia",
-                            PhotoPath = "Images/StadeCharguia.png",
-                            PhotoPath2 = "Images/StadeCharguia2.png",
-                            exactLocalisation = "https://maps.app.goo.gl/SYJ6qQaWXY9MkE7XA"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Description = "AWEL STADE F MAHDIA",
-                            Localisation = "Mahdia",
-                            Name = "MStadium",
-                            PhotoPath = "Images/MStadium.png",
-                            PhotoPath2 = "Images/MStadium2.png",
-                            exactLocalisation = "https://maps.app.goo.gl/k5BGdbc26YHUTnsy6"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Description = "A7SSEN STADE F MAHDIA",
-                            Localisation = "Rejiche",
-                            Name = "Parc Des Princes",
-                            PhotoPath = "Images/PDP.png",
-                            PhotoPath2 = "Images/PDP2.png",
-                            exactLocalisation = "https://maps.app.goo.gl/YqEoZrBDytUnh2Te9"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Description = "STADE F WOST 7OMMA T5AWEF ",
-                            Localisation = "Monastir",
-                            Name = "Al Kahna",
-                            PhotoPath = "Images/Kahna.png",
-                            PhotoPath2 = "Images/Kahna2.png",
-                            exactLocalisation = "https://maps.app.goo.gl/pHnjSerugXFYSRE39"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Description = "EKTICHAF JDID",
-                            Localisation = "Monastir",
-                            Name = "Stade Sahara Beach",
-                            PhotoPath = "Images/Sahara.png",
-                            PhotoPath2 = "Images/Sahara2.png",
-                            exactLocalisation = "https://maps.app.goo.gl/UGkynYQKBK7Mai9U6"
-                        });
                 });
 
             modelBuilder.Entity("Dotnet_Project.Models.Time_Slot", b =>
@@ -197,56 +139,6 @@ namespace Dotnet_Project.Migrations
                     b.HasIndex("StadiumId");
 
                     b.ToTable("TimeSlots");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            StadiumId = 1,
-                            end_time = new DateTime(2024, 2, 3, 1, 59, 6, 352, DateTimeKind.Local).AddTicks(8173),
-                            occupancy = true,
-                            start_time = new DateTime(2024, 2, 3, 0, 29, 6, 352, DateTimeKind.Local).AddTicks(8112)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            StadiumId = 2,
-                            end_time = new DateTime(2024, 2, 3, 1, 59, 6, 352, DateTimeKind.Local).AddTicks(8182),
-                            occupancy = false,
-                            start_time = new DateTime(2024, 2, 3, 0, 29, 6, 352, DateTimeKind.Local).AddTicks(8180)
-                        },
-                        new
-                        {
-                            Id = 3,
-                            StadiumId = 3,
-                            end_time = new DateTime(2024, 2, 3, 1, 59, 6, 352, DateTimeKind.Local).AddTicks(8186),
-                            occupancy = false,
-                            start_time = new DateTime(2024, 2, 3, 0, 29, 6, 352, DateTimeKind.Local).AddTicks(8185)
-                        },
-                        new
-                        {
-                            Id = 4,
-                            StadiumId = 1,
-                            end_time = new DateTime(2024, 2, 3, 3, 59, 6, 352, DateTimeKind.Local).AddTicks(8190),
-                            occupancy = false,
-                            start_time = new DateTime(2024, 2, 3, 2, 29, 6, 352, DateTimeKind.Local).AddTicks(8188)
-                        },
-                        new
-                        {
-                            Id = 5,
-                            StadiumId = 2,
-                            end_time = new DateTime(2024, 2, 3, 3, 59, 6, 352, DateTimeKind.Local).AddTicks(8194),
-                            occupancy = false,
-                            start_time = new DateTime(2024, 2, 3, 2, 29, 6, 352, DateTimeKind.Local).AddTicks(8192)
-                        },
-                        new
-                        {
-                            Id = 6,
-                            StadiumId = 3,
-                            end_time = new DateTime(2024, 2, 3, 3, 59, 6, 352, DateTimeKind.Local).AddTicks(8198),
-                            occupancy = false,
-                            start_time = new DateTime(2024, 2, 3, 2, 29, 6, 352, DateTimeKind.Local).AddTicks(8196)
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -462,9 +354,6 @@ namespace Dotnet_Project.Migrations
                     b.Property<string>("Adress")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsAdmin")
-                        .HasColumnType("bit");
-
                     b.Property<int?>("LinkedLobbyId")
                         .HasColumnType("int");
 
@@ -472,6 +361,9 @@ namespace Dotnet_Project.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("LobbyId1")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("LobbyId2")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -506,6 +398,8 @@ namespace Dotnet_Project.Migrations
 
                     b.HasIndex("LobbyId1");
 
+                    b.HasIndex("LobbyId2");
+
                     b.HasIndex("StadeId");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
@@ -519,7 +413,13 @@ namespace Dotnet_Project.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("Dotnet_Project.Models.ApplicationUser", "admin")
+                        .WithMany()
+                        .HasForeignKey("adminId");
+
                     b.Navigation("TimeSlot");
+
+                    b.Navigation("admin");
                 });
 
             modelBuilder.Entity("Dotnet_Project.Models.Time_Slot", b =>
@@ -587,17 +487,20 @@ namespace Dotnet_Project.Migrations
             modelBuilder.Entity("Dotnet_Project.Models.ApplicationUser", b =>
                 {
                     b.HasOne("Dotnet_Project.Models.Lobby", "LinkedLobby")
-                        .WithMany("Players")
-                        .HasForeignKey("LinkedLobbyId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .WithMany()
+                        .HasForeignKey("LinkedLobbyId");
 
                     b.HasOne("Dotnet_Project.Models.Lobby", null)
-                        .WithMany("Team1")
+                        .WithMany("Players")
                         .HasForeignKey("LobbyId");
 
                     b.HasOne("Dotnet_Project.Models.Lobby", null)
-                        .WithMany("Team2")
+                        .WithMany("Team1")
                         .HasForeignKey("LobbyId1");
+
+                    b.HasOne("Dotnet_Project.Models.Lobby", null)
+                        .WithMany("Team2")
+                        .HasForeignKey("LobbyId2");
 
                     b.HasOne("Dotnet_Project.Models.Stadium", "stade")
                         .WithMany()

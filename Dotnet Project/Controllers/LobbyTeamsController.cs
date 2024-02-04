@@ -10,6 +10,7 @@ using Dotnet_Project.Utility;
 using System.Collections.Specialized;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Dotnet_Project.Models.ViewModels;
 
 [Authorize(Roles = SD.Role_Player)]
 public class LobbyTeamsController : Controller
@@ -43,7 +44,7 @@ public class LobbyTeamsController : Controller
         if (adminPlayerId == null)
         {
             // Handle the case where the user is not logged in
-            return Redirect("/Identity/Account/Login"); // Redirect to login or handle it accordingly
+            return RedirectToAction("Welcome", "Home"); // Redirect to login or handle it accordingly
         }
 
         if (adminPlayer.LinkedLobby != null) return RedirectToAction("Index", "Home"); // w maaha error (you are already in a lobby)
@@ -167,8 +168,13 @@ public class LobbyTeamsController : Controller
             .Where(p => p.LinkedLobby == null && p.Id != loggedInPlayerId)
             .ToList();
 
+        // Filter the results in memory (client-side) using LINQ to Objects
+        var filteredPlayers = availablePlayers.Where(p => _userManager.IsInRoleAsync(p, "Player").Result).ToList();
+
+
+
         // Pass available players to the view
-        ViewBag.AvailablePlayers = new MultiSelectList(availablePlayers, "Id", "Name");
+        ViewBag.AvailablePlayers = new MultiSelectList(filteredPlayers, "Id", "Name");
 
         return View();
 
@@ -210,7 +216,7 @@ public class LobbyTeamsController : Controller
         if (loggedInPlayer == null)
         {
             // Handle the case where the logged-in player is not found
-            return RedirectToAction("Login"); // Redirect to login or handle it accordingly
+            return RedirectToAction("Welcome", "Home"); // Redirect to login or handle it accordingly
         }
 
         if (loggedInPlayer.LinkedLobby != null) return RedirectToAction("Index", "Home"); //w maaha error (you are already in a lobby)
@@ -272,8 +278,7 @@ public class LobbyTeamsController : Controller
                     foreach (var player in linkedPlayers)
                     {
                         player.LinkedLobbyId = null;
-                        if (player.IsAdmin) player.IsAdmin = false;
-                        
+                        otherlobby.admin = null;    
                     }
 
                     selectedLobby.TimeSlot.LinkedLobbies.Remove(otherlobby);

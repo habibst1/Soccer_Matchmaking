@@ -25,11 +25,11 @@ namespace Dotnet_Project.Models
             this.LinkedLobbies = new List<Lobby>();
         }
 
-        public Time_Slot(Stadium stadium, DateTime hour)
+        public Time_Slot(Stadium stadium, DateTime hour , DateTime hour2)
         {
             this.stadium = stadium; 
             this.start_time = hour;
-            this.end_time = hour.AddHours(1).AddMinutes(30);
+            this.end_time = hour2;
             this.LinkedLobbies = new List<Lobby>();
             this.occupancy = false;
         }

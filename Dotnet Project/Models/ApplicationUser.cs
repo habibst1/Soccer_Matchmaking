@@ -24,7 +24,6 @@ namespace Dotnet_Project.Models
         public int TeamNumber { get; set; } // Add a property to specify the team number
 
 
-        public bool IsAdmin { get; set; }
 
 
         public Lobby CreateLobby(Time_Slot t, List<ApplicationUser> players, string Name, string type)
@@ -33,7 +32,7 @@ namespace Dotnet_Project.Models
             {
                 Lobby L = new Lobby(Name, t, type);
 
-                this.IsAdmin = true;
+                L.admin = this;
 
                 this.JoinLobby(L);
 
@@ -80,14 +79,20 @@ namespace Dotnet_Project.Models
         public int? StadeId { get; set; }
         public Stadium? stade { get; set; }
 
-        public void createStadium(string name, string description, string localisation, string exactlocalisation, string phtopath, string photopath2)
+        public Stadium createStadium(string name, string description, string localisation, string exactlocalisation, string phtopath, string photopath2 , int prix , int nbminutes)
         {
             if (this.stade == null)
             {
-                Stadium S = new Stadium(name, description, localisation, exactlocalisation, phtopath, photopath2);
+                Stadium S = new Stadium(name, description, localisation, exactlocalisation, phtopath, photopath2 , prix , nbminutes);
                 this.stade = S;
                 this.StadeId = S.Id;
+                return (S);
             }
+            else
+            {
+                return null;
+            }
+            
 
         }
 

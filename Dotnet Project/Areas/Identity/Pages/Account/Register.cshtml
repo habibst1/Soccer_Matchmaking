@@ -70,7 +70,7 @@
                 <div class="card-body p-4" style="background-color: var(--color1);border-radius: 0 0 10px 10px;">
         <div class="row">
                 <div class="col-md-12">
-                    <form id="registerForm" class="row" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <form id="registerForm" class="row" asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
                                 <h3 class="border-bottom pb-3 text-secondary text-center" style="margin-bottom: 1rem!important;">Create a new account.</h3>
                         <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
                                 <div class="form-floating col-md-12" style="margin-bottom: 9px;">
@@ -104,9 +104,9 @@
                         </div>
                         
                         <div class="form-floating col-md-6" style="margin-bottom: 9px;">
-                        <input asp-for="Input.PhotoPath" class="form-control" style="height: calc(4.5rem + -26px)!important;" placeholder="img.jpg" />
-                        <label asp-for="Input.PhotoPath" class="ms-2 text-muted" style="padding: 9px.75rem!important;">Photo Path</label>
-                        <span asp-validation-for="Input.PhotoPath" class="text-danger"></span>
+                        <input asp-for="Input.ProfilePhoto" class="form-control" style="height: calc(4.5rem + -26px)!important;" placeholder="img.jpg" type="file"/>
+                        <label asp-for="Input.ProfilePhoto" class="ms-2 text-muted" style="padding: 9px.75rem!important;">Photo Path</label>
+                        <span asp-validation-for="Input.ProfilePhoto" class="text-danger"></span>
                         </div>
                         
                         <div class="form-floating col-md-6" style="margin-bottom: 9px;">
