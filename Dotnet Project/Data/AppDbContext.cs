@@ -19,9 +19,16 @@ namespace Dotnet_Project.Models
         {
             modelBuilder.Entity<ApplicationUser>()
                 .HasOne(p => p.LinkedLobby)
-                .WithMany(l => l.Players)
-                .HasForeignKey(p => p.LinkedLobbyId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .WithMany()
+                .HasForeignKey(p => p.LinkedLobbyId);
+
+
+
+            modelBuilder.Entity<Lobby>()
+                .HasOne(l => l.admin)
+                .WithMany()
+                .HasForeignKey(l => l.adminId);
+
 
             modelBuilder.Entity<Lobby>()
                 .HasOne(l => l.TimeSlot)
@@ -47,10 +54,7 @@ namespace Dotnet_Project.Models
                 .HasForeignKey(so => so.StadeId);
 
             modelBuilder.Entity<Lobby>()
-                .HasMany(l => l.Players)
-                .WithOne(p => p.LinkedLobby)
-                .HasForeignKey(p => p.LinkedLobbyId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasMany(l => l.Players);
 
             modelBuilder.Entity<Time_Slot>()
                 .HasMany(l => l.LinkedLobbies)
@@ -106,7 +110,7 @@ namespace Dotnet_Project.Models
           */
 
             // Seed Stadiums
-            modelBuilder.Entity<Stadium>().HasData(
+          /*  modelBuilder.Entity<Stadium>().HasData(
                 new Stadium { Id = 1, Name = "May Land", Description = "CHOUF 3CHIRI A9WA STADE F TUNIS KAMLA W YOUFA LA7DITH", Localisation = "Monastir", exactLocalisation = "https://maps.app.goo.gl/qfwmuN7oYvZAHxgo6", PhotoPath = "Images/StadeMay.png", PhotoPath2 = "Images/StadeMay2.png" },
                 new Stadium { Id = 2, Name = "Five Stars", Description = "A9WA STADE FEL 3ASSMA", Localisation = "Route De Sidi Younes El Borj", exactLocalisation = "https://maps.app.goo.gl/JuCkdWuti8xPFwsE9", PhotoPath = "Images/StadeFive.png", PhotoPath2 = "/Images/StadeFive2.png" },
                 new Stadium { Id = 3, Name = "Stade Charguia", Description = "A5YEB STADE F TUNIS KAMLA", Localisation = "Charguia", exactLocalisation = "https://maps.app.goo.gl/SYJ6qQaWXY9MkE7XA", PhotoPath = "Images/StadeCharguia.png", PhotoPath2 = "Images/StadeCharguia2.png" },
@@ -115,9 +119,9 @@ namespace Dotnet_Project.Models
                 new Stadium { Id = 6, Name = "Al Kahna", Description = "STADE F WOST 7OMMA T5AWEF ", Localisation = "Monastir", exactLocalisation = "https://maps.app.goo.gl/pHnjSerugXFYSRE39", PhotoPath = "Images/Kahna.png", PhotoPath2 = "Images/Kahna2.png" },
                 new Stadium { Id = 7, Name = "Stade Sahara Beach", Description = "EKTICHAF JDID", Localisation = "Monastir", exactLocalisation = "https://maps.app.goo.gl/UGkynYQKBK7Mai9U6", PhotoPath = "Images/Sahara.png", PhotoPath2 = "Images/Sahara2.png" }
             );
+          */
 
-
-
+/*
             // Seed Time Slots
             modelBuilder.Entity<Time_Slot>().HasData(
                 new Time_Slot { Id = 1, occupancy = true, StadiumId = 1, start_time = DateTime.Now, end_time = DateTime.Now.AddHours(1).AddMinutes(30) },

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Dotnet_Project.Models
+namespace Dotnet_Project.Models.ViewModels
 {
     public class JoinViewModel
     {

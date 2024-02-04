@@ -4,6 +4,7 @@ using Dotnet_Project.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dotnet_Project.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240204090042_letsgo")]
+    partial class letsgo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -357,9 +360,6 @@ namespace Dotnet_Project.Migrations
                     b.Property<int?>("LobbyId1")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LobbyId2")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -391,8 +391,6 @@ namespace Dotnet_Project.Migrations
                     b.HasIndex("LobbyId");
 
                     b.HasIndex("LobbyId1");
-
-                    b.HasIndex("LobbyId2");
 
                     b.HasIndex("StadeId");
 
@@ -481,20 +479,17 @@ namespace Dotnet_Project.Migrations
             modelBuilder.Entity("Dotnet_Project.Models.ApplicationUser", b =>
                 {
                     b.HasOne("Dotnet_Project.Models.Lobby", "LinkedLobby")
-                        .WithMany()
-                        .HasForeignKey("LinkedLobbyId");
-
-                    b.HasOne("Dotnet_Project.Models.Lobby", null)
                         .WithMany("Players")
-                        .HasForeignKey("LobbyId");
+                        .HasForeignKey("LinkedLobbyId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Dotnet_Project.Models.Lobby", null)
                         .WithMany("Team1")
-                        .HasForeignKey("LobbyId1");
+                        .HasForeignKey("LobbyId");
 
                     b.HasOne("Dotnet_Project.Models.Lobby", null)
                         .WithMany("Team2")
-                        .HasForeignKey("LobbyId2");
+                        .HasForeignKey("LobbyId1");
 
                     b.HasOne("Dotnet_Project.Models.Stadium", "stade")
                         .WithMany()

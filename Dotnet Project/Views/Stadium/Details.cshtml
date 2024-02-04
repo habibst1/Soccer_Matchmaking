@@ -28,11 +28,18 @@
                 <ul class="time-slots-list">
                     @foreach (var timeSlot in Model.Times)
                     {
-                        <li class="time-slot">
-                            <strong>@timeSlot.get_match_time()</strong>
-                        </li>
-                    }
-                </ul>
+                            @if (!timeSlot.occupancy)
+                            {
+                                <li class="time-slot">
+                                    <strong>@timeSlot.get_match_time()</strong>
+                                </li>
+                            }
+                     }
+                        @if (Model.Times.Where(t => !t.occupancy).Count() == 0)
+                        {
+                            <h4>Desolé il n'y a aucun temps libre pour jouer </h4>
+                        }
+                    </ul>
             </div>
                 <div class="location-card">
                     <a style="float:left; display: inline-block;"><strong>Location:</strong> @Model.Localisation</a>

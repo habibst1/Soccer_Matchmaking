@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Server.IIS.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Media;
 
 namespace Dotnet_Project.Models
 {
@@ -11,6 +13,9 @@ namespace Dotnet_Project.Models
         public int Id { get; set; }
 
         public string Name { get; set; }
+
+        public string? adminId { get; set; }
+        public ApplicationUser? admin { get; set; }
 
         public int TimeSlotId { get; set; }
         public Time_Slot TimeSlot { get; set; }
@@ -30,6 +35,10 @@ namespace Dotnet_Project.Models
         public bool IsFinished { get; set; }
 
      
+        public Lobby()
+        {
+            this.Players = new List<ApplicationUser>(); 
+        }
 
         public Lobby(string name, Time_Slot t, string type)
         {
@@ -39,6 +48,19 @@ namespace Dotnet_Project.Models
             this.IsFull = false;
             this.IsFinished = false;
             this.Players = new List<ApplicationUser>();
+        }
+
+        public void finishLobby()
+        {
+            if( this.TimeSlot != null && DateTime.Now >= TimeSlot.end_time)
+            {
+                this.IsFinished = true; 
+                foreach(ApplicationUser user in this.Players)
+                {
+                    user.LinkedLobby = null;
+
+                }
+            }
         }
 
         

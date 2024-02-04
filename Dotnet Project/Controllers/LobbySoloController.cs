@@ -10,6 +10,7 @@ using Dotnet_Project.Utility;
 using System.Collections.Specialized;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Dotnet_Project.Models.ViewModels;
 
 [Authorize(Roles = SD.Role_Player)]
 public class LobbySoloController : Controller
@@ -185,8 +186,7 @@ public class LobbySoloController : Controller
                     foreach (var player in linkedPlayers)
                     {
                         player.LinkedLobbyId = null;
-                        if (player.IsAdmin) player.IsAdmin = false;
-
+                        otherlobby.admin = null;
                     }
 
                     selectedLobby.TimeSlot.LinkedLobbies.Remove(otherlobby);

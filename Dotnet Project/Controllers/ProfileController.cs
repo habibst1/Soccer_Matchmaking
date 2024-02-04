@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Numerics;
 using System.Security.Claims;
+using Dotnet_Project.Models.ViewModels;
 
 namespace Dotnet_Project.Controllers
 {
@@ -87,7 +88,7 @@ namespace Dotnet_Project.Controllers
                                                .FirstOrDefault(p => p.Id == loggedInPlayerId);
 
 
-            var lobbieshistory = _context.Lobbies.Include(p => p.Team1).Include(p => p.Team2).Include(t => t.TimeSlot).ThenInclude(s => s.stadium)
+            var lobbieshistory = _context.Lobbies.Include(p=>p.Players).Include(p => p.Team1).Include(p => p.Team2).Include(t => t.TimeSlot).ThenInclude(s => s.stadium)
                                  .Where(lobby => lobby.Players.Any(player => player.Id == loggedInPlayerId) && lobby.IsFinished)
                                  .ToList();
 
@@ -136,8 +137,11 @@ namespace Dotnet_Project.Controllers
             var loggedInPlayer = _context.Users.Include(s => s.stade).ThenInclude(s => s.Times).FirstOrDefault(p => p.Id == loggedInPlayerId);
 
 
-            string photoFileName = _imageHelper.SaveStadiumPhoto(stadium.PhotoPath);
+            string photoFileName = _imageHelper.SaveStadiumPhoto(stadium.PhotoStade);
+            string photoFileName2 = _imageHelper.SaveStadiumPhoto(stadium.PhotoStade2);
+
             stadium.PhotoPath = photoFileName;
+            stadium.PhotoPath2 = photoFileName2;
 
             Stadium stade = loggedInPlayer.createStadium(stadium.Name, stadium.Description, stadium.Localisation, stadium.exactLocalisation, stadium.PhotoPath, stadium.PhotoPath2, stadium.prix, stadium.nbminutes);
 
@@ -168,6 +172,11 @@ namespace Dotnet_Project.Controllers
             DateTime startDateTime = DateTime.Parse($"{date.ToShortDateString()} {starttime}");
             DateTime endDateTime = DateTime.Parse($"{date.ToShortDateString()} {endtime}");
 
+            if(startDateTime <= DateTime.Now)
+            {
+               return  RedirectToAction("MyStadium");
+            }
+
             var timeSlot = new Time_Slot(loggedInPlayer.stade , startDateTime, endDateTime);
             loggedInPlayer.add_time_slot(timeSlot);
 
@@ -177,5 +186,32 @@ namespace Dotnet_Project.Controllers
             return RedirectToAction("MyStadium");
         }
 
-	}
+        [Authorize(Roles = SD.Role_Stade_Owner)]
+        [HttpPost]
+        public IActionResult ReserveTimeSlot(int id)
+        {
+            // Retrieve the logged-in player 
+            var loggedInPlayerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (loggedInPlayerId == null)
+            {
+                // Handle the case where the user is not logged in
+                return RedirectToAction("Welcome", "Home"); // Redirect to login or handle it accordingly
+            }
+
+            var loggedInPlayer = _context.Users.Include(s => s.stade).ThenInclude(s => s.Times).FirstOrDefault(p => p.Id == loggedInPlayerId);
+
+            var timeSlot = _context.TimeSlots.Include(s=> s.stadium).FirstOrDefault(t => t.Id == id);
+
+            timeSlot.occupancy = true;
+            
+
+
+            _context.SaveChanges();
+
+            return RedirectToAction("MyStadium");
+        }
+
+
+    }
 }

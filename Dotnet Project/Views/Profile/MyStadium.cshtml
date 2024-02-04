@@ -1,6 +1,7 @@
 ﻿@model ApplicationUser
 
 
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ti-icons@0.1.2/css/themify-icons.css">
 <div class="container profile-container">
@@ -8,7 +9,7 @@
         <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
             <div class="card border-0 shadow left-profile soft-border ps-0 pe-1 ">
                 <h2 class="bg-dark-blue-color edit-img light-color"><i class="bi bi-camera "></i></h2>
-                <img class="profile-img" src="https://static.onzemondial.com/8/2022/06/photos/327411/carre-manchester-city--haaland--mahrez--cucurella----le-onze-que-r%C3%AAve-d-aligner-guardiola-.jpg" alt="...">
+                <img class="profile-img" src="~/Images/@Model.PhotoPath" alt="...">
                 <div class="card-body p-1-9 p-xl-5">
                     <div class="mb-4">
                         <h3 class="h4 mb-0">@Model.Name @Model.Surname</h3>
@@ -18,7 +19,7 @@
                         <li class="mb-3"><a class="light-color" href="#!" style="display: flex;"><i class="fas fa-mobile-alt display-25 me-3 light-color" style="padding-left: 3px;margin-top: 3px;"></i>+216 @Model.PhoneNumber</a></li>
                         <li><a class="light-color" href="#!" style="display: flex;"><i class="fas fa-map-marker-alt display-25 me-3 light-color" style="padding-left: 2px;margin-top: 3px;"></i>@Model.Adress</a></li>
                     </ul>
-                    <h3 class="edit-inf"><i class="bi bi-pencil-fill"></i></h3>
+                    <h3 class="edit-inf"><a asp-area="Identity" asp-page="/Account/Manage/Index"  class="bi bi-pencil-fill text-white"></a></h3>
                 </div>
 
             </div>
@@ -57,12 +58,12 @@
                             </h2>
 
                             <div class="d-flex h-100 align-items-center" style="margin-block:10px;gap: 16px;">
-                                <img class="stadium-img" src="~/@Model.stade.PhotoPath" alt="...">
+                                <img class="stadium-img" src="~/Images/@Model.stade.PhotoPath" alt="...">
                                 <div class="stadium-description dark-blue-color">
                                     <h1>@Model.stade.Name</h1>
                                     <h3>@Model.stade.Localisation</h3>
                                     <h5>@Model.stade.Description</h5>
-                                    <h8>@Model.stade.prix  For @Model.stade.nbminutes</h8>
+                                    <h8>@Model.stade.prix TND  For @Model.stade.nbminutes minutes</h8>
                                 </div>
                             </div>
 
@@ -89,7 +90,7 @@
                                 </tr>
                             </thead>
                             <tbody style="height: 410px!important;">
-                                @foreach (Time_Slot t in Model.stade.Times)
+                                @foreach (Time_Slot t in Model.stade.Times.Where(t => (t.end_time >= DateTime.Now)))
                                 {
                                     <tr>
                                         <td>@t.start_time.ToString("dd-MMM")</td>
@@ -103,7 +104,12 @@
                                         else
                                         {
                                             <td style="width:130px;color: firebrick;" > Not occupied </td>
-                                            <td style="width:165px;"><button class="reserve-btn">Reserve</button></td>
+                                            <td style="width:165px;">
+                                                <form asp-controller="Profile" asp-action="ReserveTimeSlot" method="post">
+                                                    <input type="hidden" name="id" value="@t.Id" />
+                                                    <button type="submit" class="reserve-btn">Reserve</button>
+                                                </form>
+                                            </td>
                                         }
                                     </tr>
                                 }
@@ -126,7 +132,7 @@
                                 My Stadium :
                             </h2>
                         </div>
-                        <form asp-action="Create" method="post">
+                        <form asp-action="Create" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="Name">Stadium Name:</label>
                                 <input class="form-control" id="Name" name="Name" type="text" required />
@@ -155,12 +161,12 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="PhotoPath">Photo Path:</label>
-                                    <input class="form-control" id="PhotoPath" name="PhotoPath" type="file" accept="image/*" required />
+                                    <label for="PhotoStade">Photo Path:</label>
+                                    <input class="form-control" id="PhotoStade" name="PhotoStade" type="file" accept="image/*" required />
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="PhotoPath2">Second Photo Path:</label>
-                                    <input class="form-control" id="PhotoPath2" name="PhotoPath2" type="file" accept="image/*" required />
+                                    <label for="PhotoStade2">Second Photo Path:</label>
+                                    <input class="form-control" id="PhotoStade2" name="PhotoStade2" type="file" accept="image/*" required />
                                 </div>
                             </div>
                             <button class="btn btn-primary" type="submit">Create Stadium</button>

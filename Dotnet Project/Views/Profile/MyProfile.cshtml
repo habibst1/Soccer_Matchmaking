@@ -1,4 +1,5 @@
-﻿@model Dotnet_Project.Models.ProfileViewModel
+﻿@using Dotnet_Project.Models.ViewModels;
+@model ProfileViewModel
 
 
 
@@ -9,7 +10,7 @@
         <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
             <div class="card border-0 shadow left-profile soft-border ps-0 pe-1 ">
                 <h2 class="bg-dark-blue-color edit-img light-color"><i class="bi bi-camera "></i></h2>
-				<img class="profile-img" src="https://i.guim.co.uk/img/media/a4cd1c28f32b066d2781edbb97bb4231392c2d42/7_133_3512_2107/master/3512.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=a1806b44a56d1b71ef26e5fee5436328" alt="...">
+				<img class="profile-img" src="~/Images/@Model.loggedInPlayer.PhotoPath" alt="...">
                 <div class="card-body p-1-9 p-xl-5">
                     <div class="mb-4">
                         <h3 class="h4 mb-0">@Model.loggedInPlayer.Name <br /> @Model.loggedInPlayer.Surname</h3>
@@ -119,10 +120,8 @@
                         <h4>You still didn't have your first game with us</h4>
                     }
                     else
-                    {
-                        
-                    
-                    <table class="history-table">
+                    {   
+                         <table class="history-table">
                         <thead>
                             <tr>
                                 <th>Lobby Name</th>
@@ -164,23 +163,54 @@
                                         {
                                             <td style="color:green;width:107px;">@lobby.team1_score - @lobby.team2_score</td>
                                         }
-                                        else
+                                        else if (@lobby.team1_score == @lobby.team2_score)
                                         {
-                                            if(@lobby.team1_score == @lobby.team2_score)
-                                            {
-                                               <td style="color:brown;width:107px;">@lobby.team1_score - @lobby.team2_score</td>
-                                            }
+                                              <td style="color:brown;width:107px;">@lobby.team1_score - @lobby.team2_score</td>
+                                            
                                         }
                                         else
                                         {
                                                <td style="color:red;width:107px;">@lobby.team1_score - @lobby.team2_score</td>
                                         }
+                                        @if(Model.loggedInPlayer.Id == lobby.adminId)
+                                        {
+                                            <td>
+                                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMatchScoreModal">Add Match Score</button>
+                                            </td>
+                                        }
                                     </tr>
+                                    <!-- Bootstrap Modal for Add Match Score -->
+                                    <div class="modal fade" id="addMatchScoreModal" tabindex="-1" role="dialog" aria-labelledby="addMatchScoreModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="addMatchScoreModalLabel">Add Match Score</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <!-- Your form to add match score here -->
+                                                    <!-- Example form, adjust as needed -->
+                                                    <form method="post" action="your-controller-action">
+                                                        <div class="mb-3">
+                                                            <label for="team1_score" class="form-label">Team 1 Score:</label>
+                                                            <input type="number" class="form-control" id="team1_score" name="team1_score" required>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="team2_score" class="form-label">Team 2 Score:</label>
+                                                            <input type="number" class="form-control" id="team2_score" name="team2_score" required>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 }
                                
-                            }
+                            
                         </tbody>
-                    </table>
+                        </table>
                     }
                 </div>
                 

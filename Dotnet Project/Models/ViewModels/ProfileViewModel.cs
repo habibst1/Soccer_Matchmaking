@@ -1,4 +1,4 @@
-﻿namespace Dotnet_Project.Models
+﻿namespace Dotnet_Project.Models.ViewModels
 {
     public class ProfileViewModel
     {
@@ -9,7 +9,7 @@
         public ProfileViewModel(List<Lobby> lobbies, ApplicationUser loggedinPlayer)
         {
             this.lobbies = lobbies;
-            this.loggedInPlayer = loggedinPlayer;
+            loggedInPlayer = loggedinPlayer;
 
         }
     }

@@ -24,7 +24,6 @@ namespace Dotnet_Project.Models
         public int TeamNumber { get; set; } // Add a property to specify the team number
 
 
-        public bool IsAdmin { get; set; }
 
 
         public Lobby CreateLobby(Time_Slot t, List<ApplicationUser> players, string Name, string type)
@@ -33,7 +32,7 @@ namespace Dotnet_Project.Models
             {
                 Lobby L = new Lobby(Name, t, type);
 
-                this.IsAdmin = true;
+                L.admin = this;
 
                 this.JoinLobby(L);
 

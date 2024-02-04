@@ -29,6 +29,10 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 });
 
+builder.Services.AddScoped<ImageHelper>();
+builder.Services.AddHostedService<FinishLobbyService>();
+
+
 var app = builder.Build();
 
 

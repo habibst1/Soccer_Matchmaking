@@ -22,11 +22,24 @@
 
         public int prix { get; set; }
 
-        public int nbminutes { get ; set;}
+        public int nbminutes { get; set; }
+
+        [Required]
+        [NotMapped]
+        public IFormFile PhotoStade { get; set; }
+
+        [Required]
+        [NotMapped]
+        public IFormFile PhotoStade2 { get; set; }
+
 
             public List<Time_Slot>? Times { get; set; }
 
 
+            public Stadium()
+             {
+                    this.Times = new List<Time_Slot>();
+             }
            
             public Stadium(string name, string description, string localisation, string exactlocalisation, string photopath , string photopath2 , int prix , int nbminutes)
             {

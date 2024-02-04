@@ -2,6 +2,7 @@
 using Dotnet_Project.Models;
 using Microsoft.AspNetCore.Mvc;
 using Dotnet_Project.Utility;
+using Dotnet_Project.Models.ViewModels;
 
 namespace Dotnet_Project.Controllers
 {
