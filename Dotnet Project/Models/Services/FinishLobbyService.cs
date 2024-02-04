@@ -33,36 +33,39 @@ public class FinishLobbyService : IHostedService, IDisposable
 
             foreach (var lobby in lobbies)
             {
-                lobby.finishLobby();
-
-                if (!lobby.IsFull)
+                if (lobby.TimeSlot != null && DateTime.Now >= lobby.TimeSlot.end_time && !lobby.IsFinished)
                 {
-                    var linkedLobbiesCopy = new List<Lobby>(lobby.TimeSlot.LinkedLobbies);
+                    lobby.finishLobby();
 
-                    for (int i = 0; i < linkedLobbiesCopy.Count; i++)
+                    if (!lobby.IsFull)
                     {
-                        Lobby otherlobby = linkedLobbiesCopy[i];
+                        var linkedLobbiesCopy = new List<Lobby>(lobby.TimeSlot.LinkedLobbies);
 
-                        if (otherlobby != lobby)
+                        for (int i = 0; i < linkedLobbiesCopy.Count; i++)
                         {
-                            var linkedPlayers = _context.Users.Where(p => p.LinkedLobbyId == otherlobby.Id).ToList();
+                            Lobby otherlobby = linkedLobbiesCopy[i];
 
-                            foreach (var player in linkedPlayers)
+                            if (otherlobby != lobby)
                             {
-                                player.LinkedLobbyId = null;
-                                otherlobby.admin = null;
+                                var linkedPlayers = _context.Users.Where(p => p.LinkedLobbyId == otherlobby.Id).ToList();
+
+                                foreach (var player in linkedPlayers)
+                                {
+                                    player.LinkedLobbyId = null;
+                                    otherlobby.admin = null;
+                                }
+
+                                lobby.TimeSlot.LinkedLobbies.Remove(otherlobby);
+                                _context.Lobbies.Remove(otherlobby);
                             }
 
-                            lobby.TimeSlot.LinkedLobbies.Remove(otherlobby);
-                            _context.Lobbies.Remove(otherlobby);
                         }
-
+                        var ts = lobby.TimeSlot;
+                        lobby.TimeSlot.LinkedLobbies.Remove(lobby);
+                        lobby.admin = null;
+                        _context.TimeSlots.Remove(ts);
+                        _context.Lobbies.Remove(lobby);
                     }
-                    var ts = lobby.TimeSlot;
-                    lobby.TimeSlot.LinkedLobbies.Remove(lobby);
-                    lobby.admin = null;
-                    _context.TimeSlots.Remove(ts);
-                    _context.Lobbies.Remove(lobby);
                 }
             }
 

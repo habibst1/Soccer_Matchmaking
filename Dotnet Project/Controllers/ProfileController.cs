@@ -88,13 +88,27 @@ namespace Dotnet_Project.Controllers
                                                .FirstOrDefault(p => p.Id == loggedInPlayerId);
 
 
-            var lobbieshistory = _context.Lobbies.Include(p=>p.Players).Include(p => p.Team1).Include(p => p.Team2).Include(t => t.TimeSlot).ThenInclude(s => s.stadium)
-                                 .Where(lobby => lobby.Players.Any(player => player.Id == loggedInPlayerId) && lobby.IsFinished)
-                                 .ToList();
+            var lobbieshistory = _context.Lobbies
+                                  .Include(l => l.TimeSlot)
+                                  .ThenInclude(s => s.stadium)
+                                  .Include(l => l.Team1)
+                                  .Include(l => l.Team2)
+                                  .AsEnumerable()
+                                  .Where(l => l.playerids.Contains(loggedInPlayerId) && l.IsFinished)
+                                  .ToList();
+
+            // Retrieve player names using _context.Users
+            var playerIdsInLobbies = lobbieshistory
+                .SelectMany(lobby => lobby.playerids)
+                .Distinct();
+
+            var playerNames = _context.Users
+                .Where(user => playerIdsInLobbies.Contains(user.Id))
+                .ToDictionary(user => user.Id, user => user.Name)
+                .ToDictionary(pair => pair.Key, pair => pair.Value);
 
 
-
-            ProfileViewModel profile = new ProfileViewModel(lobbieshistory, loggedInPlayer);
+            ProfileViewModel profile = new ProfileViewModel(lobbieshistory, loggedInPlayer , playerNames);
 
             return View(profile);
         }
@@ -210,6 +224,36 @@ namespace Dotnet_Project.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("MyStadium");
+        }
+
+
+        [Authorize(Roles = SD.Role_Player)]
+        [HttpPost]
+        public IActionResult AddScore(int team1_score , int team2_score, int lobbyId)
+        {
+            // Retrieve the logged-in player 
+            var loggedInPlayerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (loggedInPlayerId == null)
+            {
+                // Handle the case where the user is not logged in
+                return RedirectToAction("Welcome", "Home"); // Redirect to login or handle it accordingly
+            }
+
+           
+
+            var lobby = _context.Lobbies.FirstOrDefault(l => l.Id == lobbyId);
+            
+            if(lobby.adminId == loggedInPlayerId)
+            {
+                lobby.team1_score = team1_score;
+                lobby.team2_score = team2_score;
+            }
+
+
+            _context.SaveChanges();
+
+            return RedirectToAction("MyProfile");
         }
 
 

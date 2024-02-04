@@ -151,6 +151,7 @@ namespace Dotnet_Project.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
@@ -162,12 +163,12 @@ namespace Dotnet_Project.Areas.Identity.Pages.Account
                 user.Surname = Input.Surname;
                 user.PhoneNumber = Input.PhoneNumber;
                 user.Adress = Input.Adress;
+
                 if (Input.ProfilePhoto != null)
                 {
                     // Save profile photo
                     user.PhotoPath = _imageHelper.SaveProfilePhoto(Input.ProfilePhoto);
                 }
-
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
@@ -175,10 +176,10 @@ namespace Dotnet_Project.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                    if(!String.IsNullOrEmpty(Input.Role)) {
+                    if (!String.IsNullOrEmpty(Input.Role))
+                    {
                         await _userManager.AddToRoleAsync(user, Input.Role);
                     }
-
                     else
                     {
                         await _userManager.AddToRoleAsync(user, SD.Role_Player);
@@ -206,6 +207,7 @@ namespace Dotnet_Project.Areas.Identity.Pages.Account
                         return LocalRedirect(returnUrl);
                     }
                 }
+
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
@@ -213,8 +215,17 @@ namespace Dotnet_Project.Areas.Identity.Pages.Account
             }
 
             // If we got this far, something failed, redisplay form
+
+            // Set RoleList again when returning due to validation errors
+            Input.RoleList = _roleManager.Roles.Select(x => x.Name).Select(i => new SelectListItem
+            {
+                Text = i,
+                Value = i
+            });
+
             return Page();
         }
+
 
         private ApplicationUser CreateUser()
         {

@@ -6,10 +6,13 @@
 
         public ApplicationUser loggedInPlayer { get; set; }
 
-        public ProfileViewModel(List<Lobby> lobbies, ApplicationUser loggedinPlayer)
+        public Dictionary<string, string> PlayerNames { get; set; }
+
+        public ProfileViewModel(List<Lobby> lobbies, ApplicationUser loggedinPlayer , Dictionary<string, string> playerNames)
         {
             this.lobbies = lobbies;
             loggedInPlayer = loggedinPlayer;
+            this.PlayerNames = playerNames;
 
         }
     }

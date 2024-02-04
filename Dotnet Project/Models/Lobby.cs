@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Server.IIS.Core;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Media;
@@ -26,6 +28,8 @@ namespace Dotnet_Project.Models
 
         public List<ApplicationUser> Team2 => Players.Where(p => p.TeamNumber == 2).ToList();
 
+        public List<string>? playerids { get; set; }
+
         public int? team1_score { get; set; }
         public int? team2_score { get; set; }
 
@@ -37,7 +41,8 @@ namespace Dotnet_Project.Models
      
         public Lobby()
         {
-            this.Players = new List<ApplicationUser>(); 
+            this.Players = new List<ApplicationUser>();
+            this.playerids = new List<string>();
         }
 
         public Lobby(string name, Time_Slot t, string type)
@@ -48,19 +53,22 @@ namespace Dotnet_Project.Models
             this.IsFull = false;
             this.IsFinished = false;
             this.Players = new List<ApplicationUser>();
+            this.playerids = new List<string>();
         }
 
         public void finishLobby()
         {
-            if( this.TimeSlot != null && DateTime.Now >= TimeSlot.end_time)
-            {
-                this.IsFinished = true; 
-                foreach(ApplicationUser user in this.Players)
-                {
-                    user.LinkedLobby = null;
+           
+                this.IsFinished = true;
+                this.playerids = new List<string>();
 
+                foreach (ApplicationUser user in this.Players)
+                {
+                    this.playerids.Add(user.Id);
+                    user.LinkedLobby = null;
                 }
-            }
+                
+            
         }
 
         
