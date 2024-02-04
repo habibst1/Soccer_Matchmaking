@@ -30,9 +30,22 @@
                     <span>Wins</span><span>Draws</span><span>Losses</span>
                 </div>
                 <div class="pie-container">
-                <div class="pie no-round light-color" style="--p:100*(@Model.loggedInPlayer.number_wins/(@Model.loggedInPlayer.number_wins + @Model.loggedInPlayer.number_losses + @Model.loggedInPlayer.number_draws));--c:green;--b:15px"> @Model.loggedInPlayer.number_wins</div>
-                    <div class="pie no-round light-color" style="--p:100*(@Model.loggedInPlayer.number_wins/(@Model.loggedInPlayer.number_draws + @Model.loggedInPlayer.number_losses + @Model.loggedInPlayer.number_draws));--c:orange;--b:15px"> @Model.loggedInPlayer.number_draws</div>
-                    <div class="pie no-round light-color" style="--p:100*(@Model.loggedInPlayer.number_wins/(@Model.loggedInPlayer.number_losses + @Model.loggedInPlayer.number_losses + @Model.loggedInPlayer.number_draws));--c:red;--b:15px"> @Model.loggedInPlayer.number_losses</div>
+                    @{
+                        float x, y, z;
+                        if ((Model.loggedInPlayer.number_draws + Model.loggedInPlayer.number_losses + Model.loggedInPlayer.number_wins) == 0)
+                        {
+                            x = 0; y = 0; z = 0;
+                        }
+                        else
+                        {
+                            x = 100 * Model.loggedInPlayer.number_wins / (Model.loggedInPlayer.number_draws + Model.loggedInPlayer.number_losses + Model.loggedInPlayer.number_wins);
+                            y = 100 * Model.loggedInPlayer.number_draws / (Model.loggedInPlayer.number_draws + Model.loggedInPlayer.number_losses + Model.loggedInPlayer.number_wins);
+                            z = 100 * Model.loggedInPlayer.number_losses / (Model.loggedInPlayer.number_draws + Model.loggedInPlayer.number_losses + Model.loggedInPlayer.number_wins);
+                        }
+                    }
+                    <div class="pie no-round light-color" style="--p:@x;--c:green;--b:15px"> @Model.loggedInPlayer.number_wins</div>
+                    <div class="pie no-round light-color" style="--p:@y;--c:orange;--b:15px"> @Model.loggedInPlayer.number_draws</div>
+                    <div class="pie no-round light-color" style="--p:@z;--c:red;--b:15px"> @Model.loggedInPlayer.number_losses</div>
 				</div>
             </div>
         </div>

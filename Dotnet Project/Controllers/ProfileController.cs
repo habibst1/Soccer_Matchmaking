@@ -191,6 +191,13 @@ namespace Dotnet_Project.Controllers
                return  RedirectToAction("MyStadium");
             }
 
+            // Check if endDateTime is before startDateTime, which means it's past midnight
+            if (endDateTime < startDateTime)
+            {
+                // Adjust the date for endDateTime
+                endDateTime = endDateTime.AddDays(1);
+            }
+
             var timeSlot = new Time_Slot(loggedInPlayer.stade , startDateTime, endDateTime);
             loggedInPlayer.add_time_slot(timeSlot);
 
@@ -248,6 +255,37 @@ namespace Dotnet_Project.Controllers
             {
                 lobby.team1_score = team1_score;
                 lobby.team2_score = team2_score;
+            }
+
+            if(team1_score > team2_score)
+            {
+                for(int i=0; i<6; i++)
+                {
+                    var player1 = _context.Users.FirstOrDefault(p => p.Id == lobby.playerids[i]);
+                    var player2 = _context.Users.FirstOrDefault(p => p.Id == lobby.playerids[11-i]);
+                    player1.number_wins++;
+                    player2.number_losses++;
+                }
+            }
+            else if (team1_score < team2_score)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    var player1 = _context.Users.FirstOrDefault(p => p.Id == lobby.playerids[11-i]);
+                    var player2 = _context.Users.FirstOrDefault(p => p.Id == lobby.playerids[i]);
+                    player1.number_wins++;
+                    player2.number_losses++;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    var player1 = _context.Users.FirstOrDefault(p => p.Id == lobby.playerids[11 - i]);
+                    var player2 = _context.Users.FirstOrDefault(p => p.Id == lobby.playerids[i]);
+                    player1.number_draws++;
+                    player2.number_draws++;
+                }
             }
 
 

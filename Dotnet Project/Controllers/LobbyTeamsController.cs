@@ -168,8 +168,13 @@ public class LobbyTeamsController : Controller
             .Where(p => p.LinkedLobby == null && p.Id != loggedInPlayerId)
             .ToList();
 
+        // Filter the results in memory (client-side) using LINQ to Objects
+        var filteredPlayers = availablePlayers.Where(p => _userManager.IsInRoleAsync(p, "Player").Result).ToList();
+
+
+
         // Pass available players to the view
-        ViewBag.AvailablePlayers = new MultiSelectList(availablePlayers, "Id", "Name");
+        ViewBag.AvailablePlayers = new MultiSelectList(filteredPlayers, "Id", "Name");
 
         return View();
 
