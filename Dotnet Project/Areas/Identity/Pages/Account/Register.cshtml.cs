@@ -34,6 +34,7 @@ namespace Dotnet_Project.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly ImageHelper _imageHelper;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
@@ -41,7 +42,8 @@ namespace Dotnet_Project.Areas.Identity.Pages.Account
             RoleManager<IdentityRole> roleManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            ImageHelper imageHelper)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -50,6 +52,7 @@ namespace Dotnet_Project.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _imageHelper = imageHelper;
         }
 
         /// <summary>
@@ -111,13 +114,15 @@ namespace Dotnet_Project.Areas.Identity.Pages.Account
             public IEnumerable<SelectListItem> RoleList { get; set; }
 
             [Required]
+
             public string Name { get; set; }
             public string? Surname { get; set; }
             public string? PhotoPath { get; set; }
             public string? Adress {  get; set; }
             public string? PhoneNumber { get; set; }
 
-
+            [Required]
+            public IFormFile ProfilePhoto { get; set; }
         }
 
 
@@ -146,6 +151,7 @@ namespace Dotnet_Project.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
@@ -155,10 +161,14 @@ namespace Dotnet_Project.Areas.Identity.Pages.Account
 
                 user.Name = Input.Name;
                 user.Surname = Input.Surname;
-                user.PhotoPath = Input.PhotoPath;
                 user.PhoneNumber = Input.PhoneNumber;
                 user.Adress = Input.Adress;
-                
+
+                if (Input.ProfilePhoto != null)
+                {
+                    // Save profile photo
+                    user.PhotoPath = _imageHelper.SaveProfilePhoto(Input.ProfilePhoto);
+                }
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
@@ -166,10 +176,10 @@ namespace Dotnet_Project.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                    if(!String.IsNullOrEmpty(Input.Role)) {
+                    if (!String.IsNullOrEmpty(Input.Role))
+                    {
                         await _userManager.AddToRoleAsync(user, Input.Role);
                     }
-
                     else
                     {
                         await _userManager.AddToRoleAsync(user, SD.Role_Player);
@@ -197,6 +207,7 @@ namespace Dotnet_Project.Areas.Identity.Pages.Account
                         return LocalRedirect(returnUrl);
                     }
                 }
+
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
@@ -204,8 +215,17 @@ namespace Dotnet_Project.Areas.Identity.Pages.Account
             }
 
             // If we got this far, something failed, redisplay form
+
+            // Set RoleList again when returning due to validation errors
+            Input.RoleList = _roleManager.Roles.Select(x => x.Name).Select(i => new SelectListItem
+            {
+                Text = i,
+                Value = i
+            });
+
             return Page();
         }
+
 
         private ApplicationUser CreateUser()
         {

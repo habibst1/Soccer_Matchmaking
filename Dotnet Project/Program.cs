@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -22,11 +23,15 @@ builder.Services.AddScoped<IEmailSender,EmailSender>();
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.LoginPath = $"/Identity/Account/Login";
-    options.LogoutPath = $"/Identity/Account/Logout";
+    options.LoginPath = $"/Home/Welcome";
+    options.LogoutPath = $"/Home/Welcome";
     options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
 
 });
+
+builder.Services.AddScoped<ImageHelper>();
+builder.Services.AddHostedService<FinishLobbyService>();
+
 
 var app = builder.Build();
 

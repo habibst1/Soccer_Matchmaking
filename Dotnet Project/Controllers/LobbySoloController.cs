@@ -10,6 +10,7 @@ using Dotnet_Project.Utility;
 using System.Collections.Specialized;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Dotnet_Project.Models.ViewModels;
 
 [Authorize(Roles = SD.Role_Player)]
 public class LobbySoloController : Controller
@@ -43,7 +44,7 @@ public class LobbySoloController : Controller
         if (adminPlayerId == null)
         {
             // Handle the case where the user is not logged in
-            return Redirect("/Identity/Account/Login"); // Redirect to login or handle it accordingly
+            return RedirectToAction("Welcome", "Home"); // Redirect to login or handle it accordingly
         }
 
         if (adminPlayer.LinkedLobby != null) return RedirectToAction("Index", "Home"); // w maaha error (you are already in a lobby)
@@ -131,7 +132,7 @@ public class LobbySoloController : Controller
         if (loggedInPlayerId == null)
         {
             // Handle the case where the user is not logged in
-            return RedirectToAction("Login"); // Redirect to login or handle it accordingly
+            return RedirectToAction("Welcome", "Home"); // Redirect to login or handle it accordingly
         }
 
         var loggedInPlayer = _context.Users.Include(a => a.LinkedLobby).FirstOrDefault(p => p.Id == loggedInPlayerId);
@@ -185,8 +186,7 @@ public class LobbySoloController : Controller
                     foreach (var player in linkedPlayers)
                     {
                         player.LinkedLobbyId = null;
-                        if (player.IsAdmin) player.IsAdmin = false;
-
+                        otherlobby.admin = null;
                     }
 
                     selectedLobby.TimeSlot.LinkedLobbies.Remove(otherlobby);

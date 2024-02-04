@@ -43,8 +43,10 @@
     </script>
 </head>
 <body>
-    <div class="mynav">
-        <div class="logo-container">
+    @if (User.IsInRole(SD.Role_Player))
+    {
+        <div class="mynav">
+            <div class="logo-container">
             <img src="" alt="Logo" />
             <h2>Project name</h2>
         </div>
@@ -56,7 +58,24 @@
             <partial name="_LoginPartial" />
         </div>
         
-    </div>
+        </div>
+    }
+    else
+    {
+        <div class="mynav">
+            <div class="logo-container">
+                <img src="" alt="Logo" />
+                <h2>Project name</h2>
+            </div>
+            <div id="navId" class="nav-links">
+                <a asp-controller="Profile" asp-action="Index" class="link">Profile</a>
+                <a href="/stadium" class="link">Stadiums</a>
+                <a asp-controller="Home" asp-action="About" class="link">About</a>
+                <partial name="_LoginPartial" />
+            </div>
+
+        </div>
+    }
 
     <div class="container" style="margin-block:70px;">
         <main role="main" class="pb-3">

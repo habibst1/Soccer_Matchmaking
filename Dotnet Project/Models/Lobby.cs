@@ -1,7 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Server.IIS.Core;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Media;
 
 namespace Dotnet_Project.Models
 {
@@ -12,6 +16,9 @@ namespace Dotnet_Project.Models
 
         public string Name { get; set; }
 
+        public string? adminId { get; set; }
+        public ApplicationUser? admin { get; set; }
+
         public int TimeSlotId { get; set; }
         public Time_Slot TimeSlot { get; set; }
 
@@ -21,6 +28,8 @@ namespace Dotnet_Project.Models
 
         public List<ApplicationUser> Team2 => Players.Where(p => p.TeamNumber == 2).ToList();
 
+        public List<string>? playerids { get; set; }
+
         public int? team1_score { get; set; }
         public int? team2_score { get; set; }
 
@@ -29,9 +38,11 @@ namespace Dotnet_Project.Models
         public bool IsFull { get; set; }
         public bool IsFinished { get; set; }
 
+     
         public Lobby()
-        {   
-            Players = new List<ApplicationUser>();
+        {
+            this.Players = new List<ApplicationUser>();
+            this.playerids = new List<string>();
         }
 
         public Lobby(string name, Time_Slot t, string type)
@@ -42,9 +53,25 @@ namespace Dotnet_Project.Models
             this.IsFull = false;
             this.IsFinished = false;
             this.Players = new List<ApplicationUser>();
+            this.playerids = new List<string>();
         }
 
-           //FAZAT L REMOVE N7OTTOUHOM FEL CONTROLLER W BARRA
+        public void finishLobby()
+        {
+           
+                this.IsFinished = true;
+                this.playerids = new List<string>();
+
+                foreach (ApplicationUser user in this.Players)
+                {
+                    this.playerids.Add(user.Id);
+                    user.LinkedLobby = null;
+                }
+                
+            
+        }
+
+        
  
     }
 }   
