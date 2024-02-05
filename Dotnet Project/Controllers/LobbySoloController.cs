@@ -47,8 +47,12 @@ public class LobbySoloController : Controller
             return RedirectToAction("Welcome", "Home"); // Redirect to login or handle it accordingly
         }
 
-        if (adminPlayer.LinkedLobby != null) return RedirectToAction("Index", "Home"); // w maaha error (you are already in a lobby)
-
+        if (adminPlayer.LinkedLobby != null)
+        {
+            TempData["error"] = "You are already linked to a lobby";
+            return RedirectToAction("Index", "Home");
+            
+        }
 
         return View();
 
@@ -139,8 +143,12 @@ public class LobbySoloController : Controller
 
 
 
-        if (loggedInPlayer.LinkedLobby != null)   return  RedirectToAction("Index", "Home"); //w maaha error (you are already in a lobby)
-        
+        if (loggedInPlayer.LinkedLobby != null)
+        {
+            TempData["error"] = "You are already linked to a lobby";
+            return RedirectToAction("Index", "Home"); 
+            
+        }
 
         // Retrieve available lobbies that the player can join
         var availableLobbies = _context.Lobbies
