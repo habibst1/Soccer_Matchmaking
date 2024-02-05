@@ -17,11 +17,11 @@
     --table_width: 750px;
     --table_body_height: 100px;
     --history-table_body_height: 330px;
-    --column_one_width: 100px;
-    --column_two_width: 120px;
-    --column_three_width: 120px;
-    --column_four_width: 100px;
-    --column_five_width: 70px;
+    --column_one_width: 90px;
+    --column_two_width: 130px;
+    --column_three_width: 130px;
+    --column_four_width: 90px;
+    --column_five_width: 100px;
 }
 .bg-lighter-color {
     background-color: var(--color1-lighter) !important;

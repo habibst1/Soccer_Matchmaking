@@ -245,11 +245,13 @@ p {
     }
     .lobby-table th,
     .lobby-table td {
-        padding: 5px;
         text-align: center;
         vertical-align: middle;
     }
-
+    .lobby-table td h7 {
+        width:58px;
+        overflow-x:scroll;
+    }
         .lobby-table td:nth-child(1),
         .lobby-table th:nth-child(1) {
             width: var(--column_one_width);
@@ -334,11 +336,13 @@ p {
 
     .history-table th,
     .history-table td {
-        padding: 5px;
         text-align: center;
         vertical-align: middle;
     }
-
+        .history-table td h7 {
+            width: 58px;
+            overflow-x: scroll;
+        }
         .history-table td:nth-child(1),
         .history-table th:nth-child(1) {
             width: var(--column_one_width);
