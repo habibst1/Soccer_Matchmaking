@@ -31,6 +31,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 builder.Services.AddScoped<ImageHelper>();
 builder.Services.AddHostedService<FinishLobbyService>();
+builder.Services.AddHostedService<FinishTimeSlotService>();
 
 
 var app = builder.Build();

@@ -47,8 +47,12 @@ public class LobbyTeamsController : Controller
             return RedirectToAction("Welcome", "Home"); // Redirect to login or handle it accordingly
         }
 
-        if (adminPlayer.LinkedLobby != null) return RedirectToAction("Index", "Home"); // w maaha error (you are already in a lobby)
-
+        if (adminPlayer.LinkedLobby != null)
+        {
+            TempData["error"] = "You are already linked to a lobby";
+            return RedirectToAction("Index", "Home"); 
+           
+        }
         // Retrieve available players (excluding the admin player)
         var availablePlayers = _context.Users
                                 .Where(p => p.LinkedLobby == null && p.Id != adminPlayerId)
@@ -161,8 +165,12 @@ public class LobbyTeamsController : Controller
             return RedirectToAction("Login"); // Redirect to login or handle it accordingly
         }
 
-        if (loggedInPlayer.LinkedLobby != null) return RedirectToAction("Index","Home") ; //w maaha error (you are already in a lobby)
-
+        if (loggedInPlayer.LinkedLobby != null)
+        {
+            TempData["error"] = "You are already linked to a lobby";
+            return RedirectToAction("Index", "Home");
+            
+        }
         // Retrieve available players (excluding the admin player)
         var availablePlayers = _context.Users
             .Where(p => p.LinkedLobby == null && p.Id != loggedInPlayerId)
@@ -219,8 +227,12 @@ public class LobbyTeamsController : Controller
             return RedirectToAction("Welcome", "Home"); // Redirect to login or handle it accordingly
         }
 
-        if (loggedInPlayer.LinkedLobby != null) return RedirectToAction("Index", "Home"); //w maaha error (you are already in a lobby)
-
+        if (loggedInPlayer.LinkedLobby != null)
+        {
+            TempData["error"] = "You are already linked to a lobby";
+            return RedirectToAction("Index", "Home");
+          
+        }
 
 
         ///////////lazemni nzid condition tthabet mel joueret linedlobby t3hom 0 sinn iji wa7ed i7t fel url ay id mta3 joueur w mchéna feha 
