@@ -133,43 +133,50 @@
                             </h2>
                         </div>
                         <form asp-action="Create" method="post" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label for="Name">Stadium Name:</label>
-                                <input class="form-control" id="Name" name="Name" type="text" required />
+                            <div style="height: 72px;">
+                                <input class=" form__input" id="Name" name="Name" type="text" required />
+                                <label class="form__label dark-blue-color" for="Name">Stadium Name:</label>
                             </div>
-                            <div class="form-group">
-                                <label for="Description">Description:</label>
-                                <textarea class="form-control" id="Description" name="Description" rows="3" required></textarea>
+                            <div style="height: 162px;margin-top: 5px;">
+
+                                <textarea class="form__input" style="height: 127px!important;resize: none;" id="Description" name="Description" rows="3" required></textarea>
+                                <label class="form__label dark-blue-color" style="top: -174px!important;" for="Description">Description:</label>
                             </div>
-                            <div class="form-group">
-                                <label for="Localisation">Localisation:</label>
-                                <input class="form-control" id="Localisation" name="Localisation" type="text" required />
+                            <div style="height: 72px;">
+
+                                <input class="form__input" id="Localisation" name="Localisation" type="text" required />
+                                <label class="form__label dark-blue-color" for="Localisation">Localisation:</label>
                             </div>
-                            <div class="form-group">
-                                <label for="ExactLocalisation">Exact Localisation:</label>
-                                <input class="form-control" id="ExactLocalisation" name="ExactLocalisation" type="text" required />
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="Prix">Price:</label>
-                                    <input class="form-control" id="Prix" name="Prix" type="number" required />
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="NbMinutes">Number of Minutes:</label>
-                                    <input class="form-control" id="NbMinutes" name="NbMinutes" type="number" required />
-                                </div>
+                            <div style="height: 72px;">
+
+                                <input class="form__input" id="ExactLocalisation" name="ExactLocalisation" type="text" required />
+                                <label class="form__label dark-blue-color" for="ExactLocalisation">Exact Localisation:</label>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="PhotoStade">Photo Path:</label>
-                                    <input class="form-control" id="PhotoStade" name="PhotoStade" type="file" accept="image/*" required />
+                                <div class="form-group col-md-6" style="height: 72px;">
+
+                                    <input class="form__input" id="Prix" name="Prix" type="number" required />
+                                    <label class="form__label dark-blue-color" for="Prix">Price:</label>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="PhotoStade2">Second Photo Path:</label>
-                                    <input class="form-control" id="PhotoStade2" name="PhotoStade2" type="file" accept="image/*" required />
+                                <div class="form-group col-md-6" style="height: 72px;">
+
+                                    <input class="form__input" id="NbMinutes" name="NbMinutes" type="number" required />
+                                    <label class="form__label dark-blue-color" for="NbMinutes">Number of Minutes:</label>
                                 </div>
                             </div>
-                            <button class="btn btn-primary" type="submit">Create Stadium</button>
+                            <div class="form-row" style="height: 67px;border-bottom: 1px solid darkgray;">
+                                <div class="form-group col-md-6" style="height: 72px;">
+
+                                    <input class="form-control" style="width: 100%;border: 1px solid black;border-radius: 8px;box-shadow: rgb(6, 13, 24) 2px 2px 2px 1px;transition: all 100ms;" id="PhotoStade" name="PhotoStade" type="file" accept="image/*" required />
+                                    <label class="form__label dark-blue-color" style="transform: scale(1.2);position: relative;text-align: left;top: -70px;color: var(--color1);font-weight: 500;" for="PhotoStade">Photo Path:</label>
+                                </div>
+                                <div class="form-group col-md-6" style="height: 72px;">
+
+                                    <input class="form-control" style="width: 100%;border: 1px solid black;border-radius: 8px;box-shadow: rgb(6, 13, 24) 2px 2px 2px 1px;transition: all 100ms;" id="PhotoStade2" name="PhotoStade2" type="file" accept="image/*" required />
+                                    <label class="form__label dark-blue-color" style="transform: scale(1.2);position: relative;text-align: left;top: -70px;color: var(--color1);font-weight: 500;" for="PhotoStade2">Second Photo Path:</label>
+                                </div>
+                            </div>
+                            <button class="joinlobby-btn" style="bottom: 0!important;margin-top:40px!important;" type="submit">Create Stadium</button>
                         </form>
 
 
