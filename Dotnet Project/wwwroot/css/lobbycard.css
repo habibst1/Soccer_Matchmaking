@@ -32,7 +32,7 @@
         color: #060d18;
         background-color: #fafafa;
         transition: all 0.5s;
-        transform: scale(1.1);
+        transform: scale(1.04);
         cursor: pointer;
     }
 
@@ -56,7 +56,7 @@
         color: var(--color1-lighter);
         background-color: var(--color3-darker);
         transition: all 0.5s;
-        transform: scale(1.1);
+        transform: scale(1.04);
         cursor: pointer;
     }
 
