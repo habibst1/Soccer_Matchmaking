@@ -19,7 +19,7 @@ namespace Dotnet_Project.Controllers
         private readonly ImageHelper _imageHelper;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ProfileController(AppDbContext context , UserManager<IdentityUser> userManager , IWebHostEnvironment webHostEnvironment, ImageHelper imageHelper)
+        public ProfileController(AppDbContext context, UserManager<IdentityUser> userManager, IWebHostEnvironment webHostEnvironment, ImageHelper imageHelper)
         {
             _context = context;
             _userManager = userManager;
@@ -93,28 +93,37 @@ namespace Dotnet_Project.Controllers
                 loggedInPlayer.Notification = false;
                 _context.SaveChanges();
             }
-          
+
             var lobbieshistory = _context.Lobbies
                                   .Include(l => l.TimeSlot)
                                   .ThenInclude(s => s.stadium)
                                   .Include(l => l.Team1)
                                   .Include(l => l.Team2)
                                   .AsEnumerable()
-                                  .Where(l => l.playerids.Contains(loggedInPlayerId) && l.IsFinished)
+                                  .Where(l => (l.team1ids != null && l.team1ids.Contains(loggedInPlayerId)) || (l.team2ids != null && l.team2ids.Contains(loggedInPlayerId)) && l.IsFinished)
                                   .ToList();
 
             // Retrieve player names using _context.Users
-            var playerIdsInLobbies = lobbieshistory
-                .SelectMany(lobby => lobby.playerids)
+            var team1IdsInLobbies = lobbieshistory
+                .SelectMany(lobby => lobby.team1ids)
                 .Distinct();
 
-            var playerNames = _context.Users
-                .Where(user => playerIdsInLobbies.Contains(user.Id))
+            var team1Names = _context.Users
+                .Where(user => team1IdsInLobbies.Contains(user.Id))
                 .ToDictionary(user => user.Id, user => user.Name)
                 .ToDictionary(pair => pair.Key, pair => pair.Value);
 
+            // Retrieve player names using _context.Users
+            var team2IdsInLobbies = lobbieshistory
+                .SelectMany(lobby => lobby.team2ids)
+                .Distinct();
 
-            ProfileViewModel profile = new ProfileViewModel(lobbieshistory, loggedInPlayer , playerNames);
+            var team2Names = _context.Users
+                .Where(user => team2IdsInLobbies.Contains(user.Id))
+                .ToDictionary(user => user.Id, user => user.Name)
+                .ToDictionary(pair => pair.Key, pair => pair.Value);
+
+            ProfileViewModel profile = new ProfileViewModel(lobbieshistory, loggedInPlayer, team1Names, team2Names);
 
             return View(profile);
         }
@@ -132,7 +141,7 @@ namespace Dotnet_Project.Controllers
                 return RedirectToAction("Welcome", "Home"); // Redirect to login or handle it accordingly
             }
 
-            var loggedInPlayer = _context.Users.Include(s => s.stade).ThenInclude(t => t.Times).FirstOrDefault( p => p.Id == loggedInPlayerId);
+            var loggedInPlayer = _context.Users.Include(s => s.stade).ThenInclude(t => t.Times).FirstOrDefault(p => p.Id == loggedInPlayerId);
 
 
 
@@ -167,7 +176,7 @@ namespace Dotnet_Project.Controllers
 
             _context.Stadiums.Add(stade);
             _context.SaveChanges();
-                
+
             return RedirectToAction("MyStadium");
         }
 
@@ -175,7 +184,7 @@ namespace Dotnet_Project.Controllers
 
         [Authorize(Roles = SD.Role_Stade_Owner)]
         [HttpPost]
-        public IActionResult AddTimeSlot(DateTime date , string starttime , string endtime)
+        public IActionResult AddTimeSlot(DateTime date, string starttime, string endtime)
         {
             // Retrieve the logged-in player 
             var loggedInPlayerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -192,10 +201,10 @@ namespace Dotnet_Project.Controllers
             DateTime startDateTime = DateTime.Parse($"{date.ToShortDateString()} {starttime}");
             DateTime endDateTime = DateTime.Parse($"{date.ToShortDateString()} {endtime}");
 
-            if(startDateTime <= DateTime.Now)
+            if (startDateTime <= DateTime.Now)
             {
                 TempData["error"] = "Please choose a future time";
-               return  RedirectToAction("MyStadium");
+                return RedirectToAction("MyStadium");
             }
 
             // Check if endDateTime is before startDateTime, which means it's past midnight
@@ -205,7 +214,7 @@ namespace Dotnet_Project.Controllers
                 endDateTime = endDateTime.AddDays(1);
             }
 
-            var timeSlot = new Time_Slot(loggedInPlayer.stade , startDateTime, endDateTime);
+            var timeSlot = new Time_Slot(loggedInPlayer.stade, startDateTime, endDateTime);
             loggedInPlayer.add_time_slot(timeSlot);
 
             _context.TimeSlots.Add(timeSlot);
@@ -229,10 +238,10 @@ namespace Dotnet_Project.Controllers
 
             var loggedInPlayer = _context.Users.Include(s => s.stade).ThenInclude(s => s.Times).FirstOrDefault(p => p.Id == loggedInPlayerId);
 
-            var timeSlot = _context.TimeSlots.Include(s=> s.stadium).FirstOrDefault(t => t.Id == id);
+            var timeSlot = _context.TimeSlots.Include(s => s.stadium).FirstOrDefault(t => t.Id == id);
 
             timeSlot.occupancy = true;
-            
+
 
 
             _context.SaveChanges();
@@ -243,7 +252,7 @@ namespace Dotnet_Project.Controllers
 
         [Authorize(Roles = SD.Role_Player)]
         [HttpPost]
-        public IActionResult AddScore(int team1_score , int team2_score, int lobbyId)
+        public IActionResult AddScore(int team1_score, int team2_score, int lobbyId)
         {
             // Retrieve the logged-in player 
             var loggedInPlayerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -254,22 +263,22 @@ namespace Dotnet_Project.Controllers
                 return RedirectToAction("Welcome", "Home"); // Redirect to login or handle it accordingly
             }
 
-           
+
 
             var lobby = _context.Lobbies.FirstOrDefault(l => l.Id == lobbyId);
-            
-            if(lobby.adminId == loggedInPlayerId)
+
+            if (lobby.adminId == loggedInPlayerId)
             {
                 lobby.team1_score = team1_score;
                 lobby.team2_score = team2_score;
             }
 
-            if(team1_score > team2_score)
+            if (team1_score > team2_score)
             {
-                for(int i=0; i<6; i++)
+                for (int i = 0; i < 6; i++)
                 {
-                    var player1 = _context.Users.FirstOrDefault(p => p.Id == lobby.playerids[i]);
-                    var player2 = _context.Users.FirstOrDefault(p => p.Id == lobby.playerids[11-i]);
+                    var player1 = _context.Users.FirstOrDefault(p => p.Id == lobby.team1ids[i]);
+                    var player2 = _context.Users.FirstOrDefault(p => p.Id == lobby.team2ids[i]);
                     player1.number_wins++;
                     player2.number_losses++;
                 }
@@ -278,18 +287,18 @@ namespace Dotnet_Project.Controllers
             {
                 for (int i = 0; i < 6; i++)
                 {
-                    var player1 = _context.Users.FirstOrDefault(p => p.Id == lobby.playerids[11-i]);
-                    var player2 = _context.Users.FirstOrDefault(p => p.Id == lobby.playerids[i]);
-                    player1.number_wins++;
-                    player2.number_losses++;
+                    var player1 = _context.Users.FirstOrDefault(p => p.Id == lobby.team1ids[i]);
+                    var player2 = _context.Users.FirstOrDefault(p => p.Id == lobby.team2ids[i]);
+                    player1.number_losses++;
+                    player2.number_wins++;
                 }
             }
             else
             {
                 for (int i = 0; i < 6; i++)
                 {
-                    var player1 = _context.Users.FirstOrDefault(p => p.Id == lobby.playerids[11 - i]);
-                    var player2 = _context.Users.FirstOrDefault(p => p.Id == lobby.playerids[i]);
+                    var player1 = _context.Users.FirstOrDefault(p => p.Id == lobby.team1ids[i]);
+                    var player2 = _context.Users.FirstOrDefault(p => p.Id == lobby.team2ids[i]);
                     player1.number_draws++;
                     player2.number_draws++;
                 }
@@ -301,6 +310,69 @@ namespace Dotnet_Project.Controllers
             return RedirectToAction("MyProfile");
         }
 
+        [Authorize(Roles = SD.Role_Player)]
+        [HttpPost]
+        public IActionResult RemoveLobby(int lobbyId)
+        {
+            // Retrieve the logged-in player 
+            var loggedInPlayerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
+            if (loggedInPlayerId == null)
+            {
+                // Handle the case where the user is not logged in
+                return RedirectToAction("Welcome", "Home"); // Redirect to login or handle it accordingly
+            }
+
+            var loggedInPlayer = _context.Users.Include(l => l.LinkedLobby).FirstOrDefault(p => p.Id == loggedInPlayerId);
+
+            var lobby = _context.Lobbies.Include(p => p.Players).Include(t => t.TimeSlot).ThenInclude(li => li.LinkedLobbies).FirstOrDefault(l => l.Id == lobbyId);
+
+            if (lobby.adminId == loggedInPlayerId)
+            {
+                var linkedPlayers = _context.Users.Where(p => p.LinkedLobbyId == lobby.Id).ToList();
+
+                foreach (var player in linkedPlayers)
+                {
+                    player.LinkedLobbyId = null;
+                    player.notify();
+                }
+                lobby.admin = null;
+                lobby.TimeSlot.LinkedLobbies.Remove(lobby);
+
+                _context.Lobbies.Remove(lobby);
+                _context.SaveChanges();
+            }
+
+
+            return RedirectToAction("MyProfile");
+        }
+
+        [Authorize(Roles = SD.Role_Player)]
+        [HttpPost]
+        public IActionResult LeaveLobby(int lobbyId)
+        {
+            // Retrieve the logged-in player 
+            var loggedInPlayerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (loggedInPlayerId == null)
+            {
+                // Handle the case where the user is not logged in
+                return RedirectToAction("Welcome", "Home"); // Redirect to login or handle it accordingly
+            }
+
+            var loggedInPlayer = _context.Users.Include(l => l.LinkedLobby).FirstOrDefault(p => p.Id == loggedInPlayerId);
+
+            var lobby = _context.Lobbies.Include(p => p.Players).FirstOrDefault(l => l.Id == lobbyId);
+
+            lobby.Players.Remove(loggedInPlayer);
+            
+            loggedInPlayer.LinkedLobby = null;
+
+            TempData["error2"] = "You have left your lobby";
+
+            _context.SaveChanges();
+
+            return RedirectToAction("MyProfile");
+        }
     }
 }
