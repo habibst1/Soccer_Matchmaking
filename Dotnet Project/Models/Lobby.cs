@@ -28,7 +28,8 @@ namespace Dotnet_Project.Models
 
         public List<ApplicationUser> Team2 => Players.Where(p => p.TeamNumber == 2).ToList();
 
-        public List<string>? playerids { get; set; }
+        public List<string>? team1ids { get; set; }
+        public List<string>? team2ids { get; set; }
 
         public int? team1_score { get; set; }
         public int? team2_score { get; set; }
@@ -42,7 +43,8 @@ namespace Dotnet_Project.Models
         public Lobby()
         {
             this.Players = new List<ApplicationUser>();
-            this.playerids = new List<string>();
+            this.team1ids = new List<string>();
+            this.team2ids = new List<string>();
         }
 
         public Lobby(string name, Time_Slot t, string type)
@@ -53,22 +55,30 @@ namespace Dotnet_Project.Models
             this.IsFull = false;
             this.IsFinished = false;
             this.Players = new List<ApplicationUser>();
-            this.playerids = new List<string>();
+            this.team1ids = new List<string>();
+            this.team2ids = new List<string>();
         }
 
         public void finishLobby()
         {
            
                 this.IsFinished = true;
-                this.playerids = new List<string>();
+                this.team1ids = new List<string>();
+                this.team2ids = new List<string>();
 
-                foreach (ApplicationUser user in this.Players)
+            foreach (ApplicationUser user in this.Team1)
                 {
-                    this.playerids.Add(user.Id);
+                    this.team1ids.Add(user.Id);
                     user.LinkedLobby = null;
                 }
-                
-            
+            foreach (ApplicationUser user in this.Team2)
+                {
+                    this.team2ids.Add(user.Id);
+                    user.LinkedLobby = null;
+                }
+
+
+
         }
 
         

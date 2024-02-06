@@ -149,10 +149,9 @@ public class LobbyFullController: Controller
                     foreach (var player in linkedPlayers)
                     {
                         player.LinkedLobbyId = null;
-                        otherlobby.admin = null;
-                        player.notify();// or assign to another lobby if needed
+                        player.notify();
                     }
-                    
+                    otherlobby.admin = null;
                     newLobby.TimeSlot.LinkedLobbies.Remove(otherlobby);
                     
                     _context.Lobbies.Remove(otherlobby);

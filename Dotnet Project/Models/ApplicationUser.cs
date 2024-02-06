@@ -56,13 +56,13 @@ namespace Dotnet_Project.Models
             {
                 this.LinkedLobby = L;
 
-                if (L.Players.Count() < 6)
+                if (L.Team1.Count() < 6)
                 {
                     this.TeamNumber = 1;
                     L.Players.Add(this);
                     
                 }
-                else if (L.Players.Count() < 12)
+                else if (L.Team2.Count() < 6)
                 {
                     this.TeamNumber = 2;
                     L.Players.Add(this);
