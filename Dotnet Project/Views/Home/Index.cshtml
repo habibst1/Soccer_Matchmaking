@@ -20,6 +20,20 @@
     </script>   
 }
 
+@if (TempData["error2"] != null)
+{
+    <style>
+        #toast-container > .toast-error {
+            background-color: #BD362F;
+        }
+    </style>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.error('@TempData["error2"]');
+    </script>
+}
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

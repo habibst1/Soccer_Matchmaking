@@ -87,7 +87,13 @@ namespace Dotnet_Project.Controllers
                                                     .ThenInclude(l => l.Team2)
                                                .FirstOrDefault(p => p.Id == loggedInPlayerId);
 
-
+            if (loggedInPlayer.Notification)
+            {
+                TempData["error2"] = "Your lobby was removed";
+                loggedInPlayer.Notification = false;
+                _context.SaveChanges();
+            }
+          
             var lobbieshistory = _context.Lobbies
                                   .Include(l => l.TimeSlot)
                                   .ThenInclude(s => s.stadium)
@@ -188,6 +194,7 @@ namespace Dotnet_Project.Controllers
 
             if(startDateTime <= DateTime.Now)
             {
+                TempData["error"] = "Please choose a future time";
                return  RedirectToAction("MyStadium");
             }
 

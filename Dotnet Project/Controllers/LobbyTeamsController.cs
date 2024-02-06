@@ -290,7 +290,8 @@ public class LobbyTeamsController : Controller
                     foreach (var player in linkedPlayers)
                     {
                         player.LinkedLobbyId = null;
-                        otherlobby.admin = null;    
+                        otherlobby.admin = null;
+                        player.notify();
                     }
 
                     selectedLobby.TimeSlot.LinkedLobbies.Remove(otherlobby);

@@ -195,6 +195,7 @@ public class LobbySoloController : Controller
                     {
                         player.LinkedLobbyId = null;
                         otherlobby.admin = null;
+                        player.notify();
                     }
 
                     selectedLobby.TimeSlot.LinkedLobbies.Remove(otherlobby);
