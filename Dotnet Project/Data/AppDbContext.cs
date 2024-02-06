@@ -28,11 +28,18 @@ namespace Dotnet_Project.Models
 
 
             modelBuilder.Entity<Lobby>()
-               .Property(p => p.playerids)
+               .Property(p => p.team1ids)
                .HasConversion(
                    v => string.Join(",", v),
                    v => v.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList()
                );
+
+            modelBuilder.Entity<Lobby>()
+              .Property(p => p.team2ids)
+              .HasConversion(
+                  v => string.Join(",", v),
+                  v => v.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList()
+              );
 
 
 
