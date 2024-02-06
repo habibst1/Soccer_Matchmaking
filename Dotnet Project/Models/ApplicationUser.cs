@@ -23,6 +23,7 @@ namespace Dotnet_Project.Models
 
         public int TeamNumber { get; set; } // Add a property to specify the team number
 
+        public bool Notification {  get; set; }   
 
 
 
@@ -71,8 +72,14 @@ namespace Dotnet_Project.Models
                 
             }
         }
+        
 
+        public void notify()
+        {
+            this.Notification = true;
+        }
 
+      
 
 
         /* Things For Stade Owner*/

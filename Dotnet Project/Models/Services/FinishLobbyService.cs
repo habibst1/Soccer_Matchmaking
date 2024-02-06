@@ -53,6 +53,7 @@ public class FinishLobbyService : IHostedService, IDisposable
                                 {
                                     player.LinkedLobbyId = null;
                                     otherlobby.admin = null;
+                                    player.notify();
                                 }
 
                                 lobby.TimeSlot.LinkedLobbies.Remove(otherlobby);

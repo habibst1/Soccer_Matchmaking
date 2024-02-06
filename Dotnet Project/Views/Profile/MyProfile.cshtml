@@ -1,7 +1,19 @@
 ﻿@using Dotnet_Project.Models.ViewModels;
 @model ProfileViewModel
 
-
+@if (TempData["error2"] != null)
+{
+    <style>
+        #toast-container > .toast-error {
+            background-color: #BD362F;
+        }
+    </style>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.error('@TempData["error2"]');
+    </script>
+}
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ti-icons@0.1.2/css/themify-icons.css">
@@ -21,7 +33,7 @@
                         <li class="mb-3"><a class="light-color" href="#!" style="display: flex;"><i class="fas fa-mobile-alt display-25 me-3 light-color" style="padding-left: 3px;margin-top: 3px;"></i>+216 @Model.loggedInPlayer.PhoneNumber</a></li>
                         <li><a class="light-color" href="#!" style="display: flex;"><i class="fas fa-map-marker-alt display-25 me-3 light-color" style="padding-left: 2px;margin-top: 3px;"></i>@Model.loggedInPlayer.Adress</a></li>
                     </ul>
-                    <h3 class="edit-inf"><i class="bi bi-pencil-fill"></i></h3>
+                    <h3 class="edit-inf"><a asp-area="Identity" asp-page="/Account/Manage/Index" class="bi bi-pencil-fill text-white"></a></h3>
                 </div>
 
 			</div>
