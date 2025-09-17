@@ -1,4 +1,52 @@
-# Snapshots from the project 
+# ⚽ Soccer Matchmaking Platform
+
+A full-stack web platform that connects **soccer players** with **stadium owners**, providing seamless matchmaking experiences and stadium management.  
+Players can create or join games, while stadium owners can manage venues and track reservations — all in one place.  
+
+---
+
+## 🚀 Features
+
+- **Matchmaking Modes**
+  - **Solo Play (Join/Create)**: Players can create or join open lobbies.
+  - **Team vs Team**: Enables full team battles.
+  - **Full Game Participation**: Join scheduled matches directly.
+- **Player Profiles**
+  - Match history, performance statistics, and current game status.
+- **Stadium Management**
+  - Stadium owners can register venues, add/manage time slots, and track reservations (manual or automatic).
+- **Real-Time Availability**
+  - Available time slots sync automatically with player reservations.
+- **Lobby System**
+  - Players can create, view, and join lobbies with dynamic status updates.
+
+---
+
+## ⚙️ How It Works
+
+1. **Stadium Owners**
+   - Create an account, register stadiums, and define time slots.
+   - Time slots update automatically when games are reserved through the platform.
+   
+2. **Players**
+   - Sign up and build a profile.
+   - Join or create matches via matchmaking (solo, team, or full game).
+   - Reserved lobbies automatically occupy the corresponding stadium slots.
+
+3. **Match Flow**
+   - A lobby is created → players join → once full, the stadium slot is officially booked.
+   - Player profiles update automatically with match history and participation details.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Backend & Frontend**: .NET 8 (MVC)
+- **Database**: Microsoft SQL Server (SSMS)
+
+---
+
+# 📸 Snapshots from the Project
 
 ## Stadium Owner POV:
 #### Creating an account
@@ -9,7 +57,6 @@
 
 #### Adding Time Slots where he can manually modify them (Occupied / Not occupied) or automatically if it is reserved by Players via the platform
 ![3](https://github.com/user-attachments/assets/3a78f0c5-d9a4-4722-b4fc-728bc4e0ec5f)
-
 
 ## Player POV:
 #### Creating an account
