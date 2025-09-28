@@ -1,7 +1,7 @@
 # ⚽ Soccer Matchmaking Platform
 
 A full-stack web platform that connects **soccer players** with **stadium owners**, providing seamless matchmaking experiences and stadium management.  
-Players can create or join games, while stadium owners can manage venues and track reservations — all in one place.  
+Players can create or join games, while stadium owners can manage venues and track reservations — all in one place.   
 
 ---
 
